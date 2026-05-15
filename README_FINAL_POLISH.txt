@@ -1,0 +1,1 @@
+Final polish: WhatsApp icons/buttons aligned, loader smaller, all card grids and pictures aligned for desktop zoom, tablet and mobile, promo images fill cards, and an extra OHGS shop picture was added.

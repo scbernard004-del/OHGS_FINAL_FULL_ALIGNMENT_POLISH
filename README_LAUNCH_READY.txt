@@ -1,0 +1,1 @@
+Final launch polish: all buttons align in rows, images are balanced across pages and responsive when zooming or on mobile. Upload all files/folders to GitHub, then redeploy on Vercel.
