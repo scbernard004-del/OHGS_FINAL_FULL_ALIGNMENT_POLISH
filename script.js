@@ -706,3 +706,122 @@ document.addEventListener("DOMContentLoaded", ohgsEnhancedMenuAnimation);
   if(document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
   else boot();
 })();
+
+
+// === OHGS final header alignment and scroll shrink ===
+(function(){
+  function initHeaderPolish(){
+    const header = document.querySelector(".site-header, header");
+    const btn = document.querySelector(".ohgs-menu-toggle");
+    const nav = document.querySelector("#ohgsMainMenu, header nav, .site-header nav");
+    if(!header) return;
+
+    function isMobile(){
+      return window.matchMedia("(max-width: 760px)").matches;
+    }
+
+    function updateScroll(){
+      header.classList.toggle("ohgs-scrolled", window.scrollY > 18);
+    }
+
+    function closeMobileMenu(){
+      if(nav) nav.classList.remove("ohgs-menu-open");
+      if(btn) {
+        btn.classList.remove("is-open");
+        btn.setAttribute("aria-expanded", "false");
+      }
+      document.body.classList.remove("ohgs-menu-is-open");
+    }
+
+    function openMobileMenu(){
+      if(nav) nav.classList.add("ohgs-menu-open");
+      if(btn) {
+        btn.classList.add("is-open");
+        btn.setAttribute("aria-expanded", "true");
+      }
+      document.body.classList.add("ohgs-menu-is-open");
+    }
+
+    if(btn && nav && !btn.__ohgsFinalAlignReady){
+      btn.__ohgsFinalAlignReady = true;
+      btn.addEventListener("click", function(e){
+        if(!isMobile()) return;
+        e.preventDefault();
+        nav.classList.contains("ohgs-menu-open") ? closeMobileMenu() : openMobileMenu();
+      });
+    }
+
+    if(nav){
+      nav.querySelectorAll("a").forEach(a => {
+        if(a.__ohgsFinalAlignReady) return;
+        a.__ohgsFinalAlignReady = true;
+        a.addEventListener("click", () => { if(isMobile()) closeMobileMenu(); });
+      });
+    }
+
+    window.addEventListener("scroll", updateScroll, {passive:true});
+    window.addEventListener("resize", closeMobileMenu);
+    updateScroll();
+  }
+
+  if(document.readyState === "loading") document.addEventListener("DOMContentLoaded", initHeaderPolish);
+  else initHeaderPolish();
+})();
+
+
+// === OHGS image, floating button, and loader polish ===
+(function(){
+  const fallbackImages = [
+    "images/shop-inside.jpg",
+    "images/inside-ohgs-shop.jpg",
+    "images/ohgs-shop.jpg",
+    "images/shop-front.jpg",
+    "images/chainsaw-counter.jpg",
+    "images/compressor-service.jpg",
+    "images/cleaning-trolleys.jpg",
+    "chainsaw-counter.jpg",
+    "compressor-service.jpg",
+    "cleaning-trolleys.jpg"
+  ];
+
+  function addImageFallbacks(){
+    document.querySelectorAll("img").forEach(img => {
+      if(img.__ohgsImageFallback) return;
+      img.__ohgsImageFallback = true;
+      let i = 0;
+      img.addEventListener("error", function(){
+        if(i < fallbackImages.length){
+          img.src = fallbackImages[i++];
+        }
+      });
+    });
+  }
+
+  function improveLoader(){
+    const existing = document.querySelector(".ohgs-pro-loader");
+    if(existing) existing.classList.add("ohgs-loader-perfect");
+
+    document.querySelectorAll(".ohgs-loader-mark img, .ohgs-pro-loader img").forEach(img => {
+      img.style.transform = "none";
+      img.style.objectFit = "contain";
+      img.style.borderRadius = "50%";
+    });
+  }
+
+  function alignFloatingButtons(){
+    document.querySelectorAll(".float-whatsapp, .float-email, [class*='float'], [class*='floating']").forEach(el => {
+      if(el.closest("header")) return;
+      el.classList.add("ohgs-floating-compact");
+    });
+  }
+
+  function boot(){
+    addImageFallbacks();
+    improveLoader();
+    alignFloatingButtons();
+  }
+
+  if(document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
+  else boot();
+  window.addEventListener("load", boot);
+})();

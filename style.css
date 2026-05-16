@@ -6076,3 +6076,1176 @@ section{
   from{ opacity:.0; transform:translateY(14px); }
   to{ opacity:1; transform:translateY(0); }
 }
+
+/* === OHGS FINAL HEADER ALIGNMENT + SCROLL SHRINK FIX === */
+
+/* Reset header into a clean balanced row */
+.site-header,
+header{
+  box-sizing:border-box !important;
+  position:sticky !important;
+  top:0 !important;
+  z-index:9999 !important;
+  width:100% !important;
+  min-height:68px !important;
+  padding:8px clamp(14px, 4vw, 64px) !important;
+  display:grid !important;
+  grid-template-columns:auto minmax(280px, 1fr) auto !important;
+  align-items:center !important;
+  gap:18px !important;
+  background:rgba(5,13,25,.94) !important;
+  border-bottom:1px solid rgba(255,255,255,.08) !important;
+  backdrop-filter:blur(18px) saturate(1.15) !important;
+  transition:min-height .25s ease, padding .25s ease, box-shadow .25s ease, background .25s ease !important;
+}
+
+body.light .site-header,
+body.light header,
+html.light .site-header,
+html.light header{
+  background:rgba(255,255,255,.96) !important;
+  border-bottom:1px solid rgba(7,18,34,.10) !important;
+}
+
+/* Shrink nicely on scroll for web/tablet/mobile */
+.site-header.ohgs-scrolled,
+header.ohgs-scrolled{
+  min-height:56px !important;
+  padding-top:5px !important;
+  padding-bottom:5px !important;
+  box-shadow:0 14px 34px rgba(0,0,0,.18) !important;
+}
+
+body.light .site-header.ohgs-scrolled,
+body.light header.ohgs-scrolled{
+  box-shadow:0 14px 34px rgba(15,23,42,.10) !important;
+}
+
+/* Brand area: one small logo + OHGS + Hardware, not huge and not covering buttons */
+.site-header .brand,
+header .brand{
+  grid-column:1 !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:flex-start !important;
+  gap:9px !important;
+  min-width:0 !important;
+  width:auto !important;
+  max-width:142px !important;
+  overflow:visible !important;
+  text-decoration:none !important;
+}
+
+.site-header .brand img,
+header .brand img{
+  width:38px !important;
+  height:38px !important;
+  min-width:38px !important;
+  max-width:38px !important;
+  max-height:38px !important;
+  object-fit:contain !important;
+  object-position:center !important;
+  border-radius:50% !important;
+  background:#fff !important;
+  padding:2px !important;
+  transform:none !important;
+}
+
+.brand-copy,
+.site-header .brand .brand-copy,
+header .brand .brand-copy{
+  display:flex !important;
+  flex-direction:column !important;
+  justify-content:center !important;
+  align-items:flex-start !important;
+  gap:2px !important;
+  min-width:0 !important;
+  max-width:82px !important;
+  overflow:visible !important;
+  line-height:1 !important;
+}
+
+.brand-title,
+.site-header .brand .brand-title,
+header .brand .brand-title{
+  font-size:18px !important;
+  line-height:.9 !important;
+  font-weight:950 !important;
+  letter-spacing:.08em !important;
+  white-space:nowrap !important;
+  overflow:visible !important;
+  text-overflow:clip !important;
+  color:#f5f8ff !important;
+}
+
+.brand-subtitle,
+.site-header .brand .brand-subtitle,
+header .brand .brand-subtitle{
+  font-size:6px !important;
+  line-height:1 !important;
+  font-weight:950 !important;
+  letter-spacing:.16em !important;
+  text-transform:uppercase !important;
+  white-space:nowrap !important;
+  overflow:visible !important;
+  color:#00bdf2 !important;
+}
+
+body.light .brand-title,
+html.light .brand-title{
+  color:#071222 !important;
+}
+
+body.light .brand-subtitle,
+html.light .brand-subtitle{
+  color:#0077b6 !important;
+}
+
+/* Desktop/web navigation: centered and spaced, no crowding */
+@media(min-width:761px){
+  .ohgs-menu-toggle{
+    display:none !important;
+  }
+
+  #ohgsMainMenu,
+  #navMenu,
+  .site-header nav,
+  header nav{
+    grid-column:2 !important;
+    position:static !important;
+    inset:auto !important;
+    width:100% !important;
+    min-width:0 !important;
+    max-height:none !important;
+    overflow:visible !important;
+    opacity:1 !important;
+    visibility:visible !important;
+    transform:none !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    gap:5px !important;
+    padding:0 !important;
+    margin:0 !important;
+    border:0 !important;
+    border-radius:0 !important;
+    background:transparent !important;
+    box-shadow:none !important;
+  }
+
+  #ohgsMainMenu a,
+  #navMenu a,
+  .site-header nav a,
+  header nav a{
+    height:32px !important;
+    min-height:32px !important;
+    padding:0 10px !important;
+    display:inline-flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    border-radius:999px !important;
+    border:1px solid transparent !important;
+    font-size:12px !important;
+    line-height:1 !important;
+    font-weight:850 !important;
+    text-decoration:none !important;
+    white-space:nowrap !important;
+    background:transparent !important;
+  }
+
+  #ohgsMainMenu a:hover,
+  #navMenu a:hover,
+  .site-header nav a:hover,
+  header nav a:hover{
+    background:rgba(255,255,255,.06) !important;
+    border-color:rgba(255,255,255,.14) !important;
+    color:#00bdf2 !important;
+  }
+
+  body.light #ohgsMainMenu a:hover,
+  body.light #navMenu a:hover,
+  body.light .site-header nav a:hover,
+  body.light header nav a:hover{
+    background:rgba(7,18,34,.05) !important;
+    border-color:rgba(7,18,34,.12) !important;
+    color:#0077b6 !important;
+  }
+
+  .header-actions,
+  .ohgs-clean-actions{
+    grid-column:3 !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:flex-end !important;
+    gap:8px !important;
+    min-width:0 !important;
+    width:auto !important;
+    margin:0 !important;
+    flex-wrap:nowrap !important;
+  }
+
+  .header-actions a,
+  .header-actions button,
+  .theme-toggle,
+  .lang-toggle,
+  .whatsapp-btn,
+  .whatsapp,
+  a[href*="wa.me"],
+  a[href*="whatsapp"]{
+    height:34px !important;
+    min-height:34px !important;
+    padding:0 12px !important;
+    display:inline-flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    border-radius:999px !important;
+    font-size:11px !important;
+    font-weight:900 !important;
+    line-height:1 !important;
+    white-space:nowrap !important;
+  }
+
+  .theme-toggle{
+    min-width:62px !important;
+  }
+
+  .lang-toggle,
+  .language-toggle,
+  [data-lang-toggle]{
+    min-width:74px !important;
+  }
+
+  .whatsapp-btn,
+  .whatsapp,
+  a[href*="wa.me"],
+  a[href*="whatsapp"]{
+    min-width:82px !important;
+  }
+
+  .site-header.ohgs-scrolled .brand img,
+  header.ohgs-scrolled .brand img{
+    width:32px !important;
+    height:32px !important;
+    min-width:32px !important;
+  }
+
+  .site-header.ohgs-scrolled .brand-title,
+  header.ohgs-scrolled .brand-title{
+    font-size:15px !important;
+  }
+
+  .site-header.ohgs-scrolled .brand-subtitle,
+  header.ohgs-scrolled .brand-subtitle{
+    font-size:5px !important;
+  }
+
+  .site-header.ohgs-scrolled #ohgsMainMenu a,
+  header.ohgs-scrolled #ohgsMainMenu a,
+  .site-header.ohgs-scrolled nav a,
+  header.ohgs-scrolled nav a{
+    height:28px !important;
+    min-height:28px !important;
+    font-size:10.5px !important;
+    padding-inline:8px !important;
+  }
+
+  .site-header.ohgs-scrolled .header-actions a,
+  .site-header.ohgs-scrolled .header-actions button,
+  header.ohgs-scrolled .header-actions a,
+  header.ohgs-scrolled .header-actions button,
+  .site-header.ohgs-scrolled .theme-toggle,
+  .site-header.ohgs-scrolled .lang-toggle,
+  header.ohgs-scrolled .theme-toggle,
+  header.ohgs-scrolled .lang-toggle{
+    height:30px !important;
+    min-height:30px !important;
+    font-size:10px !important;
+  }
+}
+
+/* Web/tablet when zoomed or screen is narrower */
+@media(min-width:761px) and (max-width:1180px){
+  .site-header,
+  header{
+    grid-template-columns:auto minmax(330px, 1fr) auto !important;
+    gap:9px !important;
+    padding-inline:10px !important;
+  }
+
+  .site-header .brand,
+  header .brand{
+    max-width:112px !important;
+    gap:7px !important;
+  }
+
+  .site-header .brand img,
+  header .brand img{
+    width:32px !important;
+    height:32px !important;
+    min-width:32px !important;
+  }
+
+  .brand-copy{
+    max-width:66px !important;
+  }
+
+  .brand-title{
+    font-size:14px !important;
+    letter-spacing:.05em !important;
+  }
+
+  .brand-subtitle{
+    font-size:5px !important;
+    letter-spacing:.08em !important;
+  }
+
+  #ohgsMainMenu,
+  #navMenu,
+  .site-header nav,
+  header nav{
+    gap:2px !important;
+  }
+
+  #ohgsMainMenu a,
+  #navMenu a,
+  .site-header nav a,
+  header nav a{
+    height:28px !important;
+    min-height:28px !important;
+    padding:0 6px !important;
+    font-size:10px !important;
+  }
+
+  .header-actions,
+  .ohgs-clean-actions{
+    gap:5px !important;
+  }
+
+  .header-actions a,
+  .header-actions button,
+  .theme-toggle,
+  .lang-toggle,
+  .whatsapp-btn,
+  .whatsapp,
+  a[href*="wa.me"],
+  a[href*="whatsapp"]{
+    height:30px !important;
+    min-height:30px !important;
+    padding:0 8px !important;
+    font-size:9.5px !important;
+  }
+
+  .theme-toggle{
+    min-width:54px !important;
+  }
+
+  .lang-toggle,
+  .language-toggle,
+  [data-lang-toggle]{
+    min-width:62px !important;
+  }
+
+  .whatsapp-btn,
+  .whatsapp,
+  a[href*="wa.me"],
+  a[href*="whatsapp"]{
+    min-width:68px !important;
+  }
+}
+
+/* Mobile header: make logo, menu button, theme/language/WhatsApp sit on one clean line */
+@media(max-width:760px){
+  .site-header,
+  header{
+    min-height:64px !important;
+    padding:8px 8px !important;
+    display:grid !important;
+    grid-template-columns:auto auto minmax(0, 1fr) !important;
+    grid-template-areas:"brand menu actions" !important;
+    gap:7px !important;
+    align-items:center !important;
+  }
+
+  .site-header .brand,
+  header .brand{
+    grid-area:brand !important;
+    max-width:88px !important;
+    min-width:0 !important;
+    gap:5px !important;
+    overflow:visible !important;
+  }
+
+  .site-header .brand img,
+  header .brand img{
+    width:34px !important;
+    height:34px !important;
+    min-width:34px !important;
+    max-width:34px !important;
+    max-height:34px !important;
+  }
+
+  .brand-copy{
+    max-width:44px !important;
+  }
+
+  .brand-title{
+    font-size:13px !important;
+    letter-spacing:.04em !important;
+  }
+
+  .brand-subtitle{
+    font-size:4.7px !important;
+    letter-spacing:.02em !important;
+  }
+
+  .ohgs-menu-toggle{
+    grid-area:menu !important;
+    display:inline-flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    width:36px !important;
+    height:36px !important;
+    min-width:36px !important;
+    border-radius:12px !important;
+    justify-self:center !important;
+    margin:0 !important;
+    box-shadow:0 10px 22px rgba(0,189,242,.20) !important;
+  }
+
+  .header-actions,
+  .ohgs-clean-actions{
+    grid-area:actions !important;
+    width:100% !important;
+    min-width:0 !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:flex-end !important;
+    gap:4px !important;
+    margin:0 !important;
+    flex-wrap:nowrap !important;
+  }
+
+  .header-actions a,
+  .header-actions button,
+  .theme-toggle,
+  .lang-toggle,
+  .whatsapp-btn,
+  .whatsapp,
+  a[href*="wa.me"],
+  a[href*="whatsapp"]{
+    height:32px !important;
+    min-height:32px !important;
+    padding:0 6px !important;
+    border-radius:999px !important;
+    font-size:8.5px !important;
+    font-weight:900 !important;
+    line-height:1 !important;
+    display:inline-flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    white-space:nowrap !important;
+  }
+
+  .theme-toggle{
+    min-width:48px !important;
+  }
+
+  .lang-toggle,
+  .language-toggle,
+  [data-lang-toggle]{
+    min-width:58px !important;
+  }
+
+  .whatsapp-btn,
+  .whatsapp,
+  a[href*="wa.me"],
+  a[href*="whatsapp"]{
+    min-width:66px !important;
+    padding-inline:7px !important;
+    font-size:8.8px !important;
+  }
+
+  /* Mobile dropdown below header */
+  #ohgsMainMenu,
+  #navMenu,
+  .site-header nav,
+  header nav{
+    position:absolute !important;
+    left:8px !important;
+    right:8px !important;
+    top:calc(100% + 8px) !important;
+    z-index:10020 !important;
+    width:auto !important;
+    max-height:0 !important;
+    overflow:hidden !important;
+    opacity:0 !important;
+    visibility:hidden !important;
+    transform:translateY(-8px) scale(.98) !important;
+    display:grid !important;
+    grid-template-columns:repeat(2, minmax(0,1fr)) !important;
+    gap:8px !important;
+    padding:0 !important;
+    border-radius:20px !important;
+    background:rgba(7,18,34,.98) !important;
+    border:1px solid rgba(255,255,255,.10) !important;
+    box-shadow:0 24px 60px rgba(0,0,0,.35) !important;
+    backdrop-filter:blur(20px) saturate(1.2) !important;
+  }
+
+  #ohgsMainMenu.ohgs-menu-open,
+  #navMenu.ohgs-menu-open,
+  .site-header nav.ohgs-menu-open,
+  header nav.ohgs-menu-open{
+    max-height:440px !important;
+    opacity:1 !important;
+    visibility:visible !important;
+    transform:translateY(0) scale(1) !important;
+    padding:12px !important;
+  }
+
+  #ohgsMainMenu a,
+  #navMenu a,
+  .site-header nav a,
+  header nav a{
+    width:100% !important;
+    min-height:40px !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    padding:9px 6px !important;
+    border-radius:14px !important;
+    font-size:12.5px !important;
+    font-weight:900 !important;
+    line-height:1.1 !important;
+    text-align:center !important;
+    white-space:normal !important;
+    background:rgba(255,255,255,.045) !important;
+  }
+
+  body.light #ohgsMainMenu,
+  body.light #navMenu,
+  body.light .site-header nav,
+  body.light header nav,
+  html.light #ohgsMainMenu,
+  html.light #navMenu{
+    background:rgba(255,255,255,.98) !important;
+    border-color:rgba(7,18,34,.12) !important;
+  }
+
+  body.light #ohgsMainMenu a,
+  body.light #navMenu a,
+  body.light .site-header nav a,
+  body.light header nav a{
+    background:rgba(7,18,34,.045) !important;
+    color:#071222 !important;
+  }
+
+  .site-header.ohgs-scrolled,
+  header.ohgs-scrolled{
+    min-height:56px !important;
+    padding-top:5px !important;
+    padding-bottom:5px !important;
+  }
+
+  .site-header.ohgs-scrolled .brand img,
+  header.ohgs-scrolled .brand img{
+    width:30px !important;
+    height:30px !important;
+    min-width:30px !important;
+  }
+
+  .site-header.ohgs-scrolled .brand-title,
+  header.ohgs-scrolled .brand-title{
+    font-size:11px !important;
+  }
+
+  .site-header.ohgs-scrolled .brand-subtitle,
+  header.ohgs-scrolled .brand-subtitle{
+    font-size:4.2px !important;
+  }
+
+  .site-header.ohgs-scrolled .ohgs-menu-toggle,
+  header.ohgs-scrolled .ohgs-menu-toggle{
+    width:32px !important;
+    height:32px !important;
+    min-width:32px !important;
+  }
+
+  .site-header.ohgs-scrolled .header-actions a,
+  .site-header.ohgs-scrolled .header-actions button,
+  header.ohgs-scrolled .header-actions a,
+  header.ohgs-scrolled .header-actions button,
+  .site-header.ohgs-scrolled .theme-toggle,
+  .site-header.ohgs-scrolled .lang-toggle,
+  header.ohgs-scrolled .theme-toggle,
+  header.ohgs-scrolled .lang-toggle{
+    height:28px !important;
+    min-height:28px !important;
+    font-size:8px !important;
+  }
+}
+
+/* Very small mobile: keep all controls visible and aligned */
+@media(max-width:390px){
+  .site-header,
+  header{
+    grid-template-columns:auto auto minmax(0, 1fr) !important;
+    gap:5px !important;
+    padding-inline:6px !important;
+  }
+
+  .site-header .brand,
+  header .brand{
+    max-width:72px !important;
+  }
+
+  .site-header .brand img,
+  header .brand img{
+    width:30px !important;
+    height:30px !important;
+    min-width:30px !important;
+  }
+
+  .brand-copy{
+    max-width:36px !important;
+  }
+
+  .brand-title{
+    font-size:11px !important;
+    letter-spacing:.02em !important;
+  }
+
+  .brand-subtitle{
+    font-size:4px !important;
+    letter-spacing:0 !important;
+  }
+
+  .ohgs-menu-toggle{
+    width:32px !important;
+    height:32px !important;
+    min-width:32px !important;
+  }
+
+  .header-actions,
+  .ohgs-clean-actions{
+    gap:3px !important;
+  }
+
+  .theme-toggle{
+    min-width:42px !important;
+  }
+
+  .lang-toggle,
+  .language-toggle,
+  [data-lang-toggle]{
+    min-width:52px !important;
+  }
+
+  .whatsapp-btn,
+  .whatsapp,
+  a[href*="wa.me"],
+  a[href*="whatsapp"]{
+    min-width:58px !important;
+  }
+
+  .header-actions a,
+  .header-actions button,
+  .theme-toggle,
+  .lang-toggle,
+  .whatsapp-btn,
+  .whatsapp,
+  a[href*="wa.me"],
+  a[href*="whatsapp"]{
+    height:30px !important;
+    min-height:30px !important;
+    padding-inline:5px !important;
+    font-size:7.5px !important;
+  }
+}
+
+/* === OHGS MORE IMAGES + CONTENT ALIGNMENT + COMPACT FLOATING BUTTONS + PERFECT LOADER === */
+
+/* Global section alignment */
+main > section,
+.section,
+.hero,
+.products-section,
+.services-section,
+.projects-section,
+.gallery-section,
+.promotions-section,
+.about-section,
+.contact-section,
+.detail-section,
+.ohgs-extra-photos{
+  width:min(100% - 48px, 1240px) !important;
+  margin-left:auto !important;
+  margin-right:auto !important;
+  box-sizing:border-box !important;
+}
+
+@media(max-width:760px){
+  main > section,
+  .section,
+  .hero,
+  .products-section,
+  .services-section,
+  .projects-section,
+  .gallery-section,
+  .promotions-section,
+  .about-section,
+  .contact-section,
+  .detail-section,
+  .ohgs-extra-photos{
+    width:min(100% - 22px, 100%) !important;
+  }
+}
+
+/* Extra picture sections added across pages */
+.ohgs-extra-photos{
+  display:grid !important;
+  grid-template-columns:minmax(240px,.55fr) minmax(0,1.45fr) !important;
+  align-items:center !important;
+  gap:28px !important;
+  padding:clamp(48px,7vw,88px) 0 !important;
+}
+
+.ohgs-extra-copy{
+  min-width:0 !important;
+}
+
+.ohgs-extra-copy .eyebrow{
+  display:inline-block !important;
+  margin-bottom:14px !important;
+  color:#ff9f1c !important;
+  font-size:12px !important;
+  font-weight:950 !important;
+  letter-spacing:.26em !important;
+}
+
+.ohgs-extra-copy h2{
+  margin:0 0 16px !important;
+  max-width:520px !important;
+  font-size:clamp(32px,4.8vw,62px) !important;
+  line-height:.98 !important;
+  letter-spacing:-.04em !important;
+}
+
+.ohgs-extra-copy p{
+  max-width:560px !important;
+  font-size:clamp(15px,1.25vw,18px) !important;
+  line-height:1.75 !important;
+  color:rgba(245,248,255,.75) !important;
+}
+
+body.light .ohgs-extra-copy p{
+  color:#334155 !important;
+}
+
+.ohgs-extra-photo-grid{
+  display:grid !important;
+  grid-template-columns:repeat(2, minmax(0, 1fr)) !important;
+  gap:18px !important;
+  align-items:stretch !important;
+  width:100% !important;
+}
+
+.ohgs-extra-photo-card{
+  margin:0 !important;
+  min-width:0 !important;
+  height:100% !important;
+  display:flex !important;
+  flex-direction:column !important;
+  overflow:hidden !important;
+  border-radius:24px !important;
+  background:linear-gradient(180deg,rgba(16,34,59,.96),rgba(10,24,43,.96)) !important;
+  border:1px solid rgba(255,255,255,.10) !important;
+  box-shadow:0 18px 45px rgba(0,0,0,.18) !important;
+}
+
+body.light .ohgs-extra-photo-card{
+  background:linear-gradient(180deg,#fff,#f6f9fd) !important;
+  border-color:rgba(7,18,34,.12) !important;
+  box-shadow:0 18px 45px rgba(15,23,42,.10) !important;
+}
+
+.ohgs-extra-photo-card img{
+  width:100% !important;
+  height:clamp(210px,22vw,310px) !important;
+  object-fit:cover !important;
+  object-position:center !important;
+  display:block !important;
+}
+
+.ohgs-extra-photo-card figcaption{
+  padding:14px 16px 16px !important;
+  font-size:14px !important;
+  font-weight:850 !important;
+  line-height:1.35 !important;
+  color:#f5f8ff !important;
+}
+
+body.light .ohgs-extra-photo-card figcaption{
+  color:#071222 !important;
+}
+
+/* Align images with words in hero and split sections */
+.hero,
+.about-section,
+.contact-section,
+.detail-section,
+[class*="split"],
+[class*="feature"]{
+  align-items:center !important;
+}
+
+.hero-grid,
+.image-grid,
+.gallery-grid,
+.products-grid,
+.services-grid,
+.projects-grid,
+.promotions-grid,
+.cards-grid,
+.video-grid,
+.detail-grid,
+.contact-grid,
+.about-grid,
+.product-list,
+.grid,
+[class*="grid"]{
+  width:100% !important;
+  display:grid !important;
+  gap:24px !important;
+  align-items:stretch !important;
+  box-sizing:border-box !important;
+}
+
+/* Desktop and web cards should fill available space evenly */
+@media(min-width:1080px){
+  .products-grid,
+  .services-grid,
+  .projects-grid,
+  .gallery-grid,
+  .promotions-grid,
+  .cards-grid,
+  .product-list,
+  .grid{
+    grid-template-columns:repeat(3, minmax(0, 1fr)) !important;
+  }
+}
+
+@media(min-width:760px) and (max-width:1079px){
+  .products-grid,
+  .services-grid,
+  .projects-grid,
+  .gallery-grid,
+  .promotions-grid,
+  .cards-grid,
+  .product-list,
+  .grid{
+    grid-template-columns:repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media(max-width:759px){
+  .products-grid,
+  .services-grid,
+  .projects-grid,
+  .gallery-grid,
+  .promotions-grid,
+  .cards-grid,
+  .product-list,
+  .grid,
+  [class*="grid"]{
+    grid-template-columns:1fr !important;
+    gap:20px !important;
+  }
+}
+
+/* Card image and text alignment */
+.card,
+.product-card,
+.service-card,
+.project-card,
+.gallery-card,
+.promo-card,
+.video-card,
+.detail-card,
+.contact-card,
+.about-card,
+[class*="card"]{
+  min-width:0 !important;
+  width:100% !important;
+  height:100% !important;
+  display:flex !important;
+  flex-direction:column !important;
+  overflow:hidden !important;
+  box-sizing:border-box !important;
+}
+
+.card img,
+.product-card img,
+.service-card img,
+.project-card img,
+.gallery-card img,
+.promo-card img,
+.video-card img,
+.detail-card img,
+.about-card img,
+.hero img,
+.hero-grid img,
+.image-grid img,
+.gallery-grid img,
+.products-grid img,
+.projects-grid img,
+.promotions-grid img,
+[class*="card"] img{
+  width:100% !important;
+  min-width:100% !important;
+  height:clamp(220px,26vw,350px) !important;
+  object-fit:cover !important;
+  object-position:center !important;
+  display:block !important;
+  transform:none !important;
+}
+
+.promo-card img,
+.promotions-grid img{
+  height:clamp(320px,36vw,470px) !important;
+  object-position:center top !important;
+}
+
+.card-content,
+.product-card .content,
+.service-card .content,
+.project-card .content,
+.gallery-card .content,
+.promo-card .content,
+.video-card .content,
+.contact-card .content,
+[class*="card"] .content{
+  flex:1 1 auto !important;
+  display:flex !important;
+  flex-direction:column !important;
+  gap:14px !important;
+}
+
+/* Floating texting/email buttons: smaller so they do not cover reading */
+.ohgs-floating-compact,
+.float-whatsapp,
+.float-email,
+.floating-whatsapp,
+.floating-email,
+[class*="float-whatsapp"],
+[class*="float-email"]{
+  width:54px !important;
+  height:54px !important;
+  min-width:54px !important;
+  min-height:54px !important;
+  max-width:54px !important;
+  max-height:54px !important;
+  border-radius:50% !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  font-size:22px !important;
+  box-shadow:0 14px 30px rgba(0,0,0,.22) !important;
+  opacity:.92 !important;
+}
+
+.ohgs-floating-compact:hover,
+.float-whatsapp:hover,
+.float-email:hover,
+.floating-whatsapp:hover,
+.floating-email:hover{
+  transform:translateY(-2px) scale(1.04) !important;
+  opacity:1 !important;
+}
+
+@media(max-width:760px){
+  .ohgs-floating-compact,
+  .float-whatsapp,
+  .float-email,
+  .floating-whatsapp,
+  .floating-email,
+  [class*="float-whatsapp"],
+  [class*="float-email"]{
+    width:46px !important;
+    height:46px !important;
+    min-width:46px !important;
+    min-height:46px !important;
+    max-width:46px !important;
+    max-height:46px !important;
+    font-size:19px !important;
+    left:14px !important;
+  }
+
+  .float-email,
+  .floating-email,
+  [class*="float-email"]{
+    top:auto !important;
+  }
+}
+
+/* Back to top should stay smaller too */
+.back-to-top,
+[class*="back-to-top"]{
+  width:54px !important;
+  height:54px !important;
+  min-width:54px !important;
+  min-height:54px !important;
+  border-radius:50% !important;
+}
+
+@media(max-width:760px){
+  .back-to-top,
+  [class*="back-to-top"]{
+    width:48px !important;
+    height:48px !important;
+    min-width:48px !important;
+    min-height:48px !important;
+    right:16px !important;
+  }
+}
+
+/* Perfect loading ring around logo */
+.ohgs-pro-loader,
+.loader,
+.preloader,
+#loader,
+.loading-screen{
+  display:grid !important;
+  place-items:center !important;
+}
+
+.ohgs-loader-card{
+  width:min(92vw, 340px) !important;
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:18px !important;
+  text-align:center !important;
+}
+
+.ohgs-loader-mark{
+  position:relative !important;
+  width:106px !important;
+  height:106px !important;
+  min-width:106px !important;
+  min-height:106px !important;
+  display:grid !important;
+  place-items:center !important;
+  border-radius:50% !important;
+  overflow:visible !important;
+}
+
+.ohgs-loader-ring{
+  position:absolute !important;
+  inset:0 !important;
+  width:106px !important;
+  height:106px !important;
+  border-radius:50% !important;
+  background:conic-gradient(#00bdf2 0 90deg, rgba(0,189,242,.18) 90deg 210deg, #00bdf2 210deg 300deg, rgba(0,189,242,.10) 300deg 360deg) !important;
+  animation:ohgsPerfectSpin .95s linear infinite !important;
+  box-shadow:0 0 36px rgba(0,189,242,.28) !important;
+}
+
+.ohgs-loader-ring::after{
+  content:"" !important;
+  position:absolute !important;
+  inset:9px !important;
+  border-radius:50% !important;
+  background:#071222 !important;
+}
+
+body.light .ohgs-loader-ring::after,
+html.light .ohgs-loader-ring::after{
+  background:#f8fbff !important;
+}
+
+.ohgs-loader-mark img,
+.ohgs-pro-loader img,
+.loader img,
+.preloader img,
+#loader img,
+.loading-screen img{
+  position:relative !important;
+  z-index:2 !important;
+  width:72px !important;
+  height:72px !important;
+  min-width:72px !important;
+  min-height:72px !important;
+  max-width:72px !important;
+  max-height:72px !important;
+  object-fit:contain !important;
+  object-position:center !important;
+  border-radius:50% !important;
+  background:#fff !important;
+  padding:4px !important;
+  transform:none !important;
+  animation:none !important;
+}
+
+.ohgs-loader-text{
+  max-width:280px !important;
+  margin:0 auto !important;
+  font-size:14px !important;
+  line-height:1.45 !important;
+  text-align:center !important;
+  color:inherit !important;
+}
+
+@keyframes ohgsPerfectSpin{
+  to{ transform:rotate(360deg); }
+}
+
+/* Mobile: align extra pictures and text */
+@media(max-width:900px){
+  .ohgs-extra-photos{
+    grid-template-columns:1fr !important;
+    gap:22px !important;
+    padding:44px 0 !important;
+  }
+
+  .ohgs-extra-photo-grid{
+    grid-template-columns:1fr !important;
+    gap:18px !important;
+  }
+
+  .ohgs-extra-copy h2{
+    font-size:clamp(34px,9vw,56px) !important;
+  }
+
+  .ohgs-extra-photo-card img,
+  .card img,
+  .product-card img,
+  .service-card img,
+  .project-card img,
+  .gallery-card img,
+  .promo-card img,
+  .video-card img,
+  .detail-card img,
+  .about-card img,
+  .hero img,
+  .hero-grid img,
+  .image-grid img,
+  .gallery-grid img,
+  .products-grid img,
+  .projects-grid img,
+  .promotions-grid img,
+  [class*="card"] img{
+    height:clamp(230px,58vw,420px) !important;
+  }
+}
+
+/* Keep words and images balanced on split hero sections */
+@media(min-width:901px){
+  .hero,
+  .hero-grid,
+  .about-section,
+  .contact-section{
+    column-gap:clamp(28px,4vw,60px) !important;
+  }
+}
