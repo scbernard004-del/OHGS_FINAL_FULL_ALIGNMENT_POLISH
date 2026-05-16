@@ -848,3 +848,20 @@ document.addEventListener("DOMContentLoaded", ohgsEnhancedMenuAnimation);
     });
   });
 })();
+
+
+// === OHGS final header spacing controller ===
+(function(){
+  function boot(){
+    const header = document.querySelector(".site-header, header");
+    if(!header) return;
+    function sync(){
+      header.classList.toggle("ohgs-scrolled", window.scrollY > 18);
+    }
+    window.addEventListener("scroll", sync, {passive:true});
+    window.addEventListener("resize", sync);
+    sync();
+  }
+  if(document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
+  else boot();
+})();

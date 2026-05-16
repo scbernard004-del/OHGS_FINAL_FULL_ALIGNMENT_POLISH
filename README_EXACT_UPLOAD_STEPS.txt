@@ -95,3 +95,9 @@ LOCAL PREVIEW
 2. Open index.html in your browser.
 3. Check pages before uploading.
 4. Some video or browser features may work better after upload to Vercel.
+
+
+LATEST HEADER FIX INCLUDED
+- Mobile logo text is much smaller so it does not interfere with menu, language, light/dark or WhatsApp buttons.
+- Desktop/tablet menu active/hover style is now a small rounded pill/ring around the word only, not a large box.
+- Header shrinks smoothly on scroll for mobile, tablet and PC.
