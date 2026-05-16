@@ -8427,3 +8427,782 @@ body.light .site-header .brand-title, body.light header.site-header .brand-title
 body.light .site-header .brand-subtitle, body.light header.site-header .brand-subtitle{color:#00a8e8 !important}
 .site-header .brand-title, header.site-header .brand-title{color:#ffffff !important}
 .site-header .brand-subtitle, header.site-header .brand-subtitle{color:#00bfff !important}
+
+
+/* =============================================================
+   OHGS FINAL MASTER FIX
+   - brand visibility in header
+   - fully responsive cards and images
+   - better alignment in products/services/projects/gallery
+   ============================================================= */
+
+.site-header,
+header.site-header{
+  display:grid !important;
+  grid-template-columns:minmax(172px, 212px) minmax(0,1fr) auto !important;
+  align-items:center !important;
+  gap:16px !important;
+  padding:10px 18px !important;
+  overflow:visible !important;
+}
+
+.site-header .brand,
+header.site-header .brand{
+  display:flex !important;
+  align-items:center !important;
+  gap:10px !important;
+  min-width:172px !important;
+  width:auto !important;
+  max-width:none !important;
+  flex:0 0 auto !important;
+  overflow:visible !important;
+  position:relative !important;
+  z-index:20 !important;
+}
+
+.site-header .brand img,
+header.site-header .brand img{
+  width:44px !important;
+  height:44px !important;
+  min-width:44px !important;
+  flex:0 0 44px !important;
+}
+
+.site-header .brand-copy,
+header.site-header .brand-copy{
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:flex-start !important;
+  justify-content:center !important;
+  width:auto !important;
+  min-width:0 !important;
+  max-width:none !important;
+  overflow:visible !important;
+}
+
+.site-header .brand-title,
+header.site-header .brand-title{
+  display:block !important;
+  font-size:19px !important;
+  line-height:.92 !important;
+  letter-spacing:.06em !important;
+  white-space:nowrap !important;
+  overflow:visible !important;
+}
+
+.site-header .brand-subtitle,
+header.site-header .brand-subtitle{
+  display:block !important;
+  font-size:16px !important;
+  line-height:.92 !important;
+  letter-spacing:.12em !important;
+  white-space:nowrap !important;
+  overflow:visible !important;
+  text-transform:uppercase !important;
+}
+
+.site-header .brand-title,
+header.site-header .brand-title{color:#ffffff !important}
+.site-header .brand-subtitle,
+header.site-header .brand-subtitle{color:#06bbff !important}
+body.light .site-header .brand-title,
+body.light header.site-header .brand-title{color:#071222 !important}
+body.light .site-header .brand-subtitle,
+body.light header.site-header .brand-subtitle{color:#039be5 !important}
+
+#ohgsMainMenu,
+header nav,
+.site-header nav{
+  min-width:0 !important;
+  width:100% !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:clamp(6px, .8vw, 14px) !important;
+  flex-wrap:nowrap !important;
+  overflow:visible !important;
+}
+
+#ohgsMainMenu a,
+header nav a,
+.site-header nav a{
+  white-space:nowrap !important;
+  font-size:12px !important;
+  line-height:1 !important;
+  padding:8px 10px !important;
+  border-radius:999px !important;
+}
+
+.site-header .header-actions,
+header.site-header .header-actions{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:flex-end !important;
+  gap:8px !important;
+  min-width:max-content !important;
+  flex:0 0 auto !important;
+}
+
+.site-header .header-actions .pill,
+.site-header .header-actions a,
+header.site-header .header-actions .pill,
+header.site-header .header-actions a{
+  min-height:38px !important;
+  padding:8px 12px !important;
+  font-size:11px !important;
+  line-height:1 !important;
+}
+
+@media (max-width: 1180px){
+  .site-header,
+  header.site-header{
+    grid-template-columns:minmax(158px, 185px) minmax(0,1fr) auto !important;
+    gap:12px !important;
+    padding:10px 14px !important;
+  }
+  .site-header .brand,
+  header.site-header .brand{min-width:158px !important}
+  .site-header .brand-title,
+  header.site-header .brand-title{font-size:17px !important}
+  .site-header .brand-subtitle,
+  header.site-header .brand-subtitle{font-size:14px !important; letter-spacing:.09em !important}
+  #ohgsMainMenu a,
+  header nav a,
+  .site-header nav a{font-size:11px !important; padding:8px 8px !important}
+  .site-header .header-actions .pill,
+  .site-header .header-actions a,
+  header.site-header .header-actions .pill,
+  header.site-header .header-actions a{padding:8px 10px !important; font-size:10px !important}
+}
+
+@media (max-width: 900px){
+  .site-header,
+  header.site-header{
+    grid-template-columns:132px 40px minmax(0,1fr) !important;
+    gap:8px !important;
+    padding:8px 10px !important;
+  }
+  .site-header .brand,
+  header.site-header .brand{min-width:132px !important; gap:7px !important}
+  .site-header .brand img,
+  header.site-header .brand img{width:34px !important; height:34px !important; min-width:34px !important; flex-basis:34px !important}
+  .site-header .brand-title,
+  header.site-header .brand-title{font-size:13px !important; letter-spacing:.04em !important}
+  .site-header .brand-subtitle,
+  header.site-header .brand-subtitle{font-size:10px !important; letter-spacing:.08em !important}
+  .ohgs-menu-toggle{display:grid !important; place-items:center !important; width:38px !important; height:38px !important; min-width:38px !important; margin:0 !important}
+  .site-header .header-actions,
+  header.site-header .header-actions{width:100% !important; min-width:0 !important; gap:5px !important}
+  .site-header .header-actions .pill,
+  .site-header .header-actions a,
+  header.site-header .header-actions .pill,
+  header.site-header .header-actions a{font-size:9px !important; padding:7px 9px !important; min-height:34px !important}
+  #ohgsMainMenu,
+  header nav,
+  .site-header nav{
+    position:absolute !important;
+    left:10px !important;
+    right:10px !important;
+    top:calc(100% + 8px) !important;
+    width:auto !important;
+  }
+}
+
+@media (max-width: 420px){
+  .site-header,
+  header.site-header{grid-template-columns:112px 36px minmax(0,1fr) !important; gap:6px !important; padding:8px !important}
+  .site-header .brand,
+  header.site-header .brand{min-width:112px !important}
+  .site-header .brand img,
+  header.site-header .brand img{width:30px !important; height:30px !important; min-width:30px !important; flex-basis:30px !important}
+  .site-header .brand-title,
+  header.site-header .brand-title{font-size:12px !important}
+  .site-header .brand-subtitle,
+  header.site-header .brand-subtitle{font-size:8px !important; letter-spacing:.06em !important}
+  .site-header .header-actions .pill,
+  .site-header .header-actions a,
+  header.site-header .header-actions .pill,
+  header.site-header .header-actions a{font-size:8px !important; padding:7px 7px !important}
+}
+
+/* Unified responsive card systems */
+.section,
+.detail-hero,
+.project-picture-section,
+.ohgs-promise,
+.ohgs-micro-strip{
+  max-width:1380px !important;
+  margin-inline:auto !important;
+}
+
+.product-grid,
+.service-grid-enhanced,
+.project-image-grid,
+.ohgs-extra-photo-grid,
+.promise-grid,
+.micro-strip-grid,
+.video-grid,
+.grid{
+  display:grid !important;
+  align-items:stretch !important;
+  gap:22px !important;
+}
+
+.product-grid,
+.service-grid-enhanced,
+.promise-grid,
+.micro-strip-grid,
+.video-grid,
+.grid{
+  grid-template-columns:repeat(auto-fit, minmax(min(100%, 260px), 1fr)) !important;
+}
+
+.project-image-grid{
+  grid-template-columns:repeat(auto-fit, minmax(min(100%, 265px), 1fr)) !important;
+}
+
+.ohgs-extra-photo-grid{
+  grid-template-columns:repeat(auto-fit, minmax(min(100%, 220px), 1fr)) !important;
+}
+
+.product-card,
+.service-card,
+.info-card,
+.project-image-card,
+.ohgs-extra-photo-card,
+.video-card,
+.promise-card,
+.quote-card,
+.featured-shop-card,
+[class*="card"]{
+  width:100% !important;
+  min-width:0 !important;
+  max-width:100% !important;
+}
+
+.product-card,
+.service-card,
+.info-card,
+.project-image-card,
+.video-card,
+.promise-card,
+.quote-card,
+.featured-shop-card{
+  display:flex !important;
+  flex-direction:column !important;
+  height:100% !important;
+}
+
+.product-body,
+.service-card,
+.info-card,
+.project-image-card > div,
+.video-card,
+.promise-card,
+.quote-card{
+  display:flex !important;
+  flex-direction:column !important;
+  height:100% !important;
+}
+
+.card-actions,
+.form-buttons,
+.contact-actions{
+  margin-top:auto !important;
+}
+
+.product-card img,
+.project-image-card img,
+.ohgs-extra-photo-card img,
+.featured-shop-card img,
+.product-body img,
+.promo-card img,
+.gallery img{
+  display:block !important;
+  width:100% !important;
+  height:auto !important;
+  max-width:100% !important;
+  object-fit:cover !important;
+}
+
+.product-card img,
+.project-image-card img,
+.featured-shop-card img,
+.promo-card img{
+  aspect-ratio:4 / 3 !important;
+  max-height:none !important;
+}
+
+.ohgs-extra-photo-card img{
+  aspect-ratio:4 / 3 !important;
+  border-radius:20px !important;
+}
+
+.ohgs-extra-photo-card figcaption{
+  text-align:left !important;
+  padding-top:10px !important;
+}
+
+.gallery{
+  columns:4 220px !important;
+  column-gap:18px !important;
+}
+
+.gallery img{
+  margin:0 0 18px !important;
+  border-radius:22px !important;
+  break-inside:avoid !important;
+}
+
+@media (max-width: 1100px){
+  .gallery{columns:3 220px !important}
+}
+
+@media (max-width: 800px){
+  .gallery{columns:2 220px !important}
+}
+
+@media (max-width: 560px){
+  .gallery{columns:1 220px !important}
+  .product-grid,
+  .service-grid-enhanced,
+  .project-image-grid,
+  .ohgs-extra-photo-grid,
+  .promise-grid,
+  .micro-strip-grid,
+  .video-grid,
+  .grid{
+    grid-template-columns:1fr !important;
+  }
+}
+
+.detail-hero h2,
+.section h2,
+.section .lead,
+.project-picture-section .section-head,
+.ohgs-promise .section-head,
+.ohgs-micro-strip .section-head{
+  max-width:980px !important;
+}
+
+.project-image-card > div,
+.ohgs-extra-copy,
+.section-head{
+  min-width:0 !important;
+}
+
+
+/* =========================================================
+   OHGS ABSOLUTE FINAL MOBILE LOGO + MENU FIX
+   - logo and OHGS HARDWARE appear fully
+   - menu button works and dropdown appears on every page
+   - mobile/tablet/desktop responsive header
+   ========================================================= */
+
+.site-header,
+header.site-header{
+  isolation:isolate !important;
+}
+
+/* Desktop: give brand its own safe lane */
+@media (min-width: 901px){
+  .site-header,
+  header.site-header{
+    grid-template-columns: 240px minmax(420px, 1fr) auto !important;
+    gap:18px !important;
+  }
+
+  .site-header .brand,
+  header.site-header .brand{
+    width:240px !important;
+    min-width:240px !important;
+    max-width:240px !important;
+    overflow:visible !important;
+  }
+
+  .site-header .brand-copy,
+  header.site-header .brand-copy{
+    width:170px !important;
+    min-width:170px !important;
+    max-width:170px !important;
+    overflow:visible !important;
+  }
+
+  .site-header .brand-title,
+  header.site-header .brand-title{
+    font-size:22px !important;
+    letter-spacing:.08em !important;
+  }
+
+  .site-header .brand-subtitle,
+  header.site-header .brand-subtitle{
+    font-size:15px !important;
+    letter-spacing:.20em !important;
+  }
+}
+
+/* Tablet: still show full OHGS HARDWARE */
+@media (min-width: 761px) and (max-width: 900px){
+  .site-header,
+  header.site-header{
+    grid-template-columns: 190px minmax(0, 1fr) auto !important;
+    gap:10px !important;
+  }
+
+  .site-header .brand,
+  header.site-header .brand{
+    width:190px !important;
+    min-width:190px !important;
+    max-width:190px !important;
+    overflow:visible !important;
+  }
+
+  .site-header .brand-copy,
+  header.site-header .brand-copy{
+    width:132px !important;
+    min-width:132px !important;
+    max-width:132px !important;
+    overflow:visible !important;
+  }
+
+  .site-header .brand-title,
+  header.site-header .brand-title{
+    font-size:18px !important;
+    letter-spacing:.07em !important;
+  }
+
+  .site-header .brand-subtitle,
+  header.site-header .brand-subtitle{
+    font-size:12px !important;
+    letter-spacing:.16em !important;
+  }
+}
+
+/* Mobile: compact but full brand, working menu, actions on the same row */
+@media (max-width: 760px){
+  .site-header,
+  header.site-header{
+    position:sticky !important;
+    top:0 !important;
+    min-height:64px !important;
+    height:auto !important;
+    display:grid !important;
+    grid-template-columns: 122px 42px minmax(174px, 1fr) !important;
+    grid-template-areas: "brand menubtn actions" !important;
+    align-items:center !important;
+    gap:7px !important;
+    padding:8px 9px !important;
+    overflow:visible !important;
+  }
+
+  .site-header .brand,
+  header.site-header .brand{
+    grid-area:brand !important;
+    width:122px !important;
+    min-width:122px !important;
+    max-width:122px !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:flex-start !important;
+    gap:6px !important;
+    overflow:visible !important;
+    position:relative !important;
+    z-index:10 !important;
+  }
+
+  .site-header .brand img,
+  header.site-header .brand img{
+    width:31px !important;
+    height:31px !important;
+    min-width:31px !important;
+    max-width:31px !important;
+    object-fit:contain !important;
+    object-position:center !important;
+    border-radius:50% !important;
+    flex:0 0 31px !important;
+  }
+
+  .site-header .brand-copy,
+  header.site-header .brand-copy{
+    width:82px !important;
+    min-width:82px !important;
+    max-width:82px !important;
+    display:flex !important;
+    flex-direction:column !important;
+    gap:1px !important;
+    overflow:visible !important;
+  }
+
+  .site-header .brand-title,
+  header.site-header .brand-title{
+    display:block !important;
+    width:82px !important;
+    max-width:82px !important;
+    font-size:12.5px !important;
+    line-height:.95 !important;
+    letter-spacing:.05em !important;
+    white-space:nowrap !important;
+    overflow:visible !important;
+    text-overflow:clip !important;
+  }
+
+  .site-header .brand-subtitle,
+  header.site-header .brand-subtitle{
+    display:block !important;
+    width:82px !important;
+    max-width:82px !important;
+    font-size:7.3px !important;
+    line-height:1 !important;
+    letter-spacing:.12em !important;
+    white-space:nowrap !important;
+    overflow:visible !important;
+    text-overflow:clip !important;
+  }
+
+  .ohgs-menu-toggle,
+  button.ohgs-menu-toggle{
+    grid-area:menubtn !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    justify-self:center !important;
+    width:42px !important;
+    height:42px !important;
+    min-width:42px !important;
+    max-width:42px !important;
+    padding:0 !important;
+    margin:0 !important;
+    border:0 !important;
+    border-radius:14px !important;
+    background:linear-gradient(135deg,#03bdf5,#006aa7) !important;
+    box-shadow:0 10px 25px rgba(0,189,242,.26) !important;
+    cursor:pointer !important;
+    z-index:100002 !important;
+    pointer-events:auto !important;
+  }
+
+  .ohgs-menu-toggle span{
+    display:block !important;
+    width:18px !important;
+    height:2px !important;
+    border-radius:999px !important;
+    background:#00111c !important;
+    margin:2.5px 0 !important;
+    transition:transform .25s ease, opacity .25s ease !important;
+  }
+
+  .ohgs-menu-toggle.is-open span:nth-child(1){
+    transform:translateY(7px) rotate(45deg) !important;
+  }
+  .ohgs-menu-toggle.is-open span:nth-child(2){
+    opacity:0 !important;
+  }
+  .ohgs-menu-toggle.is-open span:nth-child(3){
+    transform:translateY(-7px) rotate(-45deg) !important;
+  }
+
+  .site-header .header-actions,
+  header.site-header .header-actions{
+    grid-area:actions !important;
+    width:100% !important;
+    min-width:0 !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:flex-end !important;
+    gap:4px !important;
+    flex-wrap:nowrap !important;
+    overflow:visible !important;
+    z-index:10 !important;
+  }
+
+  .site-header .header-actions .pill,
+  .site-header .header-actions button,
+  .site-header .header-actions a,
+  header.site-header .header-actions .pill,
+  header.site-header .header-actions button,
+  header.site-header .header-actions a{
+    min-height:30px !important;
+    height:30px !important;
+    padding:0 7px !important;
+    font-size:8px !important;
+    line-height:1 !important;
+    border-radius:999px !important;
+    white-space:nowrap !important;
+    display:inline-flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+  }
+
+  .site-header .theme-toggle,
+  header.site-header .theme-toggle{
+    min-width:44px !important;
+    max-width:44px !important;
+  }
+
+  .site-header .lang-toggle,
+  header.site-header .lang-toggle{
+    min-width:54px !important;
+    max-width:54px !important;
+  }
+
+  .site-header .whatsapp,
+  header.site-header .whatsapp{
+    min-width:68px !important;
+    max-width:76px !important;
+  }
+
+  /* Mobile menu dropdown: hidden by default and clearly opens */
+  #ohgsMainMenu,
+  #navMenu,
+  .site-header nav,
+  header.site-header nav{
+    position:absolute !important;
+    top:calc(100% + 8px) !important;
+    left:10px !important;
+    right:10px !important;
+    width:auto !important;
+    min-width:0 !important;
+    max-height:0 !important;
+    opacity:0 !important;
+    visibility:hidden !important;
+    overflow:hidden !important;
+    display:grid !important;
+    grid-template-columns:repeat(2, minmax(0, 1fr)) !important;
+    gap:8px !important;
+    padding:0 !important;
+    transform:translateY(-8px) scale(.98) !important;
+    border-radius:20px !important;
+    background:rgba(6,15,30,.98) !important;
+    border:1px solid rgba(255,255,255,.12) !important;
+    box-shadow:0 28px 70px rgba(0,0,0,.42) !important;
+    backdrop-filter:blur(20px) saturate(1.25) !important;
+    transition:max-height .32s ease, opacity .22s ease, transform .25s ease, padding .25s ease, visibility .25s ease !important;
+    z-index:100001 !important;
+  }
+
+  body.light #ohgsMainMenu,
+  body.light #navMenu,
+  body.light .site-header nav,
+  body.light header.site-header nav{
+    background:rgba(255,255,255,.98) !important;
+    border-color:rgba(7,18,34,.14) !important;
+  }
+
+  #ohgsMainMenu.ohgs-menu-open,
+  #navMenu.ohgs-menu-open,
+  .site-header nav.ohgs-menu-open,
+  header.site-header nav.ohgs-menu-open,
+  body.ohgs-menu-is-open #ohgsMainMenu,
+  body.ohgs-menu-is-open #navMenu,
+  body.ohgs-menu-is-open .site-header nav,
+  body.ohgs-menu-is-open header.site-header nav{
+    max-height:520px !important;
+    opacity:1 !important;
+    visibility:visible !important;
+    overflow:visible !important;
+    padding:12px !important;
+    transform:translateY(0) scale(1) !important;
+  }
+
+  #ohgsMainMenu a,
+  #navMenu a,
+  .site-header nav a,
+  header.site-header nav a{
+    width:100% !important;
+    min-height:42px !important;
+    padding:10px 8px !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    text-align:center !important;
+    font-size:12px !important;
+    font-weight:900 !important;
+    line-height:1.1 !important;
+    border-radius:14px !important;
+    color:#f7fbff !important;
+    background:rgba(255,255,255,.055) !important;
+  }
+
+  body.light #ohgsMainMenu a,
+  body.light #navMenu a,
+  body.light .site-header nav a,
+  body.light header.site-header nav a{
+    color:#071222 !important;
+    background:rgba(7,18,34,.045) !important;
+  }
+}
+
+/* Small mobile: still show full OHGS HARDWARE, just tinier */
+@media (max-width: 390px){
+  .site-header,
+  header.site-header{
+    grid-template-columns:108px 36px minmax(160px, 1fr) !important;
+    gap:5px !important;
+    padding:7px 6px !important;
+  }
+
+  .site-header .brand,
+  header.site-header .brand{
+    width:108px !important;
+    min-width:108px !important;
+    max-width:108px !important;
+    gap:5px !important;
+  }
+
+  .site-header .brand img,
+  header.site-header .brand img{
+    width:28px !important;
+    height:28px !important;
+    min-width:28px !important;
+    flex-basis:28px !important;
+  }
+
+  .site-header .brand-copy,
+  header.site-header .brand-copy{
+    width:74px !important;
+    min-width:74px !important;
+    max-width:74px !important;
+  }
+
+  .site-header .brand-title,
+  header.site-header .brand-title{
+    font-size:11px !important;
+    width:74px !important;
+    max-width:74px !important;
+  }
+
+  .site-header .brand-subtitle,
+  header.site-header .brand-subtitle{
+    font-size:6.3px !important;
+    letter-spacing:.09em !important;
+    width:74px !important;
+    max-width:74px !important;
+  }
+
+  .ohgs-menu-toggle,
+  button.ohgs-menu-toggle{
+    width:36px !important;
+    height:36px !important;
+    min-width:36px !important;
+    border-radius:12px !important;
+  }
+
+  .site-header .header-actions .pill,
+  .site-header .header-actions button,
+  .site-header .header-actions a,
+  header.site-header .header-actions .pill,
+  header.site-header .header-actions button,
+  header.site-header .header-actions a{
+    min-height:28px !important;
+    height:28px !important;
+    padding:0 5px !important;
+    font-size:7px !important;
+  }
+
+  .site-header .theme-toggle,
+  header.site-header .theme-toggle{min-width:38px !important; max-width:38px !important;}
+  .site-header .lang-toggle,
+  header.site-header .lang-toggle{min-width:48px !important; max-width:48px !important;}
+  .site-header .whatsapp,
+  header.site-header .whatsapp{min-width:58px !important; max-width:62px !important;}
+}
