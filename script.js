@@ -503,3 +503,120 @@ document.addEventListener("DOMContentLoaded", ohgsEnhancedMenuAnimation);
   if(document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
   else boot();
 })();
+
+
+// === OHGS Professional Loading Screen Fix ===
+(function(){
+  function getLogoSrc(){
+    const logo = document.querySelector("header .brand img, .site-header .brand img, img[src*='logo'], img[alt*='OHGS']");
+    return logo ? logo.getAttribute("src") : "assets/ohgs-logo.png";
+  }
+
+  function buildLoader(){
+    // Hide old loaders that may distort images.
+    document.querySelectorAll(".loader, .preloader, #loader, .loading-screen").forEach(el => {
+      if(!el.classList.contains("ohgs-pro-loader")) el.classList.add("ohgs-old-loader-hidden");
+    });
+
+    if(document.querySelector(".ohgs-pro-loader")) return;
+
+    const lang = localStorage.getItem("ohgsLang") || "en";
+    const loader = document.createElement("div");
+    loader.className = "ohgs-pro-loader";
+    loader.innerHTML = `
+      <div class="ohgs-loader-card">
+        <div class="ohgs-loader-mark">
+          <span class="ohgs-loader-ring"></span>
+          <img src="${getLogoSrc()}" alt="OHGS logo">
+        </div>
+        <p class="ohgs-loader-text">${lang === "sw" ? "Tunafungua tovuti ya OHGS..." : "Loading OHGS Industrial Experience..."}</p>
+      </div>
+    `;
+    document.body.appendChild(loader);
+
+    window.addEventListener("load", function(){
+      setTimeout(() => {
+        loader.classList.add("hide");
+        setTimeout(() => loader.remove(), 520);
+      }, 650);
+    });
+
+    // Fallback so loader never gets stuck.
+    setTimeout(() => {
+      if(document.body.contains(loader)){
+        loader.classList.add("hide");
+        setTimeout(() => loader.remove(), 520);
+      }
+    }, 2200);
+  }
+
+  if(document.readyState === "loading"){
+    document.addEventListener("DOMContentLoaded", buildLoader);
+  }else{
+    buildLoader();
+  }
+})();
+
+
+// === OHGS FINAL RESPONSIVE MENU BEHAVIOUR ===
+(function(){
+  function setupResponsiveMenu(){
+    const btn = document.querySelector(".ohgs-menu-toggle");
+    const nav = document.querySelector("#ohgsMainMenu, header nav, .site-header nav");
+    if(!btn || !nav) return;
+
+    function isMobile(){
+      return window.matchMedia("(max-width: 760px)").matches;
+    }
+
+    function closeMenu(){
+      nav.classList.remove("ohgs-menu-open");
+      document.body.classList.remove("ohgs-menu-is-open");
+      btn.classList.remove("is-open");
+      btn.setAttribute("aria-expanded", "false");
+    }
+
+    function openMenu(){
+      nav.classList.add("ohgs-menu-open");
+      document.body.classList.add("ohgs-menu-is-open");
+      btn.classList.add("is-open");
+      btn.setAttribute("aria-expanded", "true");
+    }
+
+    function sync(){
+      if(!isMobile()){
+        nav.classList.add("ohgs-desktop-menu");
+        closeMenu();
+      }else{
+        nav.classList.remove("ohgs-desktop-menu");
+        closeMenu();
+      }
+    }
+
+    if(!btn.__ohgsResponsiveFinal){
+      btn.__ohgsResponsiveFinal = true;
+      btn.addEventListener("click", function(e){
+        if(!isMobile()) return;
+        e.preventDefault();
+        nav.classList.contains("ohgs-menu-open") ? closeMenu() : openMenu();
+      });
+    }
+
+    nav.querySelectorAll("a").forEach(link => {
+      if(link.__ohgsResponsiveFinal) return;
+      link.__ohgsResponsiveFinal = true;
+      link.addEventListener("click", () => {
+        if(isMobile()) closeMenu();
+      });
+    });
+
+    window.addEventListener("resize", sync);
+    sync();
+  }
+
+  if(document.readyState === "loading"){
+    document.addEventListener("DOMContentLoaded", setupResponsiveMenu);
+  }else{
+    setupResponsiveMenu();
+  }
+})();

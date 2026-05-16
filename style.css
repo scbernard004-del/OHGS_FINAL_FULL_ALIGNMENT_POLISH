@@ -3263,3 +3263,1217 @@ video,
     height:clamp(340px, 90vw, 540px) !important;
   }
 }
+
+/* === OHGS PROFESSIONAL POLISH: LOADER, HEADER, IMAGES, MOBILE/WEB === */
+
+/* 1) Hide old distorted loader elements */
+.ohgs-old-loader-hidden{
+  display:none !important;
+  visibility:hidden !important;
+  opacity:0 !important;
+}
+
+/* New professional loading screen */
+.ohgs-pro-loader{
+  position:fixed !important;
+  inset:0 !important;
+  z-index:99999 !important;
+  display:grid !important;
+  place-items:center !important;
+  background:
+    radial-gradient(circle at 50% 42%, rgba(0,189,242,.12), transparent 30%),
+    linear-gradient(135deg,#06111f,#0b1f35) !important;
+  color:#f5f8ff !important;
+  opacity:1 !important;
+  transition:opacity .45s ease, visibility .45s ease !important;
+}
+
+body.light .ohgs-pro-loader,
+html.light .ohgs-pro-loader{
+  background:
+    radial-gradient(circle at 50% 42%, rgba(0,189,242,.14), transparent 30%),
+    linear-gradient(135deg,#eef5fb,#ffffff) !important;
+  color:#071222 !important;
+}
+
+.ohgs-pro-loader.hide{
+  opacity:0 !important;
+  visibility:hidden !important;
+}
+
+.ohgs-loader-card{
+  width:min(92vw, 360px) !important;
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:22px !important;
+  padding:30px 22px !important;
+  text-align:center !important;
+}
+
+.ohgs-loader-mark{
+  position:relative !important;
+  width:112px !important;
+  height:112px !important;
+  display:grid !important;
+  place-items:center !important;
+  border-radius:50% !important;
+}
+
+.ohgs-loader-mark img{
+  width:74px !important;
+  height:74px !important;
+  min-width:74px !important;
+  max-width:74px !important;
+  max-height:74px !important;
+  aspect-ratio:1/1 !important;
+  object-fit:contain !important;
+  border-radius:50% !important;
+  background:#fff !important;
+  padding:4px !important;
+  transform:none !important;
+  animation:none !important;
+  filter:drop-shadow(0 12px 22px rgba(0,0,0,.22)) !important;
+}
+
+.ohgs-loader-ring{
+  position:absolute !important;
+  inset:0 !important;
+  border-radius:50% !important;
+  background:conic-gradient(from 0deg, #00bdf2 0 26%, rgba(0,189,242,.15) 26% 62%, #00bdf2 62% 78%, rgba(0,189,242,.08) 78% 100%) !important;
+  animation:ohgsCleanSpin 1.05s linear infinite !important;
+  box-shadow:0 0 40px rgba(0,189,242,.25) !important;
+}
+
+.ohgs-loader-ring::after{
+  content:"" !important;
+  position:absolute !important;
+  inset:10px !important;
+  border-radius:50% !important;
+  background:#071222 !important;
+}
+
+body.light .ohgs-loader-ring::after,
+html.light .ohgs-loader-ring::after{
+  background:#f8fbff !important;
+}
+
+.ohgs-loader-text{
+  margin:0 !important;
+  color:inherit !important;
+  font-size:15px !important;
+  line-height:1.5 !important;
+  letter-spacing:.02em !important;
+  white-space:normal !important;
+  text-align:center !important;
+}
+
+@keyframes ohgsCleanSpin{
+  to{ transform:rotate(360deg); }
+}
+
+/* 2) Professional header with OHGS and Hardware subtitle */
+.site-header,
+header{
+  position:sticky !important;
+  top:0 !important;
+  z-index:5000 !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:space-between !important;
+  gap:14px !important;
+  flex-wrap:nowrap !important;
+  min-height:76px !important;
+  padding:12px clamp(16px, 5vw, 72px) !important;
+  background:rgba(6,17,31,.92) !important;
+  border-bottom:1px solid rgba(255,255,255,.10) !important;
+  backdrop-filter:blur(22px) saturate(1.2) !important;
+  box-shadow:0 12px 32px rgba(0,0,0,.18) !important;
+}
+
+body.light .site-header,
+body.light header,
+html.light .site-header,
+html.light header{
+  background:rgba(255,255,255,.94) !important;
+  border-bottom:1px solid rgba(7,18,34,.12) !important;
+  box-shadow:0 12px 32px rgba(15,23,42,.08) !important;
+}
+
+.site-header .brand,
+header .brand{
+  display:flex !important;
+  align-items:center !important;
+  gap:12px !important;
+  min-width:0 !important;
+  max-width:310px !important;
+  text-decoration:none !important;
+  flex:0 1 auto !important;
+}
+
+.site-header .brand img,
+header .brand img{
+  width:54px !important;
+  height:54px !important;
+  min-width:54px !important;
+  max-width:54px !important;
+  max-height:54px !important;
+  object-fit:contain !important;
+  aspect-ratio:1/1 !important;
+  border-radius:50% !important;
+  background:#fff !important;
+  padding:2px !important;
+  transform:none !important;
+}
+
+.brand-copy{
+  display:flex !important;
+  flex-direction:column !important;
+  justify-content:center !important;
+  gap:3px !important;
+  min-width:0 !important;
+  line-height:1 !important;
+}
+
+.brand-title{
+  color:inherit !important;
+  font-size:clamp(24px, 3.1vw, 40px) !important;
+  font-weight:950 !important;
+  letter-spacing:.12em !important;
+  line-height:.95 !important;
+  white-space:nowrap !important;
+}
+
+.brand-subtitle{
+  color:#00bdf2 !important;
+  font-size:clamp(10px, .85vw, 13px) !important;
+  font-weight:900 !important;
+  letter-spacing:.22em !important;
+  text-transform:uppercase !important;
+  line-height:1 !important;
+  white-space:nowrap !important;
+}
+
+/* Header menu icon and action buttons */
+.ohgs-menu-toggle{
+  flex:0 0 auto !important;
+  width:46px !important;
+  height:46px !important;
+  min-width:46px !important;
+  border-radius:15px !important;
+  background:linear-gradient(135deg,#03c8ff,#067db9) !important;
+  box-shadow:0 14px 28px rgba(0,189,242,.24) !important;
+  order:2 !important;
+}
+
+.header-actions{
+  order:3 !important;
+  margin-left:auto !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:flex-end !important;
+  gap:10px !important;
+  flex-wrap:nowrap !important;
+}
+
+.header-actions a,
+.header-actions button,
+.theme-toggle,
+.lang-toggle,
+.whatsapp-btn,
+.whatsapp,
+a[href*="wa.me"],
+a[href*="whatsapp"]{
+  height:44px !important;
+  min-height:44px !important;
+  padding-inline:clamp(12px, 1.8vw, 24px) !important;
+  border-radius:999px !important;
+  font-size:clamp(12px, 1.1vw, 16px) !important;
+  font-weight:900 !important;
+  white-space:nowrap !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+}
+
+/* Dropdown menu clean below header */
+#ohgsMainMenu,
+#navMenu,
+header nav,
+.site-header nav{
+  position:absolute !important;
+  top:calc(100% + 10px) !important;
+  left:clamp(12px, 5vw, 72px) !important;
+  right:clamp(12px, 5vw, 72px) !important;
+  width:auto !important;
+  z-index:5100 !important;
+  border-radius:24px !important;
+}
+
+/* 3) Mobile header: compact, clean, no O... */
+@media(max-width:760px){
+  .site-header,
+  header{
+    min-height:74px !important;
+    padding:10px 10px !important;
+    gap:8px !important;
+  }
+
+  .site-header .brand,
+  header .brand{
+    gap:8px !important;
+    max-width:118px !important;
+    flex:0 0 auto !important;
+  }
+
+  .site-header .brand img,
+  header .brand img{
+    width:42px !important;
+    height:42px !important;
+    min-width:42px !important;
+  }
+
+  .brand-title{
+    font-size:20px !important;
+    letter-spacing:.08em !important;
+  }
+
+  .brand-subtitle{
+    font-size:8px !important;
+    letter-spacing:.12em !important;
+  }
+
+  .ohgs-menu-toggle{
+    width:42px !important;
+    height:42px !important;
+    min-width:42px !important;
+    border-radius:14px !important;
+    margin-inline:auto !important;
+  }
+
+  .header-actions{
+    gap:5px !important;
+    margin-left:0 !important;
+  }
+
+  .header-actions a,
+  .header-actions button,
+  .theme-toggle,
+  .lang-toggle,
+  .whatsapp-btn,
+  .whatsapp,
+  a[href*="wa.me"],
+  a[href*="whatsapp"]{
+    height:36px !important;
+    min-height:36px !important;
+    padding-inline:8px !important;
+    font-size:10.5px !important;
+  }
+
+  .whatsapp-btn,
+  .whatsapp,
+  a[href*="wa.me"],
+  a[href*="whatsapp"]{
+    padding-inline:10px !important;
+  }
+}
+
+@media(max-width:420px){
+  .site-header .brand,
+  header .brand{
+    max-width:92px !important;
+  }
+
+  .brand-title{
+    font-size:17px !important;
+  }
+
+  .brand-subtitle{
+    font-size:7px !important;
+    letter-spacing:.08em !important;
+  }
+
+  .ohgs-menu-toggle{
+    width:40px !important;
+    height:40px !important;
+    min-width:40px !important;
+  }
+
+  .header-actions a,
+  .header-actions button,
+  .theme-toggle,
+  .lang-toggle{
+    padding-inline:7px !important;
+    font-size:9.5px !important;
+  }
+
+  .whatsapp-btn,
+  .whatsapp,
+  a[href*="wa.me"],
+  a[href*="whatsapp"]{
+    padding-inline:8px !important;
+    font-size:10px !important;
+  }
+}
+
+/* Tiny phones: hide text only if absolutely necessary, logo remains clean */
+@media(max-width:355px){
+  .brand-copy{
+    display:none !important;
+  }
+
+  .site-header .brand,
+  header .brand{
+    max-width:46px !important;
+  }
+}
+
+/* 4) Full light/dark mode across the complete website */
+html.light,
+html.light body,
+body.light{
+  background:#eef5fb !important;
+  color:#071222 !important;
+}
+
+html.dark,
+html.dark body,
+body.dark{
+  background:#071222 !important;
+  color:#f5f8ff !important;
+}
+
+html.light main,
+html.light section,
+html.light article,
+html.light footer,
+html.light .page,
+html.light .site,
+html.light .wrapper,
+html.light .container,
+html.light .content,
+html.light .hero,
+html.light .section,
+html.light [class*="section"],
+body.light main,
+body.light section,
+body.light article,
+body.light footer,
+body.light .page,
+body.light .site,
+body.light .wrapper,
+body.light .container,
+body.light .content,
+body.light .hero,
+body.light .section,
+body.light [class*="section"]{
+  background:transparent !important;
+  color:#071222 !important;
+}
+
+html.light .card,
+html.light .product-card,
+html.light .service-card,
+html.light .project-card,
+html.light .gallery-card,
+html.light .promo-card,
+html.light .video-card,
+html.light .detail-card,
+html.light .brand-card,
+html.light [class*="card"],
+html.light [class*="box"],
+html.light [class*="panel"],
+body.light .card,
+body.light .product-card,
+body.light .service-card,
+body.light .project-card,
+body.light .gallery-card,
+body.light .promo-card,
+body.light .video-card,
+body.light .detail-card,
+body.light .brand-card,
+body.light [class*="card"],
+body.light [class*="box"],
+body.light [class*="panel"]{
+  background:linear-gradient(180deg,#ffffff,#f6f9fd) !important;
+  color:#071222 !important;
+  border-color:rgba(7,18,34,.12) !important;
+  box-shadow:0 18px 45px rgba(15,23,42,.10) !important;
+}
+
+html.light h1,
+html.light h2,
+html.light h3,
+html.light h4,
+html.light h5,
+html.light h6,
+html.light p,
+html.light li,
+html.light span,
+html.light small,
+html.light strong,
+html.light label,
+body.light h1,
+body.light h2,
+body.light h3,
+body.light h4,
+body.light h5,
+body.light h6,
+body.light p,
+body.light li,
+body.light span,
+body.light small,
+body.light strong,
+body.light label{
+  color:#071222 !important;
+}
+
+html.light .brand-subtitle,
+body.light .brand-subtitle{
+  color:#0077b6 !important;
+}
+
+html.light .muted,
+html.light .lead,
+html.light .subtitle,
+html.light .description,
+html.light [class*="muted"],
+html.light [class*="subtitle"],
+html.light [class*="desc"],
+body.light .muted,
+body.light .lead,
+body.light .subtitle,
+body.light .description,
+body.light [class*="muted"],
+body.light [class*="subtitle"],
+body.light [class*="desc"]{
+  color:#334155 !important;
+}
+
+html.light #ohgsMainMenu,
+html.light #navMenu,
+html.light header nav,
+html.light .site-header nav,
+body.light #ohgsMainMenu,
+body.light #navMenu,
+body.light header nav,
+body.light .site-header nav{
+  background:rgba(255,255,255,.98) !important;
+  color:#071222 !important;
+  border:1px solid rgba(7,18,34,.12) !important;
+}
+
+/* 5) Align all images and cards on mobile/web/tablet */
+.hero-grid,
+.image-grid,
+.gallery-grid,
+.products-grid,
+.services-grid,
+.projects-grid,
+.promotions-grid,
+.cards-grid,
+.video-grid,
+.detail-grid,
+.product-list,
+.grid,
+[class*="grid"]{
+  align-items:stretch !important;
+}
+
+.card,
+.product-card,
+.service-card,
+.project-card,
+.gallery-card,
+.promo-card,
+.video-card,
+.detail-card,
+[class*="card"]{
+  height:100% !important;
+  display:flex !important;
+  flex-direction:column !important;
+  overflow:hidden !important;
+}
+
+.card img,
+.product-card img,
+.service-card img,
+.project-card img,
+.gallery-card img,
+.promo-card img,
+.video-card img,
+.detail-card img,
+.hero img,
+.hero-grid img,
+.image-grid img,
+.gallery-grid img,
+.products-grid img,
+.projects-grid img,
+.promotions-grid img,
+[class*="card"] img{
+  width:100% !important;
+  height:clamp(220px, 28vw, 360px) !important;
+  object-fit:cover !important;
+  object-position:center !important;
+  display:block !important;
+  transform:none !important;
+}
+
+.promo-card img,
+.promotions-grid img{
+  height:clamp(300px, 36vw, 460px) !important;
+  object-position:center top !important;
+}
+
+video,
+.video-card video{
+  width:100% !important;
+  aspect-ratio:16/9 !important;
+  object-fit:cover !important;
+  border-radius:22px !important;
+}
+
+.card-content,
+.product-card .content,
+.service-card .content,
+.project-card .content,
+.gallery-card .content,
+.promo-card .content,
+.video-card .content,
+[class*="card"] .content{
+  flex:1 1 auto !important;
+  display:flex !important;
+  flex-direction:column !important;
+  gap:14px !important;
+}
+
+.card-actions,
+.actions,
+.button-row,
+.btn-row,
+[class*="actions"]{
+  margin-top:auto !important;
+  display:flex !important;
+  align-items:center !important;
+  gap:12px !important;
+  flex-wrap:wrap !important;
+}
+
+@media(max-width:900px){
+  .hero-grid,
+  .image-grid,
+  .gallery-grid,
+  .products-grid,
+  .services-grid,
+  .projects-grid,
+  .promotions-grid,
+  .cards-grid,
+  .video-grid,
+  .detail-grid,
+  .product-list,
+  .grid,
+  [class*="grid"]{
+    display:grid !important;
+    grid-template-columns:1fr !important;
+    gap:22px !important;
+  }
+
+  .card img,
+  .product-card img,
+  .service-card img,
+  .project-card img,
+  .gallery-card img,
+  .promo-card img,
+  .video-card img,
+  .detail-card img,
+  .hero img,
+  .hero-grid img,
+  .image-grid img,
+  .gallery-grid img,
+  .products-grid img,
+  .projects-grid img,
+  .promotions-grid img,
+  [class*="card"] img{
+    height:clamp(230px, 58vw, 430px) !important;
+  }
+
+  .promo-card img,
+  .promotions-grid img{
+    height:clamp(340px, 90vw, 540px) !important;
+  }
+}
+
+/* === OHGS FINAL HEADER + MENU + IMAGE ALIGNMENT PATCH === */
+
+/* Desktop/tablet header: everything fits in one clean row */
+@media(min-width:761px){
+  .site-header,
+  header{
+    display:flex !important;
+    align-items:center !important;
+    justify-content:space-between !important;
+    flex-wrap:nowrap !important;
+    gap:12px !important;
+    min-height:68px !important;
+    padding:10px clamp(18px, 4vw, 64px) !important;
+  }
+
+  .site-header .brand,
+  header .brand{
+    flex:0 0 auto !important;
+    max-width:230px !important;
+  }
+
+  .site-header .brand img,
+  header .brand img{
+    width:46px !important;
+    height:46px !important;
+    min-width:46px !important;
+  }
+
+  .brand-title{
+    font-size:30px !important;
+    letter-spacing:.10em !important;
+  }
+
+  .brand-subtitle{
+    font-size:10px !important;
+    letter-spacing:.16em !important;
+  }
+
+  /* Desktop: show the menu normally, not hidden inside the button */
+  .ohgs-menu-toggle{
+    display:none !important;
+  }
+
+  #ohgsMainMenu,
+  #navMenu,
+  header nav,
+  .site-header nav{
+    position:static !important;
+    left:auto !important;
+    right:auto !important;
+    top:auto !important;
+    width:auto !important;
+    max-height:none !important;
+    overflow:visible !important;
+    opacity:1 !important;
+    visibility:visible !important;
+    transform:none !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    flex:1 1 auto !important;
+    gap:4px !important;
+    padding:0 !important;
+    margin:0 !important;
+    border:0 !important;
+    background:transparent !important;
+    box-shadow:none !important;
+    backdrop-filter:none !important;
+  }
+
+  #ohgsMainMenu a,
+  #navMenu a,
+  header nav a,
+  .site-header nav a{
+    width:auto !important;
+    min-height:34px !important;
+    height:34px !important;
+    padding:7px 8px !important;
+    border-radius:12px !important;
+    font-size:clamp(11px, .86vw, 14px) !important;
+    line-height:1 !important;
+    white-space:nowrap !important;
+    font-weight:850 !important;
+    letter-spacing:0 !important;
+  }
+
+  .header-actions{
+    flex:0 0 auto !important;
+    gap:7px !important;
+    margin-left:0 !important;
+  }
+
+  .header-actions a,
+  .header-actions button,
+  .theme-toggle,
+  .lang-toggle,
+  .whatsapp-btn,
+  .whatsapp,
+  a[href*="wa.me"],
+  a[href*="whatsapp"]{
+    height:36px !important;
+    min-height:36px !important;
+    padding-inline:11px !important;
+    border-radius:999px !important;
+    font-size:12px !important;
+    line-height:1 !important;
+  }
+
+  .whatsapp-btn,
+  .whatsapp,
+  a[href*="wa.me"],
+  a[href*="whatsapp"]{
+    padding-inline:14px !important;
+  }
+}
+
+/* Medium desktop: make menu even more compact so no words hide */
+@media(min-width:761px) and (max-width:1100px){
+  .site-header,
+  header{
+    gap:8px !important;
+    padding-inline:14px !important;
+  }
+
+  .brand-title{
+    font-size:24px !important;
+  }
+
+  .brand-subtitle{
+    font-size:8px !important;
+    letter-spacing:.10em !important;
+  }
+
+  .site-header .brand img,
+  header .brand img{
+    width:40px !important;
+    height:40px !important;
+    min-width:40px !important;
+  }
+
+  #ohgsMainMenu,
+  #navMenu,
+  header nav,
+  .site-header nav{
+    gap:2px !important;
+  }
+
+  #ohgsMainMenu a,
+  #navMenu a,
+  header nav a,
+  .site-header nav a{
+    font-size:11px !important;
+    padding:6px 6px !important;
+    min-height:30px !important;
+    height:30px !important;
+  }
+
+  .header-actions a,
+  .header-actions button,
+  .theme-toggle,
+  .lang-toggle,
+  .whatsapp-btn,
+  .whatsapp,
+  a[href*="wa.me"],
+  a[href*="whatsapp"]{
+    height:32px !important;
+    min-height:32px !important;
+    padding-inline:8px !important;
+    font-size:10.5px !important;
+  }
+}
+
+/* Mobile header: menu hidden inside button, everything fits the top */
+@media(max-width:760px){
+  .site-header,
+  header{
+    display:grid !important;
+    grid-template-columns:auto auto 1fr !important;
+    grid-template-areas:
+      "brand menu actions" !important;
+    align-items:center !important;
+    gap:8px !important;
+    min-height:72px !important;
+    padding:10px 10px !important;
+  }
+
+  .site-header .brand,
+  header .brand{
+    grid-area:brand !important;
+    max-width:116px !important;
+    min-width:0 !important;
+    gap:7px !important;
+    overflow:hidden !important;
+  }
+
+  .site-header .brand img,
+  header .brand img{
+    width:42px !important;
+    height:42px !important;
+    min-width:42px !important;
+  }
+
+  .brand-title{
+    font-size:19px !important;
+    letter-spacing:.08em !important;
+  }
+
+  .brand-subtitle{
+    font-size:7.5px !important;
+    letter-spacing:.08em !important;
+  }
+
+  .ohgs-menu-toggle{
+    grid-area:menu !important;
+    display:inline-flex !important;
+    width:42px !important;
+    height:42px !important;
+    min-width:42px !important;
+    border-radius:14px !important;
+    justify-self:center !important;
+    margin:0 !important;
+  }
+
+  .header-actions{
+    grid-area:actions !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:flex-end !important;
+    gap:5px !important;
+    margin-left:0 !important;
+    min-width:0 !important;
+    width:100% !important;
+    flex-wrap:nowrap !important;
+  }
+
+  .header-actions a,
+  .header-actions button,
+  .theme-toggle,
+  .lang-toggle,
+  .whatsapp-btn,
+  .whatsapp,
+  a[href*="wa.me"],
+  a[href*="whatsapp"]{
+    height:36px !important;
+    min-height:36px !important;
+    padding-inline:7px !important;
+    font-size:10px !important;
+    border-radius:999px !important;
+    white-space:nowrap !important;
+  }
+
+  .whatsapp-btn,
+  .whatsapp,
+  a[href*="wa.me"],
+  a[href*="whatsapp"]{
+    padding-inline:9px !important;
+    font-size:10.5px !important;
+  }
+
+  /* Mobile menu: horizontal words inside the opened menu, easy to scan */
+  #ohgsMainMenu,
+  #navMenu,
+  header nav,
+  .site-header nav{
+    position:absolute !important;
+    left:10px !important;
+    right:10px !important;
+    top:calc(100% + 8px) !important;
+    width:auto !important;
+    z-index:5200 !important;
+    max-height:0 !important;
+    overflow:hidden !important;
+    opacity:0 !important;
+    visibility:hidden !important;
+    transform:translateY(-8px) scale(.98) !important;
+    display:grid !important;
+    grid-template-columns:repeat(2, minmax(0, 1fr)) !important;
+    gap:8px !important;
+    padding:0 !important;
+    margin:0 !important;
+    border-radius:22px !important;
+    background:rgba(7,18,34,.98) !important;
+    box-shadow:0 22px 55px rgba(0,0,0,.32) !important;
+  }
+
+  #ohgsMainMenu.ohgs-menu-open,
+  #navMenu.ohgs-menu-open,
+  header nav.ohgs-menu-open,
+  .site-header nav.ohgs-menu-open{
+    max-height:460px !important;
+    opacity:1 !important;
+    visibility:visible !important;
+    transform:translateY(0) scale(1) !important;
+    padding:12px !important;
+    border:1px solid rgba(255,255,255,.12) !important;
+  }
+
+  #ohgsMainMenu a,
+  #navMenu a,
+  header nav a,
+  .site-header nav a{
+    width:100% !important;
+    min-height:42px !important;
+    height:auto !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    padding:10px 8px !important;
+    border-radius:14px !important;
+    font-size:14px !important;
+    font-weight:900 !important;
+    line-height:1.15 !important;
+    text-align:center !important;
+    white-space:normal !important;
+    background:rgba(255,255,255,.04) !important;
+  }
+
+  body.light #ohgsMainMenu,
+  body.light #navMenu,
+  body.light header nav,
+  body.light .site-header nav,
+  html.light #ohgsMainMenu,
+  html.light #navMenu,
+  html.light header nav,
+  html.light .site-header nav{
+    background:rgba(255,255,255,.98) !important;
+    border-color:rgba(7,18,34,.12) !important;
+  }
+
+  body.light #ohgsMainMenu a,
+  body.light #navMenu a,
+  body.light header nav a,
+  body.light .site-header nav a,
+  html.light #ohgsMainMenu a,
+  html.light #navMenu a,
+  html.light header nav a,
+  html.light .site-header nav a{
+    background:rgba(7,18,34,.045) !important;
+    color:#071222 !important;
+  }
+}
+
+/* Very small mobile: keep menu horizontal but compact */
+@media(max-width:390px){
+  .site-header,
+  header{
+    grid-template-columns:auto auto 1fr !important;
+    gap:6px !important;
+    padding-inline:8px !important;
+  }
+
+  .site-header .brand,
+  header .brand{
+    max-width:86px !important;
+  }
+
+  .brand-title{
+    font-size:16px !important;
+  }
+
+  .brand-subtitle{
+    font-size:6.5px !important;
+    letter-spacing:.06em !important;
+  }
+
+  .site-header .brand img,
+  header .brand img{
+    width:38px !important;
+    height:38px !important;
+    min-width:38px !important;
+  }
+
+  .ohgs-menu-toggle{
+    width:38px !important;
+    height:38px !important;
+    min-width:38px !important;
+  }
+
+  .header-actions{
+    gap:4px !important;
+  }
+
+  .header-actions a,
+  .header-actions button,
+  .theme-toggle,
+  .lang-toggle{
+    height:34px !important;
+    min-height:34px !important;
+    padding-inline:6px !important;
+    font-size:9px !important;
+  }
+
+  .whatsapp-btn,
+  .whatsapp,
+  a[href*="wa.me"],
+  a[href*="whatsapp"]{
+    padding-inline:7px !important;
+    font-size:9.5px !important;
+  }
+
+  #ohgsMainMenu a,
+  #navMenu a,
+  header nav a,
+  .site-header nav a{
+    min-height:39px !important;
+    font-size:12.5px !important;
+    padding:8px 6px !important;
+  }
+}
+
+/* Align all pictures/cards all over the site, including zoomed web and mobile */
+img{
+  max-width:100% !important;
+}
+
+.hero-grid,
+.image-grid,
+.gallery-grid,
+.products-grid,
+.services-grid,
+.projects-grid,
+.promotions-grid,
+.cards-grid,
+.video-grid,
+.detail-grid,
+.product-list,
+.grid,
+[class*="grid"]{
+  align-items:stretch !important;
+}
+
+.card,
+.product-card,
+.service-card,
+.project-card,
+.gallery-card,
+.promo-card,
+.video-card,
+.detail-card,
+[class*="card"]{
+  height:100% !important;
+  display:flex !important;
+  flex-direction:column !important;
+  overflow:hidden !important;
+}
+
+.card img,
+.product-card img,
+.service-card img,
+.project-card img,
+.gallery-card img,
+.promo-card img,
+.video-card img,
+.detail-card img,
+.hero img,
+.hero-grid img,
+.image-grid img,
+.gallery-grid img,
+.products-grid img,
+.projects-grid img,
+.promotions-grid img,
+[class*="card"] img{
+  width:100% !important;
+  height:clamp(220px, 27vw, 360px) !important;
+  object-fit:cover !important;
+  object-position:center !important;
+  display:block !important;
+}
+
+.promo-card img,
+.promotions-grid img{
+  height:clamp(300px, 36vw, 460px) !important;
+  object-fit:cover !important;
+  object-position:center top !important;
+}
+
+video,
+.video-card video{
+  width:100% !important;
+  aspect-ratio:16/9 !important;
+  object-fit:cover !important;
+  border-radius:22px !important;
+}
+
+.card-content,
+.product-card .content,
+.service-card .content,
+.project-card .content,
+.gallery-card .content,
+.promo-card .content,
+.video-card .content,
+[class*="card"] .content{
+  flex:1 1 auto !important;
+  display:flex !important;
+  flex-direction:column !important;
+  gap:14px !important;
+}
+
+.card-actions,
+.actions,
+.button-row,
+.btn-row,
+[class*="actions"]{
+  margin-top:auto !important;
+  display:flex !important;
+  align-items:center !important;
+  gap:12px !important;
+  flex-wrap:wrap !important;
+}
+
+@media(max-width:900px){
+  .hero-grid,
+  .image-grid,
+  .gallery-grid,
+  .products-grid,
+  .services-grid,
+  .projects-grid,
+  .promotions-grid,
+  .cards-grid,
+  .video-grid,
+  .detail-grid,
+  .product-list,
+  .grid,
+  [class*="grid"]{
+    display:grid !important;
+    grid-template-columns:1fr !important;
+    gap:22px !important;
+  }
+
+  .card img,
+  .product-card img,
+  .service-card img,
+  .project-card img,
+  .gallery-card img,
+  .promo-card img,
+  .video-card img,
+  .detail-card img,
+  .hero img,
+  .hero-grid img,
+  .image-grid img,
+  .gallery-grid img,
+  .products-grid img,
+  .projects-grid img,
+  .promotions-grid img,
+  [class*="card"] img{
+    height:clamp(230px, 58vw, 430px) !important;
+  }
+
+  .promo-card img,
+  .promotions-grid img{
+    height:clamp(340px, 90vw, 540px) !important;
+  }
+
+  .card-actions,
+  .actions,
+  .button-row,
+  .btn-row,
+  [class*="actions"]{
+    display:grid !important;
+    grid-template-columns:1fr 1fr !important;
+    gap:12px !important;
+  }
+}
+
+@media(max-width:520px){
+  .card-actions,
+  .actions,
+  .button-row,
+  .btn-row,
+  [class*="actions"]{
+    grid-template-columns:1fr !important;
+  }
+}
