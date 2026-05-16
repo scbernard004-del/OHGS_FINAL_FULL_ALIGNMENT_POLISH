@@ -1,0 +1,1 @@
+Upload only these files to the same GitHub repository. You do not need to reupload images, assets, or videos. Commit to main. Vercel will redeploy and your domain stays the same.

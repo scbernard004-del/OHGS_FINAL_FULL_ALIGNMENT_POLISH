@@ -168,24 +168,57 @@ window.addEventListener("scroll", ohgsHeaderScrollEffect, { passive:true });
 document.addEventListener("DOMContentLoaded", ohgsHeaderScrollEffect);
 
 
-// Mobile menu toggle
-function ohgsMobileMenu(){
-  const btn = document.querySelector(".menu-toggle");
-  const nav = document.querySelector("#navMenu, header nav, .site-header nav");
+
+
+
+
+
+
+// OHGS enhanced menu animation: button ripple, page reaction, smooth open/close
+function ohgsEnhancedMenuAnimation(){
+  const btn = document.querySelector(".ohgs-menu-toggle");
+  const nav = document.querySelector("#ohgsMainMenu, header nav, .site-header nav");
+  const main = document.querySelector("main") || document.querySelector(".page") || document.body;
   if(!btn || !nav) return;
 
-  btn.addEventListener("click", function(){
-    const isOpen = nav.classList.toggle("open");
-    btn.classList.toggle("open", isOpen);
-    btn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+  function setOpen(open){
+    nav.classList.toggle("ohgs-menu-open", open);
+    document.body.classList.toggle("ohgs-menu-is-open", open);
+    btn.classList.toggle("is-open", open);
+    btn.setAttribute("aria-expanded", open ? "true" : "false");
+
+    // Tiny page reaction, like the website breathing when the menu opens
+    main.classList.remove("ohgs-page-react");
+    void main.offsetWidth;
+    main.classList.add("ohgs-page-react");
+    setTimeout(() => main.classList.remove("ohgs-page-react"), 520);
+  }
+
+  // Keep closed by default on each page load
+  setOpen(false);
+
+  btn.addEventListener("click", function(e){
+    const rect = btn.getBoundingClientRect();
+    btn.style.setProperty("--tap-x", `${e.clientX - rect.left}px`);
+    btn.style.setProperty("--tap-y", `${e.clientY - rect.top}px`);
+
+    btn.classList.remove("ohgs-tap-burst");
+    void btn.offsetWidth;
+    btn.classList.add("ohgs-tap-burst");
+    setTimeout(() => btn.classList.remove("ohgs-tap-burst"), 650);
+
+    setOpen(!nav.classList.contains("ohgs-menu-open"));
   });
 
-  nav.querySelectorAll("a").forEach(function(link){
+  nav.querySelectorAll("a").forEach(function(link, index){
+    link.style.setProperty("--item-delay", `${index * 42}ms`);
     link.addEventListener("click", function(){
-      nav.classList.remove("open");
-      btn.classList.remove("open");
-      btn.setAttribute("aria-expanded", "false");
+      setOpen(false);
     });
   });
+
+  document.addEventListener("keydown", function(e){
+    if(e.key === "Escape") setOpen(false);
+  });
 }
-document.addEventListener("DOMContentLoaded", ohgsMobileMenu);
+document.addEventListener("DOMContentLoaded", ohgsEnhancedMenuAnimation);
