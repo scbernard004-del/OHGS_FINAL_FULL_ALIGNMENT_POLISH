@@ -2059,3 +2059,726 @@ body.ohgs-menu-is-open .site-header{
     transition:none !important;
   }
 }
+
+/* === OHGS HEADER ONE-ROW ALIGNMENT PATCH === */
+
+/* Keep logo, menu icon, theme, language and WhatsApp in one clean row */
+.site-header,
+header{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:space-between !important;
+  flex-wrap:nowrap !important;
+  gap:clamp(8px, 1.4vw, 20px) !important;
+  padding:clamp(10px, 1.8vw, 18px) clamp(14px, 5vw, 72px) !important;
+  min-height:76px !important;
+  position:sticky !important;
+  top:0 !important;
+  z-index:1000 !important;
+}
+
+.site-header .brand,
+header .brand{
+  display:flex !important;
+  align-items:center !important;
+  gap:clamp(8px, 1.2vw, 14px) !important;
+  flex:0 1 auto !important;
+  min-width:0 !important;
+  white-space:nowrap !important;
+  text-decoration:none !important;
+}
+
+.site-header .brand img,
+header .brand img{
+  width:clamp(44px, 4.6vw, 62px) !important;
+  height:clamp(44px, 4.6vw, 62px) !important;
+  min-width:clamp(44px, 4.6vw, 62px) !important;
+  object-fit:contain !important;
+}
+
+.site-header .brand span,
+header .brand span{
+  font-size:clamp(26px, 3.4vw, 42px) !important;
+  letter-spacing:.08em !important;
+  line-height:1 !important;
+  white-space:nowrap !important;
+}
+
+.ohgs-menu-toggle{
+  flex:0 0 auto !important;
+  width:clamp(38px, 4vw, 48px) !important;
+  height:clamp(38px, 4vw, 48px) !important;
+  min-width:clamp(38px, 4vw, 48px) !important;
+  border-radius:clamp(12px, 1.4vw, 16px) !important;
+  order:2 !important;
+}
+
+.header-actions{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:flex-end !important;
+  flex-wrap:nowrap !important;
+  gap:clamp(7px, 1vw, 12px) !important;
+  width:auto !important;
+  margin-left:auto !important;
+  flex:0 0 auto !important;
+  order:3 !important;
+}
+
+.header-actions a,
+.header-actions button,
+.theme-toggle,
+.lang-toggle,
+.whatsapp-btn,
+.whatsapp,
+a[href*="wa.me"],
+a[href*="whatsapp"]{
+  height:clamp(38px, 4vw, 52px) !important;
+  min-height:clamp(38px, 4vw, 52px) !important;
+  padding-inline:clamp(12px, 2vw, 28px) !important;
+  border-radius:999px !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  white-space:nowrap !important;
+  font-size:clamp(13px, 1.35vw, 18px) !important;
+}
+
+/* Menu opens below the one-row header, not inside the row */
+#ohgsMainMenu,
+#navMenu,
+header nav,
+.site-header nav{
+  position:absolute !important;
+  left:clamp(14px, 5vw, 72px) !important;
+  right:clamp(14px, 5vw, 72px) !important;
+  top:calc(100% + 8px) !important;
+  width:auto !important;
+  z-index:1001 !important;
+}
+
+@media(max-width:900px){
+  .site-header,
+  header{
+    display:flex !important;
+    flex-direction:row !important;
+    align-items:center !important;
+    justify-content:space-between !important;
+    flex-wrap:nowrap !important;
+    gap:8px !important;
+    padding:12px 14px !important;
+    min-height:78px !important;
+  }
+
+  .site-header .brand,
+  header .brand{
+    gap:8px !important;
+    max-width:34vw !important;
+    overflow:hidden !important;
+  }
+
+  .site-header .brand img,
+  header .brand img{
+    width:46px !important;
+    height:46px !important;
+    min-width:46px !important;
+  }
+
+  .site-header .brand span,
+  header .brand span{
+    font-size:clamp(24px, 7vw, 38px) !important;
+    letter-spacing:.08em !important;
+    overflow:hidden !important;
+    text-overflow:ellipsis !important;
+  }
+
+  .ohgs-menu-toggle{
+    width:44px !important;
+    height:44px !important;
+    min-width:44px !important;
+  }
+
+  .header-actions{
+    margin-left:0 !important;
+    gap:7px !important;
+    flex:0 0 auto !important;
+  }
+
+  .header-actions a,
+  .header-actions button,
+  .theme-toggle,
+  .lang-toggle,
+  .whatsapp-btn,
+  .whatsapp,
+  a[href*="wa.me"],
+  a[href*="whatsapp"]{
+    height:42px !important;
+    min-height:42px !important;
+    padding-inline:12px !important;
+    font-size:14px !important;
+  }
+
+  #ohgsMainMenu,
+  #navMenu,
+  header nav,
+  .site-header nav{
+    left:14px !important;
+    right:14px !important;
+    top:calc(100% + 8px) !important;
+  }
+}
+
+@media(max-width:520px){
+  .site-header,
+  header{
+    gap:6px !important;
+    padding:10px 10px !important;
+  }
+
+  .site-header .brand,
+  header .brand{
+    max-width:30vw !important;
+  }
+
+  .site-header .brand img,
+  header .brand img{
+    width:42px !important;
+    height:42px !important;
+    min-width:42px !important;
+  }
+
+  .site-header .brand span,
+  header .brand span{
+    font-size:24px !important;
+  }
+
+  .ohgs-menu-toggle{
+    width:40px !important;
+    height:40px !important;
+    min-width:40px !important;
+    border-radius:13px !important;
+  }
+
+  .ohgs-menu-toggle span{
+    width:16px !important;
+  }
+
+  .header-actions{
+    gap:5px !important;
+  }
+
+  .header-actions a,
+  .header-actions button,
+  .theme-toggle,
+  .lang-toggle,
+  .whatsapp-btn,
+  .whatsapp,
+  a[href*="wa.me"],
+  a[href*="whatsapp"]{
+    height:38px !important;
+    min-height:38px !important;
+    padding-inline:9px !important;
+    font-size:12px !important;
+  }
+}
+
+@media(max-width:390px){
+  .site-header .brand,
+  header .brand{
+    max-width:25vw !important;
+  }
+
+  .site-header .brand span,
+  header .brand span{
+    font-size:20px !important;
+  }
+
+  .site-header .brand img,
+  header .brand img{
+    width:38px !important;
+    height:38px !important;
+    min-width:38px !important;
+  }
+
+  .header-actions a,
+  .header-actions button,
+  .theme-toggle,
+  .lang-toggle,
+  .whatsapp-btn,
+  .whatsapp,
+  a[href*="wa.me"],
+  a[href*="whatsapp"]{
+    padding-inline:7px !important;
+    font-size:11px !important;
+  }
+}
+
+/* === OHGS COMPLETE LIGHT/DARK THEME PATCH === */
+:root{--ohgs-bg:#071222;--ohgs-bg-2:#0b1b31;--ohgs-card:#10223b;--ohgs-card-2:#0d1b2f;--ohgs-text:#f5f8ff;--ohgs-muted:#c2cbd8;--ohgs-line:rgba(255,255,255,.12);--ohgs-shadow:rgba(0,0,0,.28)}
+html.light,body.light{--ohgs-bg:#eef5fb;--ohgs-bg-2:#fff;--ohgs-card:#fff;--ohgs-card-2:#f4f8fc;--ohgs-text:#071222;--ohgs-muted:#334155;--ohgs-line:rgba(7,18,34,.14);--ohgs-shadow:rgba(15,23,42,.12)}
+html,body{background:var(--ohgs-bg)!important;color:var(--ohgs-text)!important}body.dark,html.dark body{background:radial-gradient(circle at 15% 20%,rgba(0,189,242,.12),transparent 30%),radial-gradient(circle at 80% 10%,rgba(255,159,28,.08),transparent 30%),#071222!important}body.light,html.light body{background:radial-gradient(circle at 18% 18%,rgba(0,189,242,.13),transparent 28%),radial-gradient(circle at 82% 12%,rgba(255,159,28,.12),transparent 28%),#eef5fb!important}
+main,section,.page,.site,.wrapper,.content,.hero,.products-section,.services-section,.projects-section,.gallery-section,.promotions-section,.about-section,.contact-section{color:var(--ohgs-text)!important}.site-header,header{background:rgba(7,18,34,.94)!important;color:var(--ohgs-text)!important;border-bottom:1px solid var(--ohgs-line)!important}.site-header a,header a,.site-header span,header span{color:var(--ohgs-text)!important}body.light .site-header,body.light header{background:rgba(255,255,255,.94)!important;color:#071222!important;border-bottom:1px solid rgba(7,18,34,.12)!important}body.light .site-header a,body.light header a,body.light .site-header span,body.light header span{color:#071222!important}
+.card,.product-card,.service-card,.project-card,.gallery-card,.promo-card,.detail-card,.info-card,.feature-card,.offer-card,.category-card,.video-card,.contact-card,.brand-card,[class*="card"],[class*="box"],[class*="panel"]{background:linear-gradient(180deg,var(--ohgs-card),var(--ohgs-card-2))!important;color:var(--ohgs-text)!important;border-color:var(--ohgs-line)!important;box-shadow:0 18px 45px var(--ohgs-shadow)!important}body.light .card,body.light .product-card,body.light .service-card,body.light .project-card,body.light .gallery-card,body.light .promo-card,body.light .detail-card,body.light .info-card,body.light .feature-card,body.light .offer-card,body.light .category-card,body.light .video-card,body.light .contact-card,body.light .brand-card,body.light [class*="card"],body.light [class*="box"],body.light [class*="panel"]{background:linear-gradient(180deg,#fff,#f5f9fd)!important;color:#071222!important;border-color:rgba(7,18,34,.12)!important;box-shadow:0 18px 45px rgba(15,23,42,.10)!important}
+h1,h2,h3,h4,h5,h6,p,li,small,strong,label{color:inherit}body.light h1,body.light h2,body.light h3,body.light h4,body.light h5,body.light h6,body.light p,body.light li,body.light small,body.light strong,body.light label{color:#071222!important}.muted,.subtitle,.lead,.description,[class*="muted"],[class*="subtitle"],[class*="desc"]{color:var(--ohgs-muted)!important}
+body.light button:not(.whatsapp):not(.whatsapp-btn):not([href*="wa.me"]),body.light .btn:not(.whatsapp):not(.whatsapp-btn):not([href*="wa.me"]),body.light .button:not(.whatsapp):not(.whatsapp-btn):not([href*="wa.me"]),body.light .theme-toggle,body.light .lang-toggle{background:#fff!important;color:#071222!important;border-color:rgba(7,18,34,.14)!important}input,textarea,select{background:var(--ohgs-card)!important;color:var(--ohgs-text)!important;border-color:var(--ohgs-line)!important}body.light input,body.light textarea,body.light select{background:#fff!important;color:#071222!important;border-color:rgba(7,18,34,.18)!important}
+#ohgsMainMenu,#navMenu,header nav,.site-header nav{background:rgba(7,18,34,.96)!important;color:var(--ohgs-text)!important}body.light #ohgsMainMenu,body.light #navMenu,body.light header nav,body.light .site-header nav{background:rgba(255,255,255,.97)!important;color:#071222!important}.preloader,.loader,#loader,.loading-screen{background:var(--ohgs-bg)!important;color:var(--ohgs-text)!important}body.light .preloader,body.light .loader,body.light #loader,body.light .loading-screen{background:#eef5fb!important;color:#071222!important}footer,.footer,.site-footer{background:var(--ohgs-card-2)!important;color:var(--ohgs-text)!important;border-top:1px solid var(--ohgs-line)!important}body.light footer,body.light .footer,body.light .site-footer{background:#fff!important;color:#071222!important;border-top:1px solid rgba(7,18,34,.12)!important}body.lang-sw .btn,body.lang-sw button,body.lang-sw a{letter-spacing:.01em}body.lang-sw .product-card p,body.lang-sw .service-card p,body.lang-sw .project-card p,body.lang-sw .promo-card p,body.lang-sw .gallery-card p,body.lang-sw .card p{line-height:1.7}
+
+/* === OHGS FINAL COMPLETE LIGHT MODE + IMAGE ALIGNMENT + CLEAN HEADER PATCH === */
+
+/* Full light mode: force every page layer to become light */
+html.light,
+html.light body,
+body.light{
+  background:#eef5fb !important;
+  color:#071222 !important;
+}
+
+html.light body::before,
+html.light body::after,
+body.light::before,
+body.light::after{
+  background:transparent !important;
+}
+
+html.light main,
+html.light .page,
+html.light .site,
+html.light .wrapper,
+html.light .content,
+html.light .container,
+html.light .section,
+html.light section,
+html.light article,
+html.light .hero,
+html.light .products-section,
+html.light .services-section,
+html.light .projects-section,
+html.light .gallery-section,
+html.light .promotions-section,
+html.light .about-section,
+html.light .contact-section,
+html.light .detail-section,
+html.light .brand-section,
+html.light .cta-section,
+body.light main,
+body.light .page,
+body.light .site,
+body.light .wrapper,
+body.light .content,
+body.light .container,
+body.light .section,
+body.light section,
+body.light article,
+body.light .hero,
+body.light .products-section,
+body.light .services-section,
+body.light .projects-section,
+body.light .gallery-section,
+body.light .promotions-section,
+body.light .about-section,
+body.light .contact-section,
+body.light .detail-section,
+body.light .brand-section,
+body.light .cta-section{
+  background:transparent !important;
+  color:#071222 !important;
+}
+
+html.light .dark-section,
+html.light .blue-section,
+html.light .panel,
+html.light .glass,
+html.light .surface,
+html.light .block,
+html.light .tile,
+html.light .card,
+html.light .product-card,
+html.light .service-card,
+html.light .project-card,
+html.light .gallery-card,
+html.light .promo-card,
+html.light .video-card,
+html.light .detail-card,
+html.light .brand-card,
+html.light [class*="card"],
+html.light [class*="panel"],
+html.light [class*="box"],
+body.light .dark-section,
+body.light .blue-section,
+body.light .panel,
+body.light .glass,
+body.light .surface,
+body.light .block,
+body.light .tile,
+body.light .card,
+body.light .product-card,
+body.light .service-card,
+body.light .project-card,
+body.light .gallery-card,
+body.light .promo-card,
+body.light .video-card,
+body.light .detail-card,
+body.light .brand-card,
+body.light [class*="card"],
+body.light [class*="panel"],
+body.light [class*="box"]{
+  background:linear-gradient(180deg,#ffffff,#f6f9fd) !important;
+  color:#071222 !important;
+  border-color:rgba(7,18,34,.12) !important;
+  box-shadow:0 18px 45px rgba(15,23,42,.10) !important;
+}
+
+html.light h1,
+html.light h2,
+html.light h3,
+html.light h4,
+html.light h5,
+html.light h6,
+html.light p,
+html.light li,
+html.light span,
+html.light small,
+html.light strong,
+html.light label,
+body.light h1,
+body.light h2,
+body.light h3,
+body.light h4,
+body.light h5,
+body.light h6,
+body.light p,
+body.light li,
+body.light span,
+body.light small,
+body.light strong,
+body.light label{
+  color:#071222 !important;
+}
+
+html.light .muted,
+html.light .subtitle,
+html.light .lead,
+html.light .description,
+html.light [class*="muted"],
+html.light [class*="subtitle"],
+html.light [class*="desc"],
+body.light .muted,
+body.light .subtitle,
+body.light .lead,
+body.light .description,
+body.light [class*="muted"],
+body.light [class*="subtitle"],
+body.light [class*="desc"]{
+  color:#334155 !important;
+}
+
+html.light a:not(.btn):not(.whatsapp):not(.whatsapp-btn):not([href*="wa.me"]),
+body.light a:not(.btn):not(.whatsapp):not(.whatsapp-btn):not([href*="wa.me"]){
+  color:#075985 !important;
+}
+
+/* Keep dark mode premium */
+html.dark,
+html.dark body,
+body.dark{
+  background:#071222 !important;
+  color:#f5f8ff !important;
+}
+
+/* Cleaner header */
+.site-header,
+header{
+  min-height:74px !important;
+  padding:12px clamp(18px, 5vw, 72px) !important;
+  background:rgba(7,18,34,.88) !important;
+  border-bottom:1px solid rgba(255,255,255,.08) !important;
+  backdrop-filter:blur(20px) saturate(1.2) !important;
+  box-shadow:0 8px 28px rgba(0,0,0,.16) !important;
+}
+
+body.light .site-header,
+body.light header,
+html.light .site-header,
+html.light header{
+  background:rgba(255,255,255,.92) !important;
+  border-bottom:1px solid rgba(7,18,34,.10) !important;
+  box-shadow:0 8px 28px rgba(15,23,42,.08) !important;
+}
+
+.site-header .brand img,
+header .brand img{
+  border-radius:50% !important;
+  background:#fff !important;
+  padding:2px !important;
+  box-shadow:0 8px 22px rgba(0,0,0,.18) !important;
+}
+
+.site-header .brand span,
+header .brand span{
+  font-weight:900 !important;
+  letter-spacing:.12em !important;
+}
+
+.ohgs-menu-toggle{
+  background:linear-gradient(135deg,#04c8ff,#0588ca) !important;
+  border:1px solid rgba(255,255,255,.18) !important;
+  box-shadow:0 12px 28px rgba(0,189,242,.22) !important;
+}
+
+.header-actions a,
+.header-actions button,
+.theme-toggle,
+.lang-toggle,
+.whatsapp-btn,
+.whatsapp,
+a[href*="wa.me"],
+a[href*="whatsapp"]{
+  font-weight:900 !important;
+  border:1px solid rgba(255,255,255,.10) !important;
+}
+
+body.light .header-actions a,
+body.light .header-actions button,
+body.light .theme-toggle,
+body.light .lang-toggle{
+  border-color:rgba(7,18,34,.12) !important;
+}
+
+/* Align images and cards across all pages */
+.hero-grid,
+.image-grid,
+.gallery-grid,
+.products-grid,
+.services-grid,
+.projects-grid,
+.promotions-grid,
+.cards-grid,
+.product-list,
+.video-grid,
+.detail-grid,
+.grid,
+[class*="grid"]{
+  align-items:stretch !important;
+}
+
+.card,
+.product-card,
+.service-card,
+.project-card,
+.gallery-card,
+.promo-card,
+.video-card,
+.detail-card,
+[class*="card"]{
+  height:100% !important;
+  display:flex !important;
+  flex-direction:column !important;
+  overflow:hidden !important;
+}
+
+.card img,
+.product-card img,
+.service-card img,
+.project-card img,
+.gallery-card img,
+.promo-card img,
+.video-card img,
+.detail-card img,
+.hero img,
+.image-grid img,
+.gallery-grid img,
+.products-grid img,
+.projects-grid img,
+.promotions-grid img,
+[class*="card"] img{
+  width:100% !important;
+  height:clamp(220px, 26vw, 360px) !important;
+  object-fit:cover !important;
+  object-position:center !important;
+  display:block !important;
+}
+
+.hero img,
+.hero-grid img{
+  height:clamp(210px, 22vw, 320px) !important;
+  border-radius:22px !important;
+}
+
+.promo-card img,
+.promotions-grid img,
+.gallery-card img{
+  height:clamp(260px, 34vw, 420px) !important;
+  object-fit:cover !important;
+  object-position:center top !important;
+}
+
+.video-card video,
+video{
+  width:100% !important;
+  max-width:100% !important;
+  aspect-ratio:16/9 !important;
+  object-fit:cover !important;
+  border-radius:22px !important;
+  background:#000 !important;
+}
+
+.card-content,
+.product-card .content,
+.service-card .content,
+.project-card .content,
+.gallery-card .content,
+.promo-card .content,
+.video-card .content,
+[class*="card"] .content{
+  flex:1 1 auto !important;
+  display:flex !important;
+  flex-direction:column !important;
+  gap:14px !important;
+}
+
+.card-actions,
+.actions,
+.button-row,
+.btn-row,
+[class*="actions"]{
+  margin-top:auto !important;
+  display:flex !important;
+  align-items:center !important;
+  gap:12px !important;
+  flex-wrap:wrap !important;
+}
+
+/* Mobile and tablet alignment */
+@media(max-width:900px){
+  .site-header,
+  header{
+    padding:10px 12px !important;
+    min-height:72px !important;
+  }
+
+  .hero-grid,
+  .image-grid,
+  .gallery-grid,
+  .products-grid,
+  .services-grid,
+  .projects-grid,
+  .promotions-grid,
+  .cards-grid,
+  .product-list,
+  .video-grid,
+  .detail-grid,
+  .grid,
+  [class*="grid"]{
+    display:grid !important;
+    grid-template-columns:1fr !important;
+    gap:22px !important;
+  }
+
+  .card img,
+  .product-card img,
+  .service-card img,
+  .project-card img,
+  .gallery-card img,
+  .promo-card img,
+  .video-card img,
+  .detail-card img,
+  .image-grid img,
+  .gallery-grid img,
+  .products-grid img,
+  .projects-grid img,
+  .promotions-grid img,
+  [class*="card"] img{
+    height:clamp(230px, 58vw, 420px) !important;
+    border-radius:22px 22px 0 0 !important;
+  }
+
+  .hero img,
+  .hero-grid img{
+    height:clamp(190px, 52vw, 360px) !important;
+    border-radius:22px !important;
+  }
+
+  .promo-card img,
+  .promotions-grid img,
+  .gallery-card img{
+    height:clamp(320px, 88vw, 520px) !important;
+    object-position:center top !important;
+  }
+
+  .card-actions,
+  .actions,
+  .button-row,
+  .btn-row,
+  [class*="actions"]{
+    display:grid !important;
+    grid-template-columns:1fr 1fr !important;
+    gap:12px !important;
+  }
+
+  .card-actions a,
+  .card-actions button,
+  .actions a,
+  .actions button,
+  .button-row a,
+  .button-row button,
+  .btn-row a,
+  .btn-row button{
+    width:100% !important;
+  }
+}
+
+@media(max-width:520px){
+  .card img,
+  .product-card img,
+  .service-card img,
+  .project-card img,
+  .gallery-card img,
+  .promo-card img,
+  .video-card img,
+  .detail-card img,
+  .image-grid img,
+  .gallery-grid img,
+  .products-grid img,
+  .projects-grid img,
+  .promotions-grid img,
+  [class*="card"] img{
+    height:280px !important;
+  }
+
+  .promo-card img,
+  .promotions-grid img{
+    height:390px !important;
+  }
+
+  .card-actions,
+  .actions,
+  .button-row,
+  .btn-row,
+  [class*="actions"]{
+    grid-template-columns:1fr !important;
+  }
+}
+
+/* Light mode for floating buttons, loader, footer */
+body.light .float-whatsapp,
+body.light .float-email,
+body.light .back-to-top,
+body.light [class*="floating"],
+body.light [class*="back-to-top"]{
+  box-shadow:0 18px 45px rgba(15,23,42,.16) !important;
+}
+
+body.light .preloader,
+body.light .loader,
+body.light #loader,
+body.light .loading-screen{
+  background:#eef5fb !important;
+  color:#071222 !important;
+}
+
+body.light footer,
+body.light .footer,
+body.light .site-footer{
+  background:#ffffff !important;
+  color:#071222 !important;
+}
