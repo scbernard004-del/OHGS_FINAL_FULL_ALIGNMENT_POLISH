@@ -1296,3 +1296,193 @@ document.addEventListener("DOMContentLoaded", ohgsEnhancedMenuAnimation);
     setInterval(lockBrand, 800);
   });
 })();
+
+
+// OHGS visual mobile header helper
+(function(){
+  function boot(){
+    const header = document.querySelector(".site-header, header.site-header, header");
+    const brandTitle = document.querySelector(".brand-title");
+    const brandSub = document.querySelector(".brand-subtitle");
+    if(brandTitle) brandTitle.textContent = "OHGS";
+    if(brandSub) brandSub.textContent = "HARDWARE";
+
+    const btn = document.querySelector(".ohgs-menu-toggle, .menu-toggle");
+    const nav = document.querySelector("#ohgsMainMenu, #navMenu, .site-header nav, header nav");
+
+    if(btn && nav && !btn.__ohgsVisualFinalBound){
+      btn.__ohgsVisualFinalBound = true;
+      btn.removeAttribute("onclick");
+      btn.setAttribute("type","button");
+
+      function close(){
+        nav.classList.remove("ohgs-menu-open");
+        document.body.classList.remove("ohgs-menu-is-open");
+        btn.classList.remove("is-open");
+        btn.setAttribute("aria-expanded","false");
+      }
+
+      function toggle(e){
+        if(e){
+          e.preventDefault();
+          e.stopPropagation();
+        }
+        const open = nav.classList.contains("ohgs-menu-open");
+        open ? close() : (nav.classList.add("ohgs-menu-open"), document.body.classList.add("ohgs-menu-is-open"), btn.classList.add("is-open"), btn.setAttribute("aria-expanded","true"));
+      }
+
+      btn.addEventListener("click", toggle, true);
+      nav.querySelectorAll("a").forEach(a => a.addEventListener("click", close));
+    }
+
+    if(header){
+      const sync = () => header.classList.toggle("scrolled", window.scrollY > 10);
+      window.addEventListener("scroll", sync, {passive:true});
+      sync();
+    }
+  }
+  if(document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
+  else boot();
+})();
+
+
+/* =====================================================
+   OHGS COMPLETE LANGUAGE OVERRIDE
+   Makes language switch apply across every page, text node,
+   button, placeholder, title, alt and new content.
+   ===================================================== */
+(function(){
+  const PHRASES = {"Home": "Nyumbani", "Products": "Bidhaa", "Services": "Huduma", "Projects": "Miradi", "Gallery": "Picha", "Promotions": "Matangazo", "About": "Kuhusu", "Contact": "Mawasiliano", "WhatsApp": "WhatsApp", "EN / SW": "EN / SW", "SW / EN": "SW / EN", "Loading OHGS Industrial Experience...": "Tunafungua tovuti ya OHGS...", "Explore Products": "Angalia Bidhaa", "Request Quote": "Omba Bei", "View Details": "Angalia Maelezo", "Order on WhatsApp": "Agiza WhatsApp", "Ask on WhatsApp": "Uliza WhatsApp", "Ask About Offer": "Uliza Kuhusu Ofa", "Check availability": "Angalia upatikanaji", "Email OHGS": "Tuma Barua Pepe OHGS", "Send Email": "Tuma Barua Pepe", "Send Order to WhatsApp": "Tuma Oda WhatsApp", "View more products": "Angalia bidhaa zaidi", "Click for details": "Bonyeza kupata maelezo", "Browse Categories": "Angalia Makundi", "Send List": "Tuma Orodha", "Ask OHGS": "Uliza OHGS", "Home | OHGS Hardware & General Supply Ltd": "Nyumbani | OHGS Hardware & General Supply Ltd", "Products | OHGS Hardware & General Supply Ltd": "Bidhaa | OHGS Hardware & General Supply Ltd", "Services | OHGS Hardware & General Supply Ltd": "Huduma | OHGS Hardware & General Supply Ltd", "Projects | OHGS Hardware & General Supply Ltd": "Miradi | OHGS Hardware & General Supply Ltd", "Gallery | OHGS Hardware & General Supply Ltd": "Picha | OHGS Hardware & General Supply Ltd", "Promotions | OHGS Hardware & General Supply Ltd": "Matangazo | OHGS Hardware & General Supply Ltd", "About | OHGS Hardware & General Supply Ltd": "Kuhusu | OHGS Hardware & General Supply Ltd", "Contact | OHGS Hardware & General Supply Ltd": "Mawasiliano | OHGS Hardware & General Supply Ltd", "OHGS Hardware & General Supply Ltd": "OHGS Hardware & General Supply Ltd", "Olotu Hardware & General Supply LTD": "Olotu Hardware & General Supply LTD", "Official OHGS Brand": "Nembo Rasmi ya OHGS", "OFFICIAL OHGS BRAND": "NEMBO RASMI YA OHGS", "Professional hardware, tools and equipment for serious projects.": "Hardware, zana na vifaa vya kitaalamu kwa miradi mikubwa.", "From pumps and power tools to construction materials and workshop essentials, OHGS helps contractors, technicians, builders and homeowners find the right product faster.": "Kuanzia pampu na zana za umeme hadi vifaa vya ujenzi na mahitaji ya warsha, OHGS husaidia wakandarasi, mafundi, wajenzi na wamiliki wa nyumba kupata bidhaa sahihi haraka.", "Visit us at Uhuru Rd - Arusha, message us on WhatsApp, or send an email inquiry for product availability, prices and delivery support.": "Tutembelee Uhuru Rd - Arusha, tutumie ujumbe WhatsApp, au tuma barua pepe kuulizia upatikanaji wa bidhaa, bei na msaada wa delivery.", "Built for Tanzania Projects": "Kwa Miradi ya Tanzania", "A better way to shop hardware in Arusha.": "Njia bora ya kununua hardware Arusha.", "12+": "12+", "major hardware categories": "aina kuu za hardware", "Fast": "Haraka", "WhatsApp ordering and quotes": "oda na bei kupitia WhatsApp", "Arusha": "Arusha", "local support and store access": "msaada wa karibu na kufika dukani", "Pro": "Pro", "tools for contractors and homes": "zana kwa wakandarasi na nyumba", "Featured Products": "Bidhaa Maarufu", "Equipment customers ask for most.": "Vifaa vinavyouliziwa sana na wateja.", "OHGS Weekly Inspiration": "Hamasa ya Wiki ya OHGS", "Promotions, greetings and construction motivation.": "Matangazo, salamu na hamasa ya ujenzi.", "Wishing all our customers a happy and productive new week.": "Tunawatakia wateja wetu wiki njema yenye mafanikio.", "Olotu Hardware gives offers across products and welcomes customers warmly.": "Olotu Hardware hutoa ofa kwenye bidhaa mbalimbali na kuwakaribisha wateja kwa furaha.", "We always aim to satisfy customers with offers and price support.": "Daima tunalenga kuridhisha wateja kwa ofa na msaada wa bei.", "Construction materials such as aggregates, stones, sand, morum and bricks with safe delivery support.": "Vifaa vya ujenzi kama kokoto, mawe, mchanga, morum na matofali pamoja na msaada wa delivery salama.", "A warm message celebrating women who bring comfort, guidance and inspiration.": "Ujumbe mzuri wa kuwapongeza wanawake wanaoleta faraja, mwongozo na hamasa.", "Grinding Monday": "Jumatatu ya Kazi", "Awesome Friday": "Ijumaa Njema", "Satisfactory Saturday": "Jumamosi ya Kuridhisha", "Let’s Build With You": "Tujenge Pamoja Nawe", "Women’s Day Appreciation": "Pongezi za Siku ya Wanawake", "Pumps & Plumbing": "Pampu na Plumbing", "Water Pump Systems": "Mifumo ya Pampu za Maji", "Submersible pumps, pressure controllers, fittings and water transfer solutions for homes, farms, buildings and commercial sites.": "Pampu za kuzamisha, pressure controllers, fittings na suluhisho za kuhamisha maji kwa nyumba, mashamba, majengo na maeneo ya biashara.", "Premium product selection": "Uchaguzi bora wa bidhaa", "Ask for current price and availability": "Ulizia bei ya sasa na upatikanaji", "Accessories and delivery guidance available": "Accessories na maelekezo ya delivery yanapatikana", "Suitable for homes, workshops, farms and construction sites": "Inafaa kwa nyumba, warsha, mashamba na sites za ujenzi", "Outdoor Power": "Vifaa vya Nje vya Nguvu", "Diesel Water Pumps": "Pampu za Maji za Dizeli", "Heavy-duty diesel pumping machines for construction, irrigation, drainage and field work where electricity may not be available.": "Pampu za dizeli za kazi nzito kwa ujenzi, umwagiliaji, kutoa maji na kazi za field ambako umeme unaweza usipatikane.", "Workshop Equipment": "Vifaa vya Warsha", "Air Compressors": "Kompresa za Hewa", "Compressed air solutions for spray work, tyre service, pneumatic tools, workshops and maintenance teams.": "Suluhisho za hewa kwa spraying, huduma ya matairi, zana za pneumatic, warsha na timu za matengenezo.", "Cleaning Equipment": "Vifaa vya Usafi", "Pressure Washers": "Mashine za Kuosha kwa Pressure", "Compact pressure washers for car wash work, workshop cleaning, outdoor floors and facility maintenance.": "Pressure washer ndogo kwa kuosha magari, kusafisha warsha, sakafu za nje na matengenezo ya maeneo.", "Power Tools": "Zana za Umeme", "Drills, grinders, circular saws, jig saws, electric planers and rotary hammers for technicians and contractors.": "Drill, grinders, circular saws, jig saws, electric planers na rotary hammers kwa mafundi na wakandarasi.", "Outdoor Tools": "Zana za Nje", "Chainsaws": "Chainsaws", "Cutting machines for timber work, landscape maintenance and site preparation, with safety guidance before use.": "Mashine za kukata mbao, matengenezo ya mazingira na maandalizi ya site, pamoja na ushauri wa usalama kabla ya matumizi.", "Building Materials": "Vifaa vya Ujenzi", "Plywood & Building Boards": "Plywood na Board za Ujenzi", "Boards and panels for furniture, roofing support, shelving, interior finishing and construction work.": "Board na paneli kwa samani, msaada wa roofing, shelves, finishing ya ndani na kazi za ujenzi.", "Hand Tools": "Zana za Mkono", "Hand Tools & Spanners": "Zana za Mkono na Spana", "Spanners, hand tools, measuring equipment and workshop essentials for daily maintenance and mechanical jobs.": "Spana, zana za mkono, vifaa vya kupimia na mahitaji ya warsha kwa matengenezo ya kila siku na kazi za ufundi.", "Construction Supply": "Ugavi wa Ujenzi", "Construction Materials": "Vifaa vya Ujenzi", "Materials and support for building work including aggregates, sand, stones, bricks and site supply coordination.": "Vifaa na msaada kwa kazi za ujenzi ikiwemo kokoto, mchanga, mawe, matofali na uratibu wa vifaa site.", "Product Collection": "Mkusanyiko wa Bidhaa", "PRODUCT COLLECTION": "MKUSANYIKO WA BIDHAA", "Browse OHGS equipment by function.": "Angalia vifaa vya OHGS kwa matumizi yake.", "The collection includes power tools, pumps, compressors, construction materials, hand tools, cleaning equipment and project supply support.": "Mkusanyiko huu unajumuisha zana za umeme, pampu, compressors, vifaa vya ujenzi, zana za mkono, vifaa vya usafi na msaada wa supply ya miradi.", "Browse real OHGS shop images, then open a category page to ask about price, stock, accessories and delivery support.": "Angalia picha halisi za duka la OHGS, kisha fungua ukurasa wa kundi kuulizia bei, stock, accessories na msaada wa delivery.", "See the real OHGS environment with equipment displays, customers and practical hardware sections.": "Tazama mazingira halisi ya OHGS yenye maonesho ya vifaa, wateja na sehemu za hardware za matumizi.", "Water systems": "Mifumo ya maji", "Pump displays, pressure tanks and water handling equipment for homes, farms and buildings.": "Maonesho ya pampu, pressure tanks na vifaa vya maji kwa nyumba, mashamba na majengo.", "Building supplies": "Vifaa vya ujenzi", "Adhesives, sealants and practical construction supplies that support daily site work.": "Adhesives, sealants na vifaa vya ujenzi vinavyosaidia kazi za site za kila siku.", "Workshop-ready equipment, tanks and support tools for repair, spraying and maintenance work.": "Vifaa tayari kwa warsha, tanks na zana za msaada kwa repair, spraying na matengenezo.", "Cleaning and utility": "Usafi na matumizi", "Cleaning carts and utility products for office, facility and workshop use.": "Mikokoteni ya usafi na bidhaa za matumizi kwa ofisi, facility na warsha.", "Outdoor machines and portable work equipment for demanding field use.": "Mashine za nje na vifaa vinavyobebeka kwa kazi ngumu za field.", "OHGS helps customers compare models, understand accessories and choose suitable hardware faster.": "OHGS husaidia wateja kulinganisha modeli, kuelewa accessories na kuchagua hardware inayofaa haraka.", "Every image below is different, so customers can understand the range of products, the look of the shop and the kind of support they can expect at OHGS.": "Kila picha hapa chini ni tofauti ili wateja waelewe aina za bidhaa, muonekano wa duka na aina ya msaada wanaoweza kupata OHGS.", "Water pumps and machine display": "Pampu za maji na maonesho ya mashine", "Customer support at the counter": "Huduma kwa wateja kauntani", "Storefront and building board section": "Mbele ya duka na sehemu ya board za ujenzi", "Hand tools and spanner wall": "Ukuta wa zana za mkono na spana", "Pressure washer and cleaning machine": "Pressure washer na mashine ya usafi", "WHY CUSTOMERS CHOOSE OHGS": "KWANINI WATEJA HUCHAGUA OHGS", "Helpful hardware support for real work.": "Msaada wa hardware kwa kazi halisi.", "Inspired by top online hardware stores, OHGS now highlights the practical information customers need most: expert help, broad stock variety, bulk-order support and delivery guidance.": "Kwa mtindo wa tovuti bora za hardware, OHGS sasa inaonyesha taarifa muhimu zaidi kwa wateja: msaada wa kitaalamu, bidhaa nyingi, msaada wa oda kubwa na mwongozo wa delivery.", "Expert advice": "Ushauri wa kitaalamu", "Ask about the right product, matching accessories and safer options before you buy.": "Uliza kuhusu bidhaa sahihi, accessories zinazoendana na chaguo salama kabla ya kununua.", "Wide product mix": "Aina nyingi za bidhaa", "Find pumps, tools, building supplies, workshop items and cleaning equipment in one place.": "Pata pampu, zana, vifaa vya ujenzi, vifaa vya warsha na vifaa vya usafi sehemu moja.", "Bulk and repeat orders": "Oda kubwa na za kurudia", "Share your list on WhatsApp and request stock checks, alternatives and quantity support.": "Tuma orodha yako WhatsApp na uombe ukaguzi wa stock, mbadala na msaada wa idadi.", "Delivery guidance": "Mwongozo wa delivery", "OHGS helps customers confirm availability, plan pickup and ask about delivery options.": "OHGS husaidia wateja kuthibitisha upatikanaji, kupanga kuchukua bidhaa na kuulizia chaguo za delivery.", "Support beyond the shelf.": "Msaada zaidi ya rafu.", "OHGS helps customers choose equipment, plan purchases, source hardware products, organize bulk orders and understand the accessories required for reliable work.": "OHGS husaidia wateja kuchagua vifaa, kupanga manunuzi, kupata bidhaa za hardware, kupanga oda kubwa na kuelewa accessories zinazohitajika kwa kazi ya uhakika.", "Product recommendation": "Ushauri wa bidhaa", "Get help choosing between pumps, power tools, boards, adhesives, cleaning machines and accessories.": "Pata msaada kuchagua kati ya pampu, zana za umeme, board, adhesives, mashine za usafi na accessories.", "Model comparison": "Ulinganisho wa modeli", "Accessory guidance": "Mwongozo wa accessories", "Usage advice": "Ushauri wa matumizi", "Project supply support": "Msaada wa supply ya mradi", "Useful for contractors, workshops, homes, farms and facility managers buying across many categories.": "Inafaa kwa wakandarasi, warsha, nyumba, mashamba na wasimamizi wanaonunua bidhaa za makundi mengi.", "Mixed category buying": "Kununua makundi mbalimbali", "Practical recommendations": "Mapendekezo ya vitendo", "Site-ready supply": "Supply tayari kwa site", "Bulk inquiry": "Maulizo ya oda kubwa", "Send a list by WhatsApp and request availability, alternatives, pricing and repeat-order support.": "Tuma orodha kwa WhatsApp na uombe upatikanaji, mbadala, bei na msaada wa oda za kurudia.", "Stock checking": "Ukaguzi wa stock", "Alternative options": "Chaguo mbadala", "Fast WhatsApp follow-up": "Ufuatiliaji wa haraka WhatsApp", "Delivery and follow-up": "Delivery na ufuatiliaji", "Ask about pickup timing, delivery guidance and what else is needed to complete your order well.": "Uliza muda wa kuchukua, mwongozo wa delivery na kinachohitajika kukamilisha oda vizuri.", "Availability updates": "Taarifa za upatikanaji", "Pickup guidance": "Mwongozo wa kuchukua bidhaa", "Order support": "Msaada wa oda", "SERVICE SUPPORT IN ACTION": "HUDUMA ZIKITEKELEZWA", "See how OHGS supports customers": "Tazama jinsi OHGS inavyosaidia wateja", "These images show the real shop, customer support moments and key categories that OHGS helps customers buy with more confidence.": "Picha hizi zinaonyesha duka halisi, huduma kwa wateja na makundi muhimu yanayowasaidia wateja kununua kwa kujiamini zaidi.", "Service support": "Msaada wa huduma", "Customer assistance at OHGS": "Msaada kwa wateja OHGS", "OHGS helps customers compare products, confirm details and choose what suits their job best.": "OHGS husaidia wateja kulinganisha bidhaa, kuthibitisha maelezo na kuchagua kinachofaa kazi yao zaidi.", "Water system support": "Msaada wa mifumo ya maji", "See machines that help customers choose the right pump and water accessories.": "Tazama mashine zinazosaidia wateja kuchagua pampu sahihi na accessories za maji.", "Product walk-through": "Muongozo wa bidhaa", "Walk through the display area and understand the variety available inside the shop.": "Tembea kwenye eneo la maonesho na uelewe aina mbalimbali zilizopo dukani.", "Construction product advice": "Ushauri wa bidhaa za ujenzi", "Adhesives, boards and site essentials are easier to compare when customers can see practical examples.": "Adhesives, board na vifaa muhimu vya site ni rahisi kulinganisha wateja wanapoona mifano halisi.", "Cleaning machine support": "Msaada wa mashine za usafi", "See cleaning trolleys, utility items and facility products that support daily work.": "Tazama mikokoteni ya usafi, bidhaa za matumizi na vifaa vya facility vinavyosaidia kazi za kila siku.", "Workshop support": "Msaada wa warsha", "See workshop tools and hand equipment that customers compare before buying.": "Tazama zana za warsha na vifaa vya mkono ambavyo wateja hulinganisha kabla ya kununua.", "OHGS SERVICE VIEW": "MUONEKANO WA HUDUMA ZA OHGS", "Helpful people, clear displays and practical choices.": "Watu wenye msaada, maonesho yaliyo wazi na chaguo za vitendo.", "These photos support the service page by showing the kind of display, product guidance and real-shop interaction customers can expect.": "Picha hizi zinaimarisha ukurasa wa huduma kwa kuonyesha maonesho, ushauri wa bidhaa na mawasiliano halisi ya dukani ambayo wateja wanaweza kutarajia.", "Water pump display": "Maonesho ya pampu za maji", "Machine display section": "Sehemu ya maonesho ya mashine", "Hand tools advice section": "Sehemu ya ushauri wa zana za mkono", "Cleaning equipment display": "Maonesho ya vifaa vya usafi", "Building board display": "Maonesho ya board za ujenzi", "Power tool advice section": "Sehemu ya ushauri wa zana za umeme", "Storefront hardware section": "Sehemu ya hardware mbele ya duka", "SERVICE HIGHLIGHTS": "MUHTASARI WA HUDUMA", "Useful information customers expect from a modern hardware website.": "Taarifa muhimu ambazo wateja hutegemea kwenye tovuti ya kisasa ya hardware.", "Like top-rated hardware sites, OHGS now highlights clear support information: product advice, availability help, multi-category supply and quick follow-up.": "Kama tovuti bora za hardware, OHGS sasa inaonyesha taarifa wazi za msaada: ushauri wa bidhaa, msaada wa upatikanaji, supply ya makundi mengi na ufuatiliaji wa haraka.", "Clear product guidance": "Mwongozo wazi wa bidhaa", "Customers can ask what fits best for home, farm, workshop or site work.": "Wateja wanaweza kuuliza kinachofaa zaidi kwa nyumba, shamba, warsha au kazi ya site.", "Availability support": "Msaada wa upatikanaji", "OHGS can confirm current stock or suggest practical alternatives when needed.": "OHGS inaweza kuthibitisha stock ya sasa au kupendekeza mbadala wa vitendo inapohitajika.", "Bulk-order help": "Msaada wa oda kubwa", "Contractors and business buyers can send lists and request support across many categories.": "Wakandarasi na wanunuzi wa biashara wanaweza kutuma orodha na kuomba msaada kwenye makundi mengi.", "Fast contact options": "Njia za mawasiliano ya haraka", "Use WhatsApp or email to follow up quickly about price, delivery and recommendations.": "Tumia WhatsApp au barua pepe kufuatilia haraka kuhusu bei, delivery na mapendekezo.", "Built for contractors, homes, farms and businesses.": "Imejengwa kwa wakandarasi, nyumba, mashamba na biashara.", "OHGS supports practical project needs: water systems, construction supply, workshop setup, cleaning businesses and general hardware purchases.": "OHGS inasaidia mahitaji ya miradi: mifumo ya maji, supply ya ujenzi, setup ya warsha, biashara za usafi na manunuzi ya hardware kwa ujumla.", "Water projects": "Miradi ya maji", "Pumps, hoses, fittings and pressure support for homes, farms and buildings.": "Pampu, hoses, fittings na msaada wa pressure kwa nyumba, mashamba na majengo.", "Building projects": "Miradi ya ujenzi", "Boards, adhesives, construction materials, tools and safe delivery guidance.": "Board, adhesives, vifaa vya ujenzi, zana na mwongozo wa delivery salama.", "Workshop setup": "Setup ya warsha", "Compressors, power tools, hand tools and repair essentials for workshops.": "Compressors, zana za umeme, zana za mkono na mahitaji ya repair kwa warsha.", "Cleaning & facility": "Usafi na facility", "Pressure washers, cleaning trolleys and maintenance products for daily work.": "Pressure washers, mikokoteni ya usafi na bidhaa za matengenezo kwa kazi za kila siku.", "MORE PROJECT EQUIPMENT": "VIFAA ZAIDI VYA MIRADI", "Explore equipment with pictures and details": "Chunguza vifaa kwa picha na maelezo", "Chainsaw and power tool counter": "Kaunta ya chainsaw na zana za umeme", "Compressor equipment": "Vifaa vya compressor", "Construction adhesives": "Adhesives za ujenzi", "Real OHGS visuals, posters and equipment.": "Picha halisi za OHGS, posters na vifaa.", "OHGS In Action": "OHGS Ikifanya Kazi", "Video gallery.": "Mkusanyiko wa video.", "Store Walkthrough & Product Shelves": "Muonekano wa duka na rafu za bidhaa", "Watch OHGS products, store moments and equipment demos in action.": "Tazama bidhaa za OHGS, matukio ya dukani na demo za vifaa zikifanya kazi.", "Customer Service & Product Guidance": "Huduma kwa Wateja na Mwongozo wa Bidhaa", "Inside OHGS Hardware Shop": "Ndani ya Duka la Hardware la OHGS", "Equipment Demonstration & Shop Activity": "Maonesho ya Vifaa na Shughuli za Dukani", "MORE PRODUCT VISUALS": "PICHA ZAIDI ZA BIDHAA", "Additional responsive images added to the gallery.": "Picha zaidi zinazojibadilisha zimeongezwa kwenye gallery.", "The new images are cleaned up and fit better on different screen sizes.": "Picha mpya zimesafishwa na zinafaa zaidi kwenye ukubwa tofauti wa skrini.", "Promotions & Inspiration": "Matangazo na Hamasa", "Weekly energy for builders and customers.": "Nguvu ya wiki kwa wajenzi na wateja.", "About OHGS": "Kuhusu OHGS", "Hardware built around practical work.": "Hardware iliyojengwa kwa kazi za vitendo.", "Olotu Hardware & General Supply LTD serves customers looking for tools, machinery, pumps, building materials, adhesives, cleaning supplies and construction hardware in Arusha.": "Olotu Hardware & General Supply LTD huhudumia wateja wanaotafuta zana, mashine, pampu, vifaa vya ujenzi, adhesives, vifaa vya usafi na hardware ya ujenzi Arusha.", "Contact OHGS": "Wasiliana na OHGS", "Ask for price, availability or recommendation.": "Ulizia bei, upatikanaji au ushauri.", "Your name": "Jina lako", "Phone number": "Namba ya simu", "Write what you need, quantity, budget or project type": "Andika unachohitaji, kiasi, bajeti au aina ya mradi", "Other Hardware": "Hardware Nyingine", "Location:": "Mahali:", "Location": "Mahali", "What We Supply": "Tunachouza", "Power tools, pumps, compressors, chainsaws, pressure washers, plywood, adhesives, hand tools, construction materials and cleaning equipment.": "Zana za umeme, pampu, compressors, chainsaws, pressure washers, plywood, adhesives, zana za mkono, vifaa vya ujenzi na vifaa vya usafi.", "Customer Support": "Msaada kwa Wateja", "Ask for current price, availability, model recommendation, accessories, bulk order support and delivery guidance.": "Ulizia bei ya sasa, upatikanaji, mapendekezo ya modeli, accessories, msaada wa oda kubwa na mwongozo wa delivery.", "Website by": "Tovuti imetengenezwa na", "Product Details": "Maelezo ya Bidhaa", "Confirm exact brand, model, size, current price and availability with OHGS before buying.": "Thibitisha brand, modeli, size, bei ya sasa na upatikanaji na OHGS kabla ya kununua.", "More Products": "Bidhaa Zaidi", "Recommended Questions": "Maswali Yanayopendekezwa", "Is it available today?": "Je, inapatikana leo?", "What is the current price?": "Bei ya sasa ni kiasi gani?", "Which accessories are needed?": "Accessories gani zinahitajika?", "OHGS EQUIPMENT DETAILS": "MAELEZO YA VIFAA VYA OHGS", "Reliable pump solutions for homes, farms, buildings and water movement projects.": "Suluhisho za pampu za kuaminika kwa nyumba, mashamba, majengo na miradi ya kuhamisha maji.", "Ask price on WhatsApp": "Uliza bei WhatsApp", "WHAT TO ASK BEFORE BUYING": "YA KUULIZA KABLA YA KUNUNUA", "Choose the right equipment faster": "Chagua kifaa sahihi haraka", "Size and power": "Ukubwa na nguvu", "Tell OHGS the job type so the team can recommend the right size, power and accessories.": "Eleza aina ya kazi kwa OHGS ili timu ipendekeze size, nguvu na accessories sahihi.", "Availability": "Upatikanaji", "Ask if the item is available today, similar options, and current price.": "Uliza kama bidhaa ipo leo, chaguo zinazofanana na bei ya sasa.", "Delivery support": "Msaada wa delivery", "Ask about delivery around Arusha and support for bulk project orders.": "Uliza kuhusu delivery Arusha na msaada wa oda kubwa za miradi.", "Boards, adhesives, hardware materials and site essentials for building work.": "Board, adhesives, vifaa vya hardware na mahitaji muhimu ya site kwa kazi za ujenzi.", "Tools, compressors and workshop essentials for repair, fabrication and maintenance.": "Zana, compressors na mahitaji ya warsha kwa repair, fabrication na matengenezo.", "Pressure washers and cleaning tools for vehicles, floors, shops and facilities.": "Pressure washers na zana za usafi kwa magari, sakafu, maduka na facilities.", "Outdoor Power Equipment": "Vifaa vya Nje vya Nguvu", "Machines for outdoor work, cutting, clearing and site maintenance.": "Mashine kwa kazi za nje, kukata, kusafisha eneo na matengenezo ya site.", "NEW STOCK HIGHLIGHTS": "BIDHAA MPYA ZILIZOANGAZWA", "More hardware pictures added to the website.": "Picha zaidi za hardware zimeongezwa kwenye tovuti.", "These product visuals are cleaner, more responsive and easier to view on mobile, tablet and desktop.": "Picha hizi za bidhaa ni safi zaidi, zinajibu vizuri na ni rahisi kuona kwenye simu, tablet na desktop.", "Safety gear": "Vifaa vya usalama", "Reflective harness sets": "Seti za harness za reflective", "High-visibility harness options for site, road and work safety support.": "Harness zinazoonekana vizuri kwa usalama wa site, barabarani na kazini.", "Metal cutting": "Kukata chuma", "INGCO cut-off saw": "Mashine ya kukata chuma ya INGCO", "Heavy-duty cutting equipment for practical workshop and fabrication work.": "Kifaa cha kukata cha kazi nzito kwa warsha na fabrication.", "Power tool set": "Seti ya zana za umeme", "166-piece INGCO kit": "Seti ya INGCO ya vipande 166", "A rich hardware set with cordless drill, hand tools, bits and accessories.": "Seti kamili yenye drill ya battery, zana za mkono, bits na accessories.", "Workshop machine": "Mashine ya warsha", "Air compressor unit": "Kompresa ya hewa", "Reliable compressor equipment for workshop, spraying, tyre and maintenance use.": "Kompresa ya kuaminika kwa warsha, spraying, matairi na matengenezo.", "Garden tools": "Zana za bustani", "Garden spray accessories": "Accessories za kunyunyizia bustani", "Pistols, hose fittings, connectors and watering accessories for home and farm use.": "Pistols, hose fittings, connectors na accessories za umwagiliaji kwa nyumba na shamba.", "Site support": "Msaada wa site", "INGCO wheelbarrow": "Toroli ya INGCO", "Strong wheelbarrow support for site movement, building materials and practical daily work.": "Toroli imara kwa kusogeza vifaa site, vifaa vya ujenzi na kazi za kila siku.", "FRESH SHOP HIGHLIGHTS": "MUHTASARI MPYA WA DUKA", "More real OHGS pictures on the website.": "Picha zaidi halisi za OHGS kwenye tovuti.", "New equipment images help customers see current hardware variety more clearly.": "Picha mpya za vifaa zinasaidia wateja kuona aina za hardware kwa uwazi zaidi.", "Real machine display": "Maonesho halisi ya mashine", "Customers can view practical machine examples directly from the OHGS website.": "Wateja wanaweza kuona mifano ya mashine moja kwa moja kwenye tovuti ya OHGS.", "Wider shop visuals": "Picha pana za duka", "A broader showroom image makes the website feel fuller and more trustworthy.": "Picha pana ya showroom inafanya tovuti ionekane kamili na ya kuaminika zaidi.", "MORE SERVICE VISUALS": "PICHA ZAIDI ZA HUDUMA", "Real shop support, demonstrations and equipment visuals.": "Msaada halisi dukani, maonesho na picha za vifaa.", "These extra visuals help visitors understand how OHGS supports customers, workshop needs and everyday buying decisions.": "Picha hizi za ziada zinawasaidia wageni kuelewa jinsi OHGS inavyosaidia wateja, mahitaji ya warsha na maamuzi ya kununua.", "Machine demonstration": "Maonesho ya mashine", "Real equipment demonstrations help customers see machine size, build and practical use before buying.": "Maonesho ya vifaa halisi huwasaidia wateja kuona ukubwa wa mashine, uimara na matumizi kabla ya kununua.", "OHGS showroom view": "Muonekano wa showroom ya OHGS", "A wider shop view gives customers confidence in the range of tools, machines and support available.": "Muonekano mpana wa duka huwapa wateja uhakika wa aina za zana, mashine na msaada unaopatikana.", "Workshop equipment support": "Msaada wa vifaa vya warsha", "Compressors and workshop machines can be discussed with customers for matching accessories and use-case guidance.": "Compressors na mashine za warsha zinaweza kujadiliwa na wateja kwa accessories zinazofaa na mwongozo wa matumizi.", "OHGS can help customers understand fittings, connectors and smaller add-ons that complete the job well.": "OHGS inaweza kusaidia wateja kuelewa fittings, connectors na vifaa vidogo vinavyokamilisha kazi vizuri."};
+  const WORDS = {"Product": "Bidhaa", "Collection": "Mkusanyiko", "Browse": "Angalia", "equipment": "vifaa", "Equipment": "Vifaa", "function": "matumizi", "includes": "unajumuisha", "power": "umeme", "tools": "zana", "pumps": "pampu", "compressors": "compressors", "construction": "ujenzi", "materials": "vifaa", "hand": "mkono", "cleaning": "usafi", "project": "mradi", "supply": "supply", "support": "msaada", "customers": "wateja", "customer": "mteja", "price": "bei", "stock": "stock", "accessories": "accessories", "delivery": "delivery", "available": "inapatikana", "current": "sasa", "right": "sahihi", "details": "maelezo", "images": "picha", "pictures": "picha", "website": "tovuti", "mobile": "simu", "tablet": "tablet", "desktop": "desktop", "service": "huduma", "services": "huduma", "shop": "duka", "store": "duka", "view": "muonekano", "real": "halisi", "new": "mpya", "more": "zaidi", "help": "msaada", "choose": "chagua", "ask": "uliza", "quote": "bei", "order": "oda", "home": "nyumbani", "farms": "mashamba", "buildings": "majengo", "workshops": "warsha", "contractors": "wakandarasi", "builders": "wajenzi", "technicians": "mafundi", "businesses": "biashara", "availability": "upatikanaji", "recommendation": "ushauri", "recommendations": "mapendekezo", "guidance": "mwongozo", "bulk": "oda kubwa", "fast": "haraka", "clear": "wazi", "practical": "vitendo", "projects": "miradi", "machines": "mashine", "machine": "mashine", "building": "ujenzi", "water": "maji", "systems": "mifumo", "outdoor": "nje", "inspiration": "hamasa", "promotions": "matangazo", "gallery": "picha", "contact": "mawasiliano", "about": "kuhusu", "send": "tuma", "list": "orodha", "name": "jina", "phone": "simu", "message": "ujumbe", "location": "mahali", "email": "barua pepe"};
+  const FIXED_BRAND_TEXT = new Set(['OHGS','HARDWARE','WhatsApp','Instagram','Arusha','Uhuru Rd - Arusha','olotuhardware@yahoo.com','@olotuhardware','+255 689 528 193','+255 746 584 214','Isaac Sabuni','Olotu Hardware & General Supply LTD','OHGS Hardware & General Supply Ltd']);
+  const REVERSE_PHRASES = {};
+  Object.keys(PHRASES).forEach(en => { REVERSE_PHRASES[PHRASES[en]] = en; });
+  const REVERSE_WORDS = {};
+  Object.keys(WORDS).forEach(en => { REVERSE_WORDS[WORDS[en]] = en; });
+  function clean(s){ return (s || '').replace(/\s+/g,' ').trim(); }
+  function esc(s){ return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
+  function replaceExactAndPhrases(text, map){
+    let out = text || '';
+    const compact = clean(out);
+    if(map[compact]) return out.replace(compact, map[compact]);
+    Object.keys(map).sort((a,b)=>b.length-a.length).forEach(key => {
+      out = out.split(key).join(map[key]);
+    });
+    return out;
+  }
+  function replaceWords(text, map){
+    let out = text || '';
+    Object.keys(map).sort((a,b)=>b.length-a.length).forEach(key => {
+      out = out.replace(new RegExp('\\b' + esc(key) + '\\b', 'gi'), function(m){
+        const v = map[key] || map[Object.keys(map).find(k => k.toLowerCase() === m.toLowerCase())];
+        return v || m;
+      });
+    });
+    return out;
+  }
+  function toEnglish(text){
+    let out = text || '';
+    out = replaceExactAndPhrases(out, REVERSE_PHRASES);
+    out = replaceWords(out, REVERSE_WORDS);
+    return out;
+  }
+  function toSwahili(text){
+    let out = toEnglish(text || '');
+    out = replaceExactAndPhrases(out, PHRASES);
+    out = replaceWords(out, WORDS);
+    return out;
+  }
+  function translateString(text, lang){
+    const c = clean(text);
+    if(!c || FIXED_BRAND_TEXT.has(c)) return text;
+    return lang === 'sw' ? toSwahili(text) : toEnglish(text);
+  }
+  function storeOriginalText(node){
+    if(node.__ohgsCompleteOriginal != null) return;
+    node.__ohgsCompleteOriginal = toEnglish(node.nodeValue || '');
+  }
+  function translateTextNode(node, lang){
+    storeOriginalText(node);
+    if(!clean(node.__ohgsCompleteOriginal)) return;
+    if(FIXED_BRAND_TEXT.has(clean(node.__ohgsCompleteOriginal))) return;
+    node.nodeValue = translateString(node.__ohgsCompleteOriginal, lang);
+  }
+  function translateElementData(el, lang){
+    if(!el || !el.getAttribute) return false;
+    const direct = el.getAttribute('data-' + lang);
+    if(direct){ el.textContent = direct; return true; }
+    return false;
+  }
+  function translateAttr(el, attr, lang){
+    if(!el.hasAttribute || !el.hasAttribute(attr)) return;
+    const val = el.getAttribute(attr);
+    if(!clean(val) || FIXED_BRAND_TEXT.has(clean(val))) return;
+    const key = '__ohgsCompleteAttr_' + attr;
+    if(!el[key]) el[key] = toEnglish(val);
+    el.setAttribute(attr, translateString(el[key], lang));
+  }
+  function updateBrand(){
+    document.querySelectorAll('.brand-title').forEach(el => { el.textContent = 'OHGS'; });
+    document.querySelectorAll('.brand-subtitle').forEach(el => { el.textContent = 'HARDWARE'; });
+  }
+  function applyCompleteLanguage(lang){
+    lang = lang === 'sw' ? 'sw' : 'en';
+    document.documentElement.lang = lang;
+    document.body.classList.toggle('lang-sw', lang === 'sw');
+    document.body.classList.toggle('lang-en', lang === 'en');
+    document.querySelectorAll('[data-en]').forEach(el => translateElementData(el, lang));
+    const skip = new Set(['SCRIPT','STYLE','NOSCRIPT','IFRAME','SVG','VIDEO','SOURCE','CANVAS']);
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+      acceptNode(node){
+        if(!node.parentElement || skip.has(node.parentElement.tagName)) return NodeFilter.FILTER_REJECT;
+        if(!clean(node.nodeValue)) return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    const nodes=[]; while(walker.nextNode()) nodes.push(walker.currentNode);
+    nodes.forEach(n => translateTextNode(n, lang));
+    document.querySelectorAll('[placeholder],[aria-label],[title],[alt],input[value],button[value],option').forEach(el => {
+      ['placeholder','aria-label','title','alt','value','label'].forEach(a => translateAttr(el,a,lang));
+    });
+    if(!document.__ohgsCompleteTitle) document.__ohgsCompleteTitle = toEnglish(document.title || '');
+    document.title = translateString(document.__ohgsCompleteTitle, lang);
+    document.querySelectorAll('.lang-toggle, [data-lang-toggle], .language-toggle').forEach(btn => {
+      btn.textContent = lang === 'sw' ? 'SW / EN' : 'EN / SW';
+      btn.setAttribute('aria-label', lang === 'sw' ? 'Badilisha kwenda Kiingereza' : 'Change to Swahili');
+    });
+    document.querySelectorAll('.loader-text, .ohgs-loader-text').forEach(el => {
+      if(!el.__ohgsCompleteLoader) el.__ohgsCompleteLoader = toEnglish(el.textContent || 'Loading OHGS Industrial Experience...');
+      el.textContent = translateString(el.__ohgsCompleteLoader, lang);
+    });
+    updateBrand();
+    localStorage.setItem('ohgsLang', lang);
+    localStorage.setItem('ohgs-lang', lang);
+  }
+  function currentLang(){ return localStorage.getItem('ohgsLang') || localStorage.getItem('ohgs-lang') || 'en'; }
+  function bindLanguageButtons(){
+    document.querySelectorAll('.lang-toggle, [data-lang-toggle], .language-toggle').forEach(btn => {
+      if(btn.__ohgsCompleteLangBound) return;
+      btn.__ohgsCompleteLangBound = true;
+      btn.removeAttribute('onclick');
+      btn.addEventListener('click', function(e){
+        e.preventDefault(); e.stopPropagation(); e.stopImmediatePropagation();
+        applyCompleteLanguage(currentLang() === 'sw' ? 'en' : 'sw');
+        return false;
+      }, true);
+    });
+  }
+  function init(){
+    bindLanguageButtons();
+    applyCompleteLanguage(currentLang());
+    let busy=false;
+    const mo = new MutationObserver(() => {
+      if(busy) return;
+      busy=true;
+      setTimeout(() => { bindLanguageButtons(); applyCompleteLanguage(currentLang()); busy=false; }, 120);
+    });
+    mo.observe(document.body, {childList:true, subtree:true});
+    window.OHGSApplyLanguage = applyCompleteLanguage;
+  }
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
