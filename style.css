@@ -4477,3 +4477,193 @@ video,
     grid-template-columns:1fr !important;
   }
 }
+
+/* === OHGS FINAL HEADER BRAND + LANGUAGE CLEANUP PATCH === */
+
+/* Make OHGS + Hardware fit cleanly in header */
+.site-header .brand,
+header .brand{
+  max-width:190px !important;
+  min-width:0 !important;
+  overflow:visible !important;
+}
+
+.brand-copy{
+  display:flex !important;
+  flex-direction:column !important;
+  justify-content:center !important;
+  gap:3px !important;
+  min-width:0 !important;
+  max-width:130px !important;
+  overflow:visible !important;
+}
+
+.brand-title{
+  font-size:clamp(20px, 2.1vw, 30px) !important;
+  line-height:.92 !important;
+  letter-spacing:.08em !important;
+  font-weight:950 !important;
+  white-space:nowrap !important;
+  overflow:visible !important;
+  text-overflow:clip !important;
+  max-width:none !important;
+}
+
+.brand-subtitle{
+  font-size:clamp(7px, .7vw, 10px) !important;
+  line-height:1 !important;
+  letter-spacing:.12em !important;
+  text-transform:uppercase !important;
+  white-space:nowrap !important;
+  overflow:visible !important;
+  text-overflow:clip !important;
+  max-width:none !important;
+  color:#00bdf2 !important;
+}
+
+/* Stop old CSS from showing OHGS as O... or HARD... */
+.site-header .brand span,
+header .brand span{
+  overflow:visible !important;
+  text-overflow:clip !important;
+}
+
+@media(min-width:761px){
+  .site-header .brand,
+  header .brand{
+    max-width:170px !important;
+  }
+
+  .site-header .brand img,
+  header .brand img{
+    width:42px !important;
+    height:42px !important;
+    min-width:42px !important;
+  }
+
+  .brand-title{
+    font-size:26px !important;
+    letter-spacing:.08em !important;
+  }
+
+  .brand-subtitle{
+    font-size:8px !important;
+    letter-spacing:.10em !important;
+  }
+
+  #ohgsMainMenu a,
+  #navMenu a,
+  header nav a,
+  .site-header nav a{
+    font-size:clamp(10px, .78vw, 13px) !important;
+    padding-inline:7px !important;
+  }
+}
+
+/* Mobile: keep brand readable but small, menu/actions still fit */
+@media(max-width:760px){
+  .site-header .brand,
+  header .brand{
+    max-width:108px !important;
+    gap:7px !important;
+  }
+
+  .site-header .brand img,
+  header .brand img{
+    width:40px !important;
+    height:40px !important;
+    min-width:40px !important;
+  }
+
+  .brand-copy{
+    max-width:58px !important;
+  }
+
+  .brand-title{
+    font-size:18px !important;
+    letter-spacing:.06em !important;
+  }
+
+  .brand-subtitle{
+    font-size:6.5px !important;
+    letter-spacing:.04em !important;
+  }
+
+  .header-actions a,
+  .header-actions button,
+  .theme-toggle,
+  .lang-toggle,
+  .whatsapp-btn,
+  .whatsapp,
+  a[href*="wa.me"],
+  a[href*="whatsapp"]{
+    font-size:9.5px !important;
+    padding-inline:7px !important;
+  }
+}
+
+@media(max-width:390px){
+  .site-header .brand,
+  header .brand{
+    max-width:92px !important;
+  }
+
+  .brand-copy{
+    max-width:46px !important;
+  }
+
+  .brand-title{
+    font-size:15px !important;
+    letter-spacing:.04em !important;
+  }
+
+  .brand-subtitle{
+    font-size:5.8px !important;
+    letter-spacing:.02em !important;
+  }
+}
+
+/* Active language state readable in all modes */
+.lang-toggle,
+.language-toggle,
+[data-lang-toggle]{
+  min-width:72px !important;
+}
+
+/* Language mode helps longer Swahili titles breathe */
+body.lang-sw h1,
+body.lang-sw h2{
+  letter-spacing:-.03em !important;
+}
+
+body.lang-sw .hero h1{
+  font-size:clamp(42px, 7vw, 86px) !important;
+}
+
+@media(max-width:760px){
+  body.lang-sw .hero h1{
+    font-size:clamp(34px, 11vw, 58px) !important;
+  }
+}
+
+/* Stronger image alignment remains applied across all pages */
+.card img,
+.product-card img,
+.service-card img,
+.project-card img,
+.gallery-card img,
+.promo-card img,
+.video-card img,
+.detail-card img,
+.hero img,
+.hero-grid img,
+.image-grid img,
+.gallery-grid img,
+.products-grid img,
+.projects-grid img,
+.promotions-grid img,
+[class*="card"] img{
+  width:100% !important;
+  object-fit:cover !important;
+  object-position:center !important;
+}
