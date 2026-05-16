@@ -664,3 +664,45 @@ document.addEventListener("DOMContentLoaded", ohgsEnhancedMenuAnimation);
     initSakuraHeader();
   }
 })();
+
+
+// === OHGS final card/header polish behaviour ===
+(function(){
+  function fixImageFallbacks(){
+    const fallbackList = [
+      "images/shop-inside.jpg",
+      "images/inside-ohgs-shop.jpg",
+      "images/ohgs-shop.jpg",
+      "images/shop-front.jpg",
+      "images/gallery-shop.jpg",
+      "shop-inside.jpg",
+      "inside-ohgs-shop.jpg"
+    ];
+    document.querySelectorAll(".ohgs-about-image-card img").forEach(img => {
+      if(img.__ohgsFallbackReady) return;
+      img.__ohgsFallbackReady = true;
+      let index = 0;
+      img.addEventListener("error", function(){
+        index++;
+        if(index < fallbackList.length) img.src = fallbackList[index];
+      });
+    });
+  }
+
+  function polishHeader(){
+    const header = document.querySelector(".site-header, header");
+    if(!header) return;
+    const nav = document.querySelector("#ohgsMainMenu, header nav, .site-header nav");
+    const actions = document.querySelector(".header-actions");
+    if(nav) nav.classList.add("ohgs-clean-nav");
+    if(actions) actions.classList.add("ohgs-clean-actions");
+  }
+
+  function boot(){
+    fixImageFallbacks();
+    polishHeader();
+  }
+
+  if(document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
+  else boot();
+})();

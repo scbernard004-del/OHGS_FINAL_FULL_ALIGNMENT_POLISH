@@ -5348,3 +5348,731 @@ html.light .brand-subtitle{
     height:clamp(340px, 90vw, 540px) !important;
   }
 }
+
+/* === OHGS FINAL CARD ALIGNMENT + SAKURA-LIKE HEADER POLISH === */
+
+/* Page width so sections do not float with giant empty gaps when zoomed out */
+main,
+.page,
+.site-main,
+section{
+  box-sizing:border-box !important;
+}
+
+main > section,
+.section,
+.hero,
+.products-section,
+.services-section,
+.projects-section,
+.gallery-section,
+.promotions-section,
+.about-section,
+.contact-section,
+.detail-section,
+.ohgs-about-feature-clean{
+  width:min(100% - 48px, 1220px) !important;
+  margin-left:auto !important;
+  margin-right:auto !important;
+}
+
+@media(max-width:760px){
+  main > section,
+  .section,
+  .hero,
+  .products-section,
+  .services-section,
+  .projects-section,
+  .gallery-section,
+  .promotions-section,
+  .about-section,
+  .contact-section,
+  .detail-section,
+  .ohgs-about-feature-clean{
+    width:min(100% - 24px, 100%) !important;
+  }
+}
+
+/* Clean card grids on all pages */
+.hero-grid,
+.image-grid,
+.gallery-grid,
+.products-grid,
+.services-grid,
+.projects-grid,
+.promotions-grid,
+.cards-grid,
+.video-grid,
+.detail-grid,
+.contact-grid,
+.about-grid,
+.product-list,
+.grid,
+[class*="grid"]{
+  display:grid !important;
+  gap:24px !important;
+  align-items:stretch !important;
+  width:100% !important;
+  box-sizing:border-box !important;
+}
+
+/* Desktop cards fill rows cleanly */
+@media(min-width:1024px){
+  .products-grid,
+  .services-grid,
+  .projects-grid,
+  .gallery-grid,
+  .promotions-grid,
+  .cards-grid,
+  .product-list,
+  .grid{
+    grid-template-columns:repeat(3, minmax(0, 1fr)) !important;
+  }
+
+  .contact-grid,
+  .about-grid,
+  .detail-grid{
+    grid-template-columns:repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+/* Tablet cards fit without awkward spacing */
+@media(min-width:681px) and (max-width:1023px){
+  .products-grid,
+  .services-grid,
+  .projects-grid,
+  .gallery-grid,
+  .promotions-grid,
+  .cards-grid,
+  .contact-grid,
+  .about-grid,
+  .detail-grid,
+  .product-list,
+  .grid{
+    grid-template-columns:repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+/* Mobile one clean card per row */
+@media(max-width:680px){
+  .products-grid,
+  .services-grid,
+  .projects-grid,
+  .gallery-grid,
+  .promotions-grid,
+  .cards-grid,
+  .contact-grid,
+  .about-grid,
+  .detail-grid,
+  .product-list,
+  .grid,
+  [class*="grid"]{
+    grid-template-columns:1fr !important;
+    gap:20px !important;
+  }
+}
+
+/* Every card same structure, no uneven broken rows */
+.card,
+.product-card,
+.service-card,
+.project-card,
+.gallery-card,
+.promo-card,
+.video-card,
+.detail-card,
+.contact-card,
+.about-card,
+.brand-card,
+[class*="card"]{
+  width:100% !important;
+  min-width:0 !important;
+  height:100% !important;
+  display:flex !important;
+  flex-direction:column !important;
+  overflow:hidden !important;
+  border-radius:24px !important;
+  box-sizing:border-box !important;
+  transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease !important;
+}
+
+.card:hover,
+.product-card:hover,
+.service-card:hover,
+.project-card:hover,
+.gallery-card:hover,
+.promo-card:hover,
+.video-card:hover,
+.detail-card:hover,
+.contact-card:hover,
+.about-card:hover,
+[class*="card"]:hover{
+  transform:translateY(-4px) !important;
+  border-color:rgba(0,189,242,.35) !important;
+}
+
+/* Images fill cards beautifully */
+.card img,
+.product-card img,
+.service-card img,
+.project-card img,
+.gallery-card img,
+.promo-card img,
+.video-card img,
+.detail-card img,
+.about-card img,
+.brand-card img,
+.hero img,
+.hero-grid img,
+.image-grid img,
+.gallery-grid img,
+.products-grid img,
+.projects-grid img,
+.promotions-grid img,
+[class*="card"] img{
+  width:100% !important;
+  min-width:100% !important;
+  height:clamp(220px, 25vw, 340px) !important;
+  object-fit:cover !important;
+  object-position:center !important;
+  display:block !important;
+  transform:none !important;
+  aspect-ratio:auto !important;
+}
+
+.promo-card img,
+.promotions-grid img{
+  height:clamp(320px, 35vw, 470px) !important;
+  object-position:center top !important;
+}
+
+video,
+.video-card video{
+  width:100% !important;
+  aspect-ratio:16/9 !important;
+  object-fit:cover !important;
+  border-radius:22px !important;
+}
+
+/* Card text and buttons align at bottom */
+.card-content,
+.product-card .content,
+.service-card .content,
+.project-card .content,
+.gallery-card .content,
+.promo-card .content,
+.video-card .content,
+.contact-card .content,
+[class*="card"] .content{
+  flex:1 1 auto !important;
+  display:flex !important;
+  flex-direction:column !important;
+  gap:14px !important;
+  min-width:0 !important;
+}
+
+.card-actions,
+.actions,
+.button-row,
+.btn-row,
+[class*="actions"]{
+  margin-top:auto !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:flex-start !important;
+  gap:12px !important;
+  flex-wrap:wrap !important;
+}
+
+.card-actions a,
+.card-actions button,
+.actions a,
+.actions button,
+.button-row a,
+.button-row button,
+.btn-row a,
+.btn-row button{
+  min-width:0 !important;
+  max-width:100% !important;
+  white-space:nowrap !important;
+}
+
+/* Mobile buttons should not overflow */
+@media(max-width:680px){
+  .card-actions,
+  .actions,
+  .button-row,
+  .btn-row,
+  [class*="actions"]{
+    display:grid !important;
+    grid-template-columns:1fr !important;
+    width:100% !important;
+  }
+
+  .card-actions a,
+  .card-actions button,
+  .actions a,
+  .actions button,
+  .button-row a,
+  .button-row button,
+  .btn-row a,
+  .btn-row button{
+    width:100% !important;
+    justify-content:center !important;
+  }
+
+  .card img,
+  .product-card img,
+  .service-card img,
+  .project-card img,
+  .gallery-card img,
+  .promo-card img,
+  .video-card img,
+  .detail-card img,
+  .about-card img,
+  .brand-card img,
+  .hero img,
+  .hero-grid img,
+  .image-grid img,
+  .gallery-grid img,
+  .products-grid img,
+  .projects-grid img,
+  .promotions-grid img,
+  [class*="card"] img{
+    height:clamp(230px, 58vw, 420px) !important;
+  }
+}
+
+/* About page clean feature section with better shop image feel */
+.ohgs-about-feature-clean{
+  display:grid !important;
+  grid-template-columns:minmax(0, .9fr) minmax(320px, 1.1fr) !important;
+  gap:34px !important;
+  align-items:center !important;
+  padding:clamp(54px, 7vw, 96px) 0 !important;
+}
+
+.ohgs-about-copy{
+  min-width:0 !important;
+}
+
+.ohgs-about-copy .eyebrow{
+  display:inline-block !important;
+  margin-bottom:18px !important;
+  color:#ff9f1c !important;
+  font-size:13px !important;
+  font-weight:950 !important;
+  letter-spacing:.28em !important;
+}
+
+.ohgs-about-copy h1{
+  max-width:650px !important;
+  font-size:clamp(42px, 6vw, 78px) !important;
+  line-height:.95 !important;
+  letter-spacing:-.045em !important;
+  margin:0 0 22px !important;
+}
+
+.ohgs-about-copy p{
+  max-width:620px !important;
+  font-size:clamp(16px, 1.4vw, 20px) !important;
+  line-height:1.75 !important;
+}
+
+.about-mini-actions{
+  display:flex !important;
+  gap:12px !important;
+  flex-wrap:wrap !important;
+  margin-top:24px !important;
+}
+
+.ohgs-about-image-card{
+  margin:0 !important;
+  width:100% !important;
+  min-height:360px !important;
+  border-radius:28px !important;
+  overflow:hidden !important;
+  background:linear-gradient(135deg,rgba(0,189,242,.16),rgba(255,159,28,.10)) !important;
+  border:1px solid rgba(255,255,255,.12) !important;
+  box-shadow:0 24px 70px rgba(0,0,0,.22) !important;
+}
+
+.ohgs-about-image-card img{
+  width:100% !important;
+  height:100% !important;
+  min-height:360px !important;
+  object-fit:cover !important;
+  object-position:center !important;
+  display:block !important;
+}
+
+@media(max-width:900px){
+  .ohgs-about-feature-clean{
+    grid-template-columns:1fr !important;
+    gap:24px !important;
+  }
+
+  .ohgs-about-copy h1{
+    font-size:clamp(38px, 10vw, 62px) !important;
+  }
+
+  .ohgs-about-image-card,
+  .ohgs-about-image-card img{
+    min-height:300px !important;
+  }
+}
+
+/* Contact page: form/map/cards should fit full website width cleanly */
+.contact-section,
+.contact-grid{
+  align-items:stretch !important;
+}
+
+.contact-section form,
+.contact-card,
+.map-card,
+.contact-map,
+iframe[src*="google"]{
+  width:100% !important;
+  max-width:100% !important;
+  box-sizing:border-box !important;
+}
+
+.contact-section input,
+.contact-section textarea,
+.contact-section select{
+  width:100% !important;
+  box-sizing:border-box !important;
+}
+
+.contact-section iframe,
+.contact-map iframe,
+.map-card iframe,
+iframe[src*="google"]{
+  min-height:420px !important;
+  border-radius:24px !important;
+  overflow:hidden !important;
+}
+
+/* Header: Sakura-like, one line, rounded nav pills instead of box */
+.site-header,
+header{
+  min-height:66px !important;
+  padding:0 clamp(16px, 4.5vw, 72px) !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:space-between !important;
+  gap:18px !important;
+}
+
+.site-header .brand,
+header .brand{
+  max-width:150px !important;
+  min-width:120px !important;
+  gap:8px !important;
+}
+
+.site-header .brand img,
+header .brand img{
+  width:36px !important;
+  height:36px !important;
+  min-width:36px !important;
+  max-width:36px !important;
+  max-height:36px !important;
+}
+
+.brand-copy{
+  max-width:92px !important;
+}
+
+.brand-title{
+  font-size:18px !important;
+  line-height:.95 !important;
+  letter-spacing:.08em !important;
+}
+
+.brand-subtitle{
+  font-size:6px !important;
+  letter-spacing:.14em !important;
+}
+
+/* Desktop nav ring/pill style, not a box */
+@media(min-width:761px){
+  #ohgsMainMenu,
+  #navMenu,
+  .site-header nav,
+  header nav{
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    gap:4px !important;
+    flex:1 1 auto !important;
+    padding:0 !important;
+    background:transparent !important;
+    border:0 !important;
+    box-shadow:none !important;
+  }
+
+  #ohgsMainMenu a,
+  #navMenu a,
+  .site-header nav a,
+  header nav a{
+    height:32px !important;
+    padding:0 10px !important;
+    border-radius:999px !important;
+    border:1px solid transparent !important;
+    background:transparent !important;
+    font-size:12px !important;
+    font-weight:850 !important;
+    transition:background .2s ease, border-color .2s ease, color .2s ease !important;
+  }
+
+  #ohgsMainMenu a:hover,
+  #navMenu a:hover,
+  .site-header nav a:hover,
+  header nav a:hover,
+  #ohgsMainMenu a.active,
+  #navMenu a.active,
+  .site-header nav a.active,
+  header nav a.active{
+    background:rgba(255,255,255,.055) !important;
+    border-color:rgba(255,255,255,.12) !important;
+    color:#00bdf2 !important;
+  }
+
+  body.light #ohgsMainMenu a:hover,
+  body.light #navMenu a:hover,
+  body.light .site-header nav a:hover,
+  body.light header nav a:hover,
+  body.light #ohgsMainMenu a.active,
+  body.light #navMenu a.active,
+  body.light .site-header nav a.active,
+  body.light header nav a.active{
+    background:rgba(7,18,34,.045) !important;
+    border-color:rgba(7,18,34,.10) !important;
+    color:#0077b6 !important;
+  }
+
+  .header-actions,
+  .ohgs-clean-actions{
+    display:flex !important;
+    align-items:center !important;
+    justify-content:flex-end !important;
+    gap:8px !important;
+    flex:0 0 auto !important;
+    margin-left:0 !important;
+  }
+
+  .header-actions a,
+  .header-actions button,
+  .theme-toggle,
+  .lang-toggle,
+  .whatsapp-btn,
+  .whatsapp,
+  a[href*="wa.me"],
+  a[href*="whatsapp"]{
+    height:34px !important;
+    min-height:34px !important;
+    padding:0 12px !important;
+    border-radius:999px !important;
+    font-size:11px !important;
+    display:inline-flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+  }
+}
+
+/* Header on tablet and zoomed desktop */
+@media(min-width:761px) and (max-width:1180px){
+  .site-header,
+  header{
+    gap:10px !important;
+    padding-inline:12px !important;
+  }
+
+  .site-header .brand,
+  header .brand{
+    min-width:105px !important;
+    max-width:118px !important;
+  }
+
+  .site-header .brand img,
+  header .brand img{
+    width:32px !important;
+    height:32px !important;
+    min-width:32px !important;
+  }
+
+  .brand-title{
+    font-size:15px !important;
+  }
+
+  .brand-subtitle{
+    font-size:5px !important;
+    letter-spacing:.08em !important;
+  }
+
+  #ohgsMainMenu a,
+  #navMenu a,
+  .site-header nav a,
+  header nav a{
+    height:30px !important;
+    padding:0 7px !important;
+    font-size:10.5px !important;
+  }
+
+  .header-actions a,
+  .header-actions button,
+  .theme-toggle,
+  .lang-toggle,
+  .whatsapp-btn,
+  .whatsapp,
+  a[href*="wa.me"],
+  a[href*="whatsapp"]{
+    height:30px !important;
+    min-height:30px !important;
+    padding:0 8px !important;
+    font-size:10px !important;
+  }
+}
+
+/* Mobile header: all controls in one line, menu opens clean dropdown */
+@media(max-width:760px){
+  .site-header,
+  header{
+    min-height:64px !important;
+    padding:8px 9px !important;
+    display:grid !important;
+    grid-template-columns:auto auto 1fr !important;
+    grid-template-areas:"brand menu actions" !important;
+    gap:7px !important;
+    align-items:center !important;
+  }
+
+  .site-header .brand,
+  header .brand{
+    grid-area:brand !important;
+    min-width:0 !important;
+    max-width:94px !important;
+    gap:6px !important;
+  }
+
+  .site-header .brand img,
+  header .brand img{
+    width:34px !important;
+    height:34px !important;
+    min-width:34px !important;
+  }
+
+  .brand-copy{
+    max-width:48px !important;
+  }
+
+  .brand-title{
+    font-size:14px !important;
+    letter-spacing:.05em !important;
+  }
+
+  .brand-subtitle{
+    font-size:5px !important;
+    letter-spacing:.04em !important;
+  }
+
+  .ohgs-menu-toggle{
+    grid-area:menu !important;
+    display:inline-flex !important;
+    width:36px !important;
+    height:36px !important;
+    min-width:36px !important;
+    border-radius:12px !important;
+    justify-self:center !important;
+  }
+
+  .header-actions{
+    grid-area:actions !important;
+    width:100% !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:flex-end !important;
+    gap:4px !important;
+    flex-wrap:nowrap !important;
+  }
+
+  .header-actions a,
+  .header-actions button,
+  .theme-toggle,
+  .lang-toggle,
+  .whatsapp-btn,
+  .whatsapp,
+  a[href*="wa.me"],
+  a[href*="whatsapp"]{
+    height:32px !important;
+    min-height:32px !important;
+    padding:0 6px !important;
+    font-size:8.5px !important;
+    border-radius:999px !important;
+  }
+
+  .whatsapp-btn,
+  .whatsapp,
+  a[href*="wa.me"],
+  a[href*="whatsapp"]{
+    padding-inline:7px !important;
+    font-size:9px !important;
+  }
+
+  #ohgsMainMenu,
+  #navMenu,
+  .site-header nav,
+  header nav{
+    position:absolute !important;
+    left:9px !important;
+    right:9px !important;
+    top:calc(100% + 8px) !important;
+    z-index:9200 !important;
+    display:grid !important;
+    grid-template-columns:repeat(2, minmax(0, 1fr)) !important;
+    gap:8px !important;
+    width:auto !important;
+    max-height:0 !important;
+    padding:0 !important;
+    overflow:hidden !important;
+    opacity:0 !important;
+    visibility:hidden !important;
+    transform:translateY(-8px) scale(.98) !important;
+    border-radius:20px !important;
+  }
+
+  #ohgsMainMenu.ohgs-menu-open,
+  #navMenu.ohgs-menu-open,
+  .site-header nav.ohgs-menu-open,
+  header nav.ohgs-menu-open{
+    max-height:440px !important;
+    padding:12px !important;
+    opacity:1 !important;
+    visibility:visible !important;
+    transform:translateY(0) scale(1) !important;
+  }
+}
+
+/* Cool site-wide entrance animation */
+.card,
+.product-card,
+.service-card,
+.project-card,
+.gallery-card,
+.promo-card,
+.video-card,
+.detail-card,
+.contact-card,
+.about-card,
+.ohgs-about-feature-clean,
+.hero,
+section{
+  animation:ohgsSoftRise .55s ease both;
+}
+
+@keyframes ohgsSoftRise{
+  from{ opacity:.0; transform:translateY(14px); }
+  to{ opacity:1; transform:translateY(0); }
+}
