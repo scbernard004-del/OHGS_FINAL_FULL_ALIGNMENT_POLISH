@@ -825,3 +825,26 @@ document.addEventListener("DOMContentLoaded", ohgsEnhancedMenuAnimation);
   else boot();
   window.addEventListener("load", boot);
 })();
+
+
+// OHGS image safety patch: replace older wrong/missing showcase references
+(function(){
+  const fallbackMap = {
+    'images/ohgs-shop-extra-showcase.png': 'images/ohgs-storefront.jpg',
+    'images/shop-inside.jpg': 'images/ohgs-storefront.jpg',
+    'images/inside-ohgs-shop.jpg': 'images/showroom-machines.jpg',
+    'images/ohgs-shop.jpg': 'images/water-pump-display.jpg',
+    'images/shop-front.jpg': 'images/plywood-building-boards.jpg'
+  };
+  document.addEventListener('DOMContentLoaded', function(){
+    document.querySelectorAll('img').forEach(function(img){
+      const src = img.getAttribute('src') || '';
+      if (fallbackMap[src]) img.setAttribute('src', fallbackMap[src]);
+      if (!img.hasAttribute('loading')) img.setAttribute('loading', 'lazy');
+      img.addEventListener('error', function(){
+        const current = img.getAttribute('src') || '';
+        if (fallbackMap[current]) img.setAttribute('src', fallbackMap[current]);
+      }, { once:true });
+    });
+  });
+})();
