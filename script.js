@@ -584,3 +584,83 @@ document.addEventListener("DOMContentLoaded", ohgsEnhancedMenuAnimation);
   if(document.readyState === "loading") document.addEventListener("DOMContentLoaded", initLanguage);
   else initLanguage();
 })();
+
+
+// === OHGS Sakura-style header behaviour ===
+(function(){
+  function initSakuraHeader(){
+    const header = document.querySelector(".site-header, header");
+    const btn = document.querySelector(".ohgs-menu-toggle");
+    const nav = document.querySelector("#ohgsMainMenu, header nav, .site-header nav");
+    if(!header || !nav) return;
+
+    function isMobile(){
+      return window.matchMedia("(max-width: 760px)").matches;
+    }
+
+    function closeMenu(){
+      nav.classList.remove("ohgs-menu-open");
+      document.body.classList.remove("ohgs-menu-is-open");
+      if(btn){
+        btn.classList.remove("is-open");
+        btn.setAttribute("aria-expanded", "false");
+      }
+    }
+
+    function openMenu(){
+      nav.classList.add("ohgs-menu-open");
+      document.body.classList.add("ohgs-menu-is-open");
+      if(btn){
+        btn.classList.add("is-open");
+        btn.setAttribute("aria-expanded", "true");
+      }
+    }
+
+    function syncHeader(){
+      if(isMobile()){
+        header.classList.add("ohgs-mobile-header");
+        header.classList.remove("ohgs-desktop-header");
+        closeMenu();
+      }else{
+        header.classList.add("ohgs-desktop-header");
+        header.classList.remove("ohgs-mobile-header");
+        closeMenu();
+      }
+    }
+
+    if(btn && !btn.__ohgsSakuraReady){
+      btn.__ohgsSakuraReady = true;
+      btn.addEventListener("click", function(e){
+        if(!isMobile()) return;
+        e.preventDefault();
+        nav.classList.contains("ohgs-menu-open") ? closeMenu() : openMenu();
+      });
+    }
+
+    document.addEventListener("click", function(e){
+      if(!isMobile()) return;
+      if(!header.contains(e.target)) closeMenu();
+    });
+
+    nav.querySelectorAll("a").forEach(link => {
+      if(link.__ohgsSakuraLinkReady) return;
+      link.__ohgsSakuraLinkReady = true;
+      link.addEventListener("click", function(){
+        if(isMobile()) closeMenu();
+      });
+    });
+
+    window.addEventListener("resize", syncHeader);
+    window.addEventListener("scroll", function(){
+      header.classList.toggle("ohgs-scrolled", window.scrollY > 16);
+    }, {passive:true});
+
+    syncHeader();
+  }
+
+  if(document.readyState === "loading"){
+    document.addEventListener("DOMContentLoaded", initSakuraHeader);
+  }else{
+    initSakuraHeader();
+  }
+})();

@@ -4667,3 +4667,684 @@ body.lang-sw .hero h1{
   object-fit:cover !important;
   object-position:center !important;
 }
+
+/* === OHGS SAKURA-STYLE PROFESSIONAL HEADER FINAL FIX === */
+
+/* Global header shell inspired by Sakura layout: slim, clean, centered */
+.site-header,
+header{
+  position:sticky !important;
+  top:0 !important;
+  z-index:9000 !important;
+  width:100% !important;
+  min-height:70px !important;
+  padding:0 clamp(18px, 5vw, 78px) !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:space-between !important;
+  gap:22px !important;
+  flex-wrap:nowrap !important;
+  background:rgba(5, 13, 25, .94) !important;
+  border-bottom:1px solid rgba(255,255,255,.08) !important;
+  box-shadow:none !important;
+  backdrop-filter:blur(18px) saturate(1.15) !important;
+}
+
+.site-header.ohgs-scrolled,
+header.ohgs-scrolled{
+  min-height:62px !important;
+  background:rgba(5, 13, 25, .97) !important;
+  box-shadow:0 16px 40px rgba(0,0,0,.18) !important;
+}
+
+body.light .site-header,
+body.light header,
+html.light .site-header,
+html.light header{
+  background:rgba(255,255,255,.96) !important;
+  border-bottom:1px solid rgba(7,18,34,.10) !important;
+  box-shadow:none !important;
+}
+
+body.light .site-header.ohgs-scrolled,
+body.light header.ohgs-scrolled,
+html.light .site-header.ohgs-scrolled,
+html.light header.ohgs-scrolled{
+  box-shadow:0 16px 40px rgba(15,23,42,.10) !important;
+}
+
+/* Brand: logo + one text block only */
+.site-header .brand,
+header .brand{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:flex-start !important;
+  gap:11px !important;
+  flex:0 0 auto !important;
+  width:auto !important;
+  max-width:180px !important;
+  min-width:135px !important;
+  height:auto !important;
+  overflow:visible !important;
+  text-decoration:none !important;
+  white-space:nowrap !important;
+}
+
+.site-header .brand img,
+header .brand img{
+  width:42px !important;
+  height:42px !important;
+  min-width:42px !important;
+  max-width:42px !important;
+  max-height:42px !important;
+  aspect-ratio:1/1 !important;
+  object-fit:contain !important;
+  object-position:center !important;
+  border-radius:50% !important;
+  background:#fff !important;
+  padding:2px !important;
+  transform:none !important;
+  animation:none !important;
+  filter:none !important;
+  box-shadow:0 8px 20px rgba(0,0,0,.20) !important;
+}
+
+/* Prevent any old giant/truncated brand styles */
+.brand-copy,
+.site-header .brand .brand-copy,
+header .brand .brand-copy{
+  display:flex !important;
+  flex-direction:column !important;
+  justify-content:center !important;
+  align-items:flex-start !important;
+  gap:2px !important;
+  width:auto !important;
+  max-width:92px !important;
+  min-width:0 !important;
+  overflow:visible !important;
+  line-height:1 !important;
+  transform:none !important;
+}
+
+.brand-title,
+.site-header .brand .brand-title,
+header .brand .brand-title{
+  display:block !important;
+  width:auto !important;
+  max-width:none !important;
+  overflow:visible !important;
+  text-overflow:clip !important;
+  white-space:nowrap !important;
+  font-size:22px !important;
+  line-height:.95 !important;
+  font-weight:950 !important;
+  letter-spacing:.08em !important;
+  color:#f5f8ff !important;
+}
+
+.brand-subtitle,
+.site-header .brand .brand-subtitle,
+header .brand .brand-subtitle{
+  display:block !important;
+  width:auto !important;
+  max-width:none !important;
+  overflow:visible !important;
+  text-overflow:clip !important;
+  white-space:nowrap !important;
+  font-size:7px !important;
+  line-height:1 !important;
+  font-weight:900 !important;
+  letter-spacing:.15em !important;
+  text-transform:uppercase !important;
+  color:#00bdf2 !important;
+}
+
+body.light .brand-title,
+body.light .site-header .brand .brand-title,
+body.light header .brand .brand-title,
+html.light .brand-title{
+  color:#071222 !important;
+}
+
+body.light .brand-subtitle,
+body.light .site-header .brand .brand-subtitle,
+body.light header .brand .brand-subtitle,
+html.light .brand-subtitle{
+  color:#0077b6 !important;
+}
+
+/* Desktop menu: visible, centered, like Sakura nav */
+@media(min-width:761px){
+  .ohgs-menu-toggle{
+    display:none !important;
+  }
+
+  #ohgsMainMenu,
+  #navMenu,
+  .site-header nav,
+  header nav{
+    position:static !important;
+    inset:auto !important;
+    width:auto !important;
+    max-height:none !important;
+    overflow:visible !important;
+    opacity:1 !important;
+    visibility:visible !important;
+    transform:none !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    flex:1 1 auto !important;
+    gap:2px !important;
+    padding:0 !important;
+    margin:0 !important;
+    border:0 !important;
+    border-radius:0 !important;
+    background:transparent !important;
+    box-shadow:none !important;
+    backdrop-filter:none !important;
+  }
+
+  #ohgsMainMenu a,
+  #navMenu a,
+  .site-header nav a,
+  header nav a{
+    display:inline-flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    width:auto !important;
+    min-width:auto !important;
+    height:36px !important;
+    min-height:36px !important;
+    padding:0 10px !important;
+    border-radius:12px !important;
+    background:transparent !important;
+    box-shadow:none !important;
+    border:0 !important;
+    color:#f5f8ff !important;
+    font-size:13px !important;
+    line-height:1 !important;
+    font-weight:800 !important;
+    letter-spacing:0 !important;
+    white-space:nowrap !important;
+    text-decoration:none !important;
+    transition:background .2s ease, color .2s ease, transform .2s ease !important;
+  }
+
+  #ohgsMainMenu a:hover,
+  #navMenu a:hover,
+  .site-header nav a:hover,
+  header nav a:hover{
+    background:rgba(255,255,255,.08) !important;
+    color:#00bdf2 !important;
+    transform:translateY(-1px) !important;
+  }
+
+  body.light #ohgsMainMenu a,
+  body.light #navMenu a,
+  body.light .site-header nav a,
+  body.light header nav a,
+  html.light #ohgsMainMenu a,
+  html.light #navMenu a{
+    color:#071222 !important;
+  }
+
+  body.light #ohgsMainMenu a:hover,
+  body.light #navMenu a:hover,
+  body.light .site-header nav a:hover,
+  body.light header nav a:hover{
+    background:rgba(7,18,34,.06) !important;
+    color:#0077b6 !important;
+  }
+
+  .header-actions{
+    flex:0 0 auto !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:flex-end !important;
+    gap:10px !important;
+    margin-left:0 !important;
+    width:auto !important;
+    min-width:auto !important;
+  }
+
+  .header-actions a,
+  .header-actions button,
+  .theme-toggle,
+  .lang-toggle,
+  .whatsapp-btn,
+  .whatsapp,
+  a[href*="wa.me"],
+  a[href*="whatsapp"]{
+    height:36px !important;
+    min-height:36px !important;
+    padding:0 14px !important;
+    border-radius:999px !important;
+    font-size:12px !important;
+    font-weight:900 !important;
+    line-height:1 !important;
+    white-space:nowrap !important;
+  }
+
+  .theme-toggle{
+    min-width:64px !important;
+    padding-inline:12px !important;
+  }
+
+  .lang-toggle,
+  .language-toggle,
+  [data-lang-toggle]{
+    min-width:74px !important;
+    padding-inline:12px !important;
+  }
+}
+
+/* Compact desktop/tablet so header never becomes crowded */
+@media(min-width:761px) and (max-width:1120px){
+  .site-header,
+  header{
+    gap:12px !important;
+    padding-inline:18px !important;
+  }
+
+  .site-header .brand,
+  header .brand{
+    min-width:122px !important;
+    max-width:140px !important;
+    gap:8px !important;
+  }
+
+  .site-header .brand img,
+  header .brand img{
+    width:36px !important;
+    height:36px !important;
+    min-width:36px !important;
+    max-width:36px !important;
+    max-height:36px !important;
+  }
+
+  .brand-title{
+    font-size:18px !important;
+    letter-spacing:.06em !important;
+  }
+
+  .brand-subtitle{
+    font-size:6px !important;
+    letter-spacing:.10em !important;
+  }
+
+  #ohgsMainMenu a,
+  #navMenu a,
+  .site-header nav a,
+  header nav a{
+    height:32px !important;
+    min-height:32px !important;
+    padding:0 6px !important;
+    font-size:11px !important;
+  }
+
+  .header-actions{
+    gap:7px !important;
+  }
+
+  .header-actions a,
+  .header-actions button,
+  .theme-toggle,
+  .lang-toggle,
+  .whatsapp-btn,
+  .whatsapp,
+  a[href*="wa.me"],
+  a[href*="whatsapp"]{
+    height:32px !important;
+    min-height:32px !important;
+    padding:0 9px !important;
+    font-size:10.5px !important;
+  }
+}
+
+/* Mobile: Sakura-like top row with compact logo, menu button, actions */
+@media(max-width:760px){
+  .site-header,
+  header{
+    min-height:68px !important;
+    padding:9px 10px !important;
+    display:grid !important;
+    grid-template-columns:auto auto 1fr !important;
+    grid-template-areas:"brand menu actions" !important;
+    align-items:center !important;
+    gap:8px !important;
+  }
+
+  .site-header .brand,
+  header .brand{
+    grid-area:brand !important;
+    min-width:0 !important;
+    max-width:104px !important;
+    gap:7px !important;
+    overflow:visible !important;
+  }
+
+  .site-header .brand img,
+  header .brand img{
+    width:38px !important;
+    height:38px !important;
+    min-width:38px !important;
+    max-width:38px !important;
+    max-height:38px !important;
+  }
+
+  .brand-copy{
+    max-width:54px !important;
+  }
+
+  .brand-title{
+    font-size:16px !important;
+    letter-spacing:.05em !important;
+  }
+
+  .brand-subtitle{
+    font-size:5.5px !important;
+    letter-spacing:.06em !important;
+  }
+
+  .ohgs-menu-toggle{
+    grid-area:menu !important;
+    display:inline-flex !important;
+    width:40px !important;
+    height:40px !important;
+    min-width:40px !important;
+    border-radius:13px !important;
+    justify-self:center !important;
+    margin:0 !important;
+    background:linear-gradient(135deg,#03c8ff,#067db9) !important;
+  }
+
+  .header-actions{
+    grid-area:actions !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:flex-end !important;
+    gap:5px !important;
+    margin:0 !important;
+    width:100% !important;
+    min-width:0 !important;
+    flex-wrap:nowrap !important;
+  }
+
+  .header-actions a,
+  .header-actions button,
+  .theme-toggle,
+  .lang-toggle,
+  .whatsapp-btn,
+  .whatsapp,
+  a[href*="wa.me"],
+  a[href*="whatsapp"]{
+    height:34px !important;
+    min-height:34px !important;
+    padding:0 7px !important;
+    border-radius:999px !important;
+    font-size:9px !important;
+    font-weight:900 !important;
+    line-height:1 !important;
+    white-space:nowrap !important;
+  }
+
+  .whatsapp-btn,
+  .whatsapp,
+  a[href*="wa.me"],
+  a[href*="whatsapp"]{
+    padding-inline:8px !important;
+    font-size:9.5px !important;
+  }
+
+  /* Mobile dropdown behaves like a clean mini-menu */
+  #ohgsMainMenu,
+  #navMenu,
+  .site-header nav,
+  header nav{
+    position:absolute !important;
+    left:10px !important;
+    right:10px !important;
+    top:calc(100% + 8px) !important;
+    z-index:9200 !important;
+    width:auto !important;
+    max-height:0 !important;
+    overflow:hidden !important;
+    opacity:0 !important;
+    visibility:hidden !important;
+    transform:translateY(-8px) scale(.98) !important;
+    display:grid !important;
+    grid-template-columns:repeat(2, minmax(0,1fr)) !important;
+    gap:8px !important;
+    padding:0 !important;
+    border-radius:20px !important;
+    background:rgba(7,18,34,.98) !important;
+    border:1px solid rgba(255,255,255,.10) !important;
+    box-shadow:0 24px 60px rgba(0,0,0,.35) !important;
+    backdrop-filter:blur(20px) saturate(1.2) !important;
+  }
+
+  #ohgsMainMenu.ohgs-menu-open,
+  #navMenu.ohgs-menu-open,
+  .site-header nav.ohgs-menu-open,
+  header nav.ohgs-menu-open{
+    max-height:440px !important;
+    opacity:1 !important;
+    visibility:visible !important;
+    transform:translateY(0) scale(1) !important;
+    padding:12px !important;
+  }
+
+  #ohgsMainMenu a,
+  #navMenu a,
+  .site-header nav a,
+  header nav a{
+    width:100% !important;
+    min-height:42px !important;
+    height:auto !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    padding:10px 8px !important;
+    border-radius:14px !important;
+    background:rgba(255,255,255,.045) !important;
+    color:#f5f8ff !important;
+    font-size:13px !important;
+    font-weight:900 !important;
+    line-height:1.15 !important;
+    text-align:center !important;
+    white-space:normal !important;
+  }
+
+  body.light #ohgsMainMenu,
+  body.light #navMenu,
+  body.light .site-header nav,
+  body.light header nav,
+  html.light #ohgsMainMenu,
+  html.light #navMenu{
+    background:rgba(255,255,255,.98) !important;
+    border-color:rgba(7,18,34,.12) !important;
+  }
+
+  body.light #ohgsMainMenu a,
+  body.light #navMenu a,
+  body.light .site-header nav a,
+  body.light header nav a,
+  html.light #ohgsMainMenu a,
+  html.light #navMenu a{
+    background:rgba(7,18,34,.045) !important;
+    color:#071222 !important;
+  }
+}
+
+/* Very small phones: if squeezed, logo remains first, text stays tiny instead of broken */
+@media(max-width:380px){
+  .site-header,
+  header{
+    grid-template-columns:auto auto 1fr !important;
+    gap:6px !important;
+    padding-inline:8px !important;
+  }
+
+  .site-header .brand,
+  header .brand{
+    max-width:82px !important;
+    gap:5px !important;
+  }
+
+  .site-header .brand img,
+  header .brand img{
+    width:34px !important;
+    height:34px !important;
+    min-width:34px !important;
+    max-width:34px !important;
+  }
+
+  .brand-copy{
+    max-width:42px !important;
+  }
+
+  .brand-title{
+    font-size:13px !important;
+    letter-spacing:.03em !important;
+  }
+
+  .brand-subtitle{
+    font-size:5px !important;
+    letter-spacing:.02em !important;
+  }
+
+  .ohgs-menu-toggle{
+    width:36px !important;
+    height:36px !important;
+    min-width:36px !important;
+  }
+
+  .header-actions{
+    gap:4px !important;
+  }
+
+  .header-actions a,
+  .header-actions button,
+  .theme-toggle,
+  .lang-toggle{
+    height:32px !important;
+    min-height:32px !important;
+    padding:0 6px !important;
+    font-size:8.5px !important;
+  }
+
+  .whatsapp-btn,
+  .whatsapp,
+  a[href*="wa.me"],
+  a[href*="whatsapp"]{
+    padding-inline:7px !important;
+    font-size:9px !important;
+  }
+}
+
+/* Keep pictures aligned and professional across pages */
+.hero-grid,
+.image-grid,
+.gallery-grid,
+.products-grid,
+.services-grid,
+.projects-grid,
+.promotions-grid,
+.cards-grid,
+.video-grid,
+.detail-grid,
+.product-list,
+.grid,
+[class*="grid"]{
+  align-items:stretch !important;
+}
+
+.card,
+.product-card,
+.service-card,
+.project-card,
+.gallery-card,
+.promo-card,
+.video-card,
+.detail-card,
+[class*="card"]{
+  display:flex !important;
+  flex-direction:column !important;
+  height:100% !important;
+  overflow:hidden !important;
+}
+
+.card img,
+.product-card img,
+.service-card img,
+.project-card img,
+.gallery-card img,
+.promo-card img,
+.video-card img,
+.detail-card img,
+.hero img,
+.hero-grid img,
+.image-grid img,
+.gallery-grid img,
+.products-grid img,
+.projects-grid img,
+.promotions-grid img,
+[class*="card"] img{
+  width:100% !important;
+  height:clamp(220px, 27vw, 360px) !important;
+  object-fit:cover !important;
+  object-position:center !important;
+  display:block !important;
+  transform:none !important;
+}
+
+.promo-card img,
+.promotions-grid img{
+  height:clamp(300px, 36vw, 460px) !important;
+  object-position:center top !important;
+}
+
+@media(max-width:900px){
+  .hero-grid,
+  .image-grid,
+  .gallery-grid,
+  .products-grid,
+  .services-grid,
+  .projects-grid,
+  .promotions-grid,
+  .cards-grid,
+  .video-grid,
+  .detail-grid,
+  .product-list,
+  .grid,
+  [class*="grid"]{
+    display:grid !important;
+    grid-template-columns:1fr !important;
+    gap:22px !important;
+  }
+
+  .card img,
+  .product-card img,
+  .service-card img,
+  .project-card img,
+  .gallery-card img,
+  .promo-card img,
+  .video-card img,
+  .detail-card img,
+  .hero img,
+  .hero-grid img,
+  .image-grid img,
+  .gallery-grid img,
+  .products-grid img,
+  .projects-grid img,
+  .promotions-grid img,
+  [class*="card"] img{
+    height:clamp(230px, 58vw, 430px) !important;
+  }
+
+  .promo-card img,
+  .promotions-grid img{
+    height:clamp(340px, 90vw, 540px) !important;
+  }
+}
