@@ -101,3 +101,6 @@ LATEST HEADER FIX INCLUDED
 - Mobile logo text is much smaller so it does not interfere with menu, language, light/dark or WhatsApp buttons.
 - Desktop/tablet menu active/hover style is now a small rounded pill/ring around the word only, not a large box.
 - Header shrinks smoothly on scroll for mobile, tablet and PC.
+
+
+LATEST FIX: header brand visibility fixed so OHGS HARDWARE is fully visible in dark and light mode on mobile, tablet and desktop.
