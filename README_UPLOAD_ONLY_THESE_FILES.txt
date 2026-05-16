@@ -1,1 +1,1 @@
-Upload only these files to the same GitHub repository. Do not reupload images, assets or videos. This patch improves full light mode on mobile/tablet/desktop, aligns images/cards across pages, and makes the header cleaner.
+Upload only these files to the same GitHub repository. Do not upload assets, images or videos. This fixes the mobile header, makes the brand text shorter on small screens, strengthens complete Swahili/English switching, and forces full light/dark mode across desktop, tablet and mobile.

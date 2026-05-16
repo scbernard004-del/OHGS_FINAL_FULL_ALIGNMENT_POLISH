@@ -2782,3 +2782,484 @@ body.light .site-footer{
   background:#ffffff !important;
   color:#071222 !important;
 }
+
+/* === OHGS FINAL MOBILE HEADER + FULL THEME + RESPONSIVE FIX === */
+
+/* Header: professional and compact on every screen */
+.site-header,
+header{
+  position:sticky !important;
+  top:0 !important;
+  z-index:2000 !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:space-between !important;
+  gap:12px !important;
+  flex-wrap:nowrap !important;
+  min-height:72px !important;
+  padding:10px clamp(14px, 5vw, 64px) !important;
+  background:rgba(7,18,34,.92) !important;
+  border-bottom:1px solid rgba(255,255,255,.09) !important;
+  backdrop-filter:blur(20px) saturate(1.2) !important;
+  box-shadow:0 10px 30px rgba(0,0,0,.18) !important;
+}
+
+.site-header .brand,
+header .brand{
+  display:flex !important;
+  align-items:center !important;
+  gap:10px !important;
+  flex:0 1 auto !important;
+  min-width:0 !important;
+  max-width:clamp(130px, 22vw, 280px) !important;
+  overflow:hidden !important;
+  text-decoration:none !important;
+}
+
+.site-header .brand img,
+header .brand img{
+  width:50px !important;
+  height:50px !important;
+  min-width:50px !important;
+  object-fit:contain !important;
+  border-radius:50% !important;
+  background:#fff !important;
+  padding:2px !important;
+}
+
+.site-header .brand span,
+header .brand span{
+  font-size:clamp(26px, 3vw, 42px) !important;
+  font-weight:900 !important;
+  line-height:1 !important;
+  letter-spacing:.10em !important;
+  white-space:nowrap !important;
+  overflow:hidden !important;
+  text-overflow:ellipsis !important;
+  max-width:100% !important;
+}
+
+/* If OHGS text is too long on phones, keep it short and clean */
+@media(max-width:620px){
+  .site-header,
+  header{
+    display:grid !important;
+    grid-template-columns:auto auto 1fr !important;
+    grid-template-areas:
+      "brand menu actions" !important;
+    gap:8px !important;
+    padding:10px 10px !important;
+    min-height:70px !important;
+  }
+
+  .site-header .brand,
+  header .brand{
+    grid-area:brand !important;
+    max-width:112px !important;
+    gap:7px !important;
+  }
+
+  .site-header .brand img,
+  header .brand img{
+    width:42px !important;
+    height:42px !important;
+    min-width:42px !important;
+  }
+
+  .site-header .brand span,
+  header .brand span{
+    font-size:24px !important;
+    letter-spacing:.08em !important;
+    max-width:60px !important;
+  }
+
+  /* Force the visible brand text to stop looking like O... */
+  .site-header .brand span::after,
+  header .brand span::after{
+    content:"" !important;
+  }
+
+  .ohgs-menu-toggle{
+    grid-area:menu !important;
+    width:42px !important;
+    height:42px !important;
+    min-width:42px !important;
+    border-radius:14px !important;
+  }
+
+  .header-actions{
+    grid-area:actions !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:flex-end !important;
+    gap:5px !important;
+    min-width:0 !important;
+    width:100% !important;
+    flex-wrap:nowrap !important;
+  }
+
+  .header-actions a,
+  .header-actions button,
+  .theme-toggle,
+  .lang-toggle,
+  .whatsapp-btn,
+  .whatsapp,
+  a[href*="wa.me"],
+  a[href*="whatsapp"]{
+    height:38px !important;
+    min-height:38px !important;
+    padding-inline:8px !important;
+    font-size:11px !important;
+    border-radius:999px !important;
+    white-space:nowrap !important;
+  }
+
+  /* Keep WhatsApp button short and fitting */
+  .whatsapp-btn,
+  .whatsapp,
+  a[href*="wa.me"],
+  a[href*="whatsapp"]{
+    padding-inline:12px !important;
+    font-size:12px !important;
+  }
+}
+
+@media(max-width:390px){
+  .site-header .brand,
+  header .brand{
+    max-width:86px !important;
+  }
+
+  .site-header .brand span,
+  header .brand span{
+    display:none !important;
+  }
+
+  .header-actions a,
+  .header-actions button,
+  .theme-toggle,
+  .lang-toggle{
+    padding-inline:7px !important;
+    font-size:10px !important;
+  }
+
+  .whatsapp-btn,
+  .whatsapp,
+  a[href*="wa.me"],
+  a[href*="whatsapp"]{
+    padding-inline:9px !important;
+    font-size:11px !important;
+  }
+}
+
+/* Menu dropdown opens below header, clean on all screens */
+#ohgsMainMenu,
+#navMenu,
+header nav,
+.site-header nav{
+  position:absolute !important;
+  left:clamp(10px, 4vw, 64px) !important;
+  right:clamp(10px, 4vw, 64px) !important;
+  top:calc(100% + 8px) !important;
+  width:auto !important;
+  border-radius:24px !important;
+  z-index:2200 !important;
+}
+
+/* Complete light mode everywhere */
+html.light,
+html.light body,
+body.light{
+  background:#eef5fb !important;
+  color:#071222 !important;
+}
+
+html.light *,
+body.light *{
+  border-color:rgba(7,18,34,.12);
+}
+
+html.light main,
+html.light section,
+html.light article,
+html.light footer,
+html.light .page,
+html.light .site,
+html.light .wrapper,
+html.light .container,
+html.light .content,
+html.light .hero,
+html.light .section,
+html.light [class*="section"],
+body.light main,
+body.light section,
+body.light article,
+body.light footer,
+body.light .page,
+body.light .site,
+body.light .wrapper,
+body.light .container,
+body.light .content,
+body.light .hero,
+body.light .section,
+body.light [class*="section"]{
+  background:transparent !important;
+  color:#071222 !important;
+}
+
+html.light .site-header,
+html.light header,
+body.light .site-header,
+body.light header{
+  background:rgba(255,255,255,.94) !important;
+  color:#071222 !important;
+  border-bottom:1px solid rgba(7,18,34,.12) !important;
+  box-shadow:0 10px 30px rgba(15,23,42,.09) !important;
+}
+
+html.light .card,
+html.light .product-card,
+html.light .service-card,
+html.light .project-card,
+html.light .gallery-card,
+html.light .promo-card,
+html.light .video-card,
+html.light .detail-card,
+html.light .brand-card,
+html.light [class*="card"],
+html.light [class*="box"],
+html.light [class*="panel"],
+body.light .card,
+body.light .product-card,
+body.light .service-card,
+body.light .project-card,
+body.light .gallery-card,
+body.light .promo-card,
+body.light .video-card,
+body.light .detail-card,
+body.light .brand-card,
+body.light [class*="card"],
+body.light [class*="box"],
+body.light [class*="panel"]{
+  background:linear-gradient(180deg,#ffffff,#f7fafc) !important;
+  color:#071222 !important;
+  border-color:rgba(7,18,34,.12) !important;
+  box-shadow:0 18px 45px rgba(15,23,42,.10) !important;
+}
+
+html.light h1,
+html.light h2,
+html.light h3,
+html.light h4,
+html.light h5,
+html.light h6,
+html.light p,
+html.light li,
+html.light span,
+html.light small,
+html.light strong,
+html.light label,
+body.light h1,
+body.light h2,
+body.light h3,
+body.light h4,
+body.light h5,
+body.light h6,
+body.light p,
+body.light li,
+body.light span,
+body.light small,
+body.light strong,
+body.light label{
+  color:#071222 !important;
+}
+
+html.light .muted,
+html.light .lead,
+html.light .subtitle,
+html.light .description,
+html.light [class*="muted"],
+html.light [class*="subtitle"],
+html.light [class*="desc"],
+body.light .muted,
+body.light .lead,
+body.light .subtitle,
+body.light .description,
+body.light [class*="muted"],
+body.light [class*="subtitle"],
+body.light [class*="desc"]{
+  color:#334155 !important;
+}
+
+html.light #ohgsMainMenu,
+html.light #navMenu,
+html.light header nav,
+html.light .site-header nav,
+body.light #ohgsMainMenu,
+body.light #navMenu,
+body.light header nav,
+body.light .site-header nav{
+  background:rgba(255,255,255,.97) !important;
+  color:#071222 !important;
+  border:1px solid rgba(7,18,34,.12) !important;
+}
+
+html.light input,
+html.light textarea,
+html.light select,
+body.light input,
+body.light textarea,
+body.light select{
+  background:#ffffff !important;
+  color:#071222 !important;
+  border-color:rgba(7,18,34,.16) !important;
+}
+
+/* Complete dark mode everywhere */
+html.dark,
+html.dark body,
+body.dark{
+  background:#071222 !important;
+  color:#f5f8ff !important;
+}
+
+html.dark main,
+html.dark section,
+html.dark article,
+html.dark footer,
+html.dark .page,
+html.dark .site,
+html.dark .wrapper,
+html.dark .container,
+html.dark .content,
+html.dark .hero,
+html.dark .section,
+html.dark [class*="section"],
+body.dark main,
+body.dark section,
+body.dark article,
+body.dark footer,
+body.dark .page,
+body.dark .site,
+body.dark .wrapper,
+body.dark .container,
+body.dark .content,
+body.dark .hero,
+body.dark .section,
+body.dark [class*="section"]{
+  color:#f5f8ff !important;
+}
+
+/* Align pictures and cards from first page to last page */
+.hero-grid,
+.image-grid,
+.gallery-grid,
+.products-grid,
+.services-grid,
+.projects-grid,
+.promotions-grid,
+.cards-grid,
+.video-grid,
+.detail-grid,
+.product-list,
+.grid,
+[class*="grid"]{
+  align-items:stretch !important;
+}
+
+.card,
+.product-card,
+.service-card,
+.project-card,
+.gallery-card,
+.promo-card,
+.video-card,
+.detail-card,
+[class*="card"]{
+  height:100% !important;
+  display:flex !important;
+  flex-direction:column !important;
+  overflow:hidden !important;
+}
+
+.card img,
+.product-card img,
+.service-card img,
+.project-card img,
+.gallery-card img,
+.promo-card img,
+.video-card img,
+.detail-card img,
+.hero img,
+.hero-grid img,
+.image-grid img,
+.gallery-grid img,
+.products-grid img,
+.projects-grid img,
+.promotions-grid img,
+[class*="card"] img{
+  width:100% !important;
+  height:clamp(220px, 28vw, 360px) !important;
+  object-fit:cover !important;
+  object-position:center !important;
+  display:block !important;
+}
+
+.promo-card img,
+.promotions-grid img{
+  height:clamp(300px, 36vw, 460px) !important;
+  object-position:center top !important;
+}
+
+video,
+.video-card video{
+  width:100% !important;
+  aspect-ratio:16/9 !important;
+  object-fit:cover !important;
+  border-radius:22px !important;
+}
+
+/* Mobile picture alignment */
+@media(max-width:900px){
+  .hero-grid,
+  .image-grid,
+  .gallery-grid,
+  .products-grid,
+  .services-grid,
+  .projects-grid,
+  .promotions-grid,
+  .cards-grid,
+  .video-grid,
+  .detail-grid,
+  .product-list,
+  .grid,
+  [class*="grid"]{
+    display:grid !important;
+    grid-template-columns:1fr !important;
+    gap:22px !important;
+  }
+
+  .card img,
+  .product-card img,
+  .service-card img,
+  .project-card img,
+  .gallery-card img,
+  .promo-card img,
+  .video-card img,
+  .detail-card img,
+  .hero img,
+  .hero-grid img,
+  .image-grid img,
+  .gallery-grid img,
+  .products-grid img,
+  .projects-grid img,
+  .promotions-grid img,
+  [class*="card"] img{
+    height:clamp(230px, 58vw, 430px) !important;
+  }
+
+  .promo-card img,
+  .promotions-grid img{
+    height:clamp(340px, 90vw, 540px) !important;
+  }
+}

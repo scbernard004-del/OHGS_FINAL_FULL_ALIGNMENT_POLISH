@@ -322,3 +322,184 @@ document.addEventListener("DOMContentLoaded", ohgsEnhancedMenuAnimation);
     document.body.classList.toggle("dark", current !== "light");
   }, 700);
 })();
+
+
+// === OHGS FINAL RESPONSIVE LANGUAGE + THEME FIX ===
+(function(){
+  const swahiliMap = {
+    "Home":"Nyumbani",
+    "Products":"Bidhaa",
+    "Services":"Huduma",
+    "Projects":"Miradi",
+    "Gallery":"Picha",
+    "Promotions":"Matangazo",
+    "About":"Kuhusu",
+    "Contact":"Mawasiliano",
+    "Product Collection":"Mkusanyiko wa Bidhaa",
+    "Browse OHGS equipment by function.":"Angalia vifaa vya OHGS kwa matumizi.",
+    "Professional hardware, tools and equipment for serious projects.":"Hardware, zana na vifaa bora kwa miradi makini.",
+    "From pumps and power tools to construction materials and workshop essentials, OHGS helps contractors, technicians, builders and homeowners find the right product faster.":"Kuanzia pampu na zana za umeme hadi vifaa vya ujenzi na mahitaji ya karakana, OHGS husaidia wakandarasi, mafundi, wajenzi na wamiliki wa nyumba kupata bidhaa sahihi haraka.",
+    "Explore Products":"Angalia Bidhaa",
+    "Request Quote":"Omba Bei",
+    "View Details":"Maelezo",
+    "Order on WhatsApp":"Agiza WhatsApp",
+    "WhatsApp":"WhatsApp",
+    "Email":"Barua Pepe",
+    "Call":"Piga Simu",
+    "Location":"Mahali",
+    "Ask About Offer":"Uliza Ofa",
+    "Ask OHGS":"Uliza OHGS",
+    "Browse Categories":"Angalia Makundi",
+    "Send List":"Tuma Orodha",
+    "Send Email OHGS":"Tuma Email OHGS",
+    "Water Pump Systems":"Mifumo ya Pampu za Maji",
+    "Submersible pumps, pressure controllers, fittings and water transfer solutions for homes, farms, buildings and commercial sites.":"Pampu za kuzamisha, vidhibiti pressure, viungio na vifaa vya kusukuma maji kwa nyumba, mashamba, majengo na biashara.",
+    "Premium product selection":"Uchaguzi bora wa bidhaa",
+    "Ask for current price and availability":"Uliza bei ya sasa na upatikanaji",
+    "Accessories and delivery guidance available":"Vifaa vya ziada na ushauri wa usafirishaji vinapatikana",
+    "Suitable for homes, workshops, farms and construction sites":"Inafaa kwa nyumba, karakana, mashamba na maeneo ya ujenzi",
+    "Pumps & Plumbing":"Pampu na Mabomba",
+    "Outdoor Power":"Mashine za Nje",
+    "Outdoor Power Equipment":"Vifaa vya Nguvu za Nje",
+    "Cleaning Equipment":"Vifaa vya Usafi",
+    "Workshop Equipment":"Vifaa vya Karakana",
+    "Construction Materials":"Vifaa vya Ujenzi",
+    "Power Tools":"Zana za Umeme",
+    "Hand Tools":"Zana za Mkono",
+    "Water projects":"Miradi ya Maji",
+    "Building projects":"Miradi ya Ujenzi",
+    "Product recommendation":"Ushauri wa Bidhaa",
+    "Project supply support":"Msaada wa Vifaa vya Mradi",
+    "Bulk inquiry":"Oda Kubwa",
+    "Built for contractors, homes, farms and businesses.":"Kwa wakandarasi, nyumba, mashamba na biashara.",
+    "OHGS supports practical project needs: water systems, construction supply, workshop setup, cleaning businesses and general hardware purchases.":"OHGS husaidia mahitaji ya miradi: mifumo ya maji, vifaa vya ujenzi, karakana, biashara za usafi na ununuzi wa hardware.",
+    "Built for Tanzania projects":"Kwa Miradi ya Tanzania",
+    "A better way to shop hardware in Arusha.":"Njia bora ya kununua hardware Arusha.",
+    "The collection includes power tools, pumps, construction materials, workshop equipment, cleaning machines and general hardware.":"Mkusanyiko huu una zana za umeme, pampu, vifaa vya ujenzi, vifaa vya karakana, mashine za usafi na hardware za jumla.",
+    "OHGS Hardware & General Supply Ltd":"OHGS Hardware & General Supply Ltd",
+    "Olotu Hardware & General Supply LTD":"Olotu Hardware & General Supply LTD",
+    "Official OHGS Brand":"Nembo Rasmi ya OHGS",
+    "Visit us at Uhuru Rd - Arusha, message us on WhatsApp, or send an email inquiry for product availability, prices and delivery support.":"Tutembelee Uhuru Rd - Arusha, tutumie ujumbe WhatsApp, au tuma email kuulizia bidhaa, bei na usafirishaji.",
+    "Loading OHGS Industrial Experience...":"Tunafungua tovuti ya OHGS...",
+    "Opening OHGS website...":"Tunafungua tovuti ya OHGS...",
+    "Made by Isaac Sabuni":"Imetengenezwa na Isaac Sabuni",
+    "Website by Isaac Sabuni":"Tovuti na Isaac Sabuni",
+    "Call or WhatsApp":"Piga Simu au WhatsApp"
+  };
+
+  const englishMap = {};
+  Object.keys(swahiliMap).forEach(k => englishMap[swahiliMap[k]] = k);
+
+  function cleanText(value){
+    return (value || "").replace(/\s+/g, " ").trim();
+  }
+
+  function translateNodeText(node, lang){
+    const current = cleanText(node.nodeValue);
+    if(!current) return;
+
+    if(!node.__ohgsEnglish){
+      // If current text is already Swahili, store its English pair if known
+      node.__ohgsEnglish = englishMap[current] || current;
+    }
+
+    const english = node.__ohgsEnglish;
+    if(lang === "sw"){
+      if(swahiliMap[english]){
+        node.nodeValue = node.nodeValue.replace(current, swahiliMap[english]);
+      }
+    }else{
+      if(current !== english){
+        node.nodeValue = node.nodeValue.replace(current, english);
+      }else if(englishMap[current]){
+        node.nodeValue = node.nodeValue.replace(current, englishMap[current]);
+      }
+    }
+  }
+
+  function translateWholePage(lang){
+    document.documentElement.lang = lang === "sw" ? "sw" : "en";
+    document.body.classList.toggle("lang-sw", lang === "sw");
+    document.body.classList.toggle("lang-en", lang !== "sw");
+
+    const skip = new Set(["SCRIPT","STYLE","NOSCRIPT","IFRAME","VIDEO"]);
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+      acceptNode(node){
+        if(!node.parentElement || skip.has(node.parentElement.tagName)) return NodeFilter.FILTER_REJECT;
+        if(!cleanText(node.nodeValue)) return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+
+    const nodes = [];
+    while(walker.nextNode()) nodes.push(walker.currentNode);
+    nodes.forEach(node => translateNodeText(node, lang));
+
+    document.querySelectorAll("[placeholder], [aria-label], [title]").forEach(el => {
+      ["placeholder","aria-label","title"].forEach(attr => {
+        if(!el.hasAttribute(attr)) return;
+        const val = cleanText(el.getAttribute(attr));
+        if(!val) return;
+        const key = "__ohgsEnglish_" + attr;
+        if(!el[key]) el[key] = englishMap[val] || val;
+        const english = el[key];
+        if(lang === "sw" && swahiliMap[english]) el.setAttribute(attr, swahiliMap[english]);
+        if(lang === "en") el.setAttribute(attr, english);
+      });
+    });
+
+    document.querySelectorAll(".lang-toggle, [data-lang-toggle], .language-toggle").forEach(btn => {
+      btn.textContent = lang === "sw" ? "SW / EN" : "EN / SW";
+    });
+
+    document.querySelectorAll(".loader-text, .loading-text, #loader p, .preloader p").forEach(el => {
+      el.textContent = lang === "sw" ? "Tunafungua tovuti ya OHGS..." : "Loading OHGS Industrial Experience...";
+    });
+
+    localStorage.setItem("ohgsLang", lang);
+  }
+
+  function applyTheme(theme){
+    const light = theme === "light";
+    document.documentElement.classList.toggle("light", light);
+    document.documentElement.classList.toggle("dark", !light);
+    document.body.classList.toggle("light", light);
+    document.body.classList.toggle("dark", !light);
+    document.documentElement.setAttribute("data-theme", theme);
+    document.body.setAttribute("data-theme", theme);
+    localStorage.setItem("ohgsTheme", theme);
+  }
+
+  function boot(){
+    const lang = localStorage.getItem("ohgsLang") || "en";
+    const theme = localStorage.getItem("ohgsTheme") || "dark";
+    applyTheme(theme);
+    translateWholePage(lang);
+
+    document.querySelectorAll(".lang-toggle, [data-lang-toggle], .language-toggle").forEach(btn => {
+      if(btn.__ohgsLangFinal) return;
+      btn.__ohgsLangFinal = true;
+      btn.addEventListener("click", function(e){
+        e.preventDefault();
+        translateWholePage((localStorage.getItem("ohgsLang") || "en") === "sw" ? "en" : "sw");
+      });
+    });
+
+    document.querySelectorAll(".theme-toggle, [data-theme-toggle], .mode-toggle").forEach(btn => {
+      if(btn.__ohgsThemeFinal) return;
+      btn.__ohgsThemeFinal = true;
+      btn.addEventListener("click", function(e){
+        e.preventDefault();
+        applyTheme((localStorage.getItem("ohgsTheme") || "dark") === "light" ? "dark" : "light");
+      });
+    });
+
+    setInterval(() => {
+      applyTheme(localStorage.getItem("ohgsTheme") || "dark");
+      translateWholePage(localStorage.getItem("ohgsLang") || "en");
+    }, 1200);
+  }
+
+  if(document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
+  else boot();
+})();
