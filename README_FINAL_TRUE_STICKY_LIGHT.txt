@@ -1,0 +1,1 @@
+Final true sticky animated header and full light mode patch for mobile, tablet and desktop. Upload all files to the same GitHub repo, commit to main, and Vercel will update the same domain automatically.
