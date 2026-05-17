@@ -149,3 +149,51 @@
     initStickyMobileHeader();
   }
 })();
+
+/* FINAL: force sticky header visible and responsive after all other scripts */
+(function(){
+  function bootFinalSticky(){
+    var header = document.querySelector('.site-header, header.site-header');
+    var btn = document.querySelector('.ohgs-menu-toggle, .menu-toggle');
+    var nav = document.querySelector('#ohgsMainMenu, .site-header nav, header nav');
+    if(!header) return;
+
+    function sync(){
+      var small = window.scrollY > 10;
+      header.classList.toggle('scrolled', small);
+      document.body.classList.toggle('ohgs-scrolled', small);
+      document.body.classList.toggle('scrolled', small);
+      header.style.position = 'fixed';
+      header.style.top = '0';
+      header.style.left = '0';
+      header.style.right = '0';
+      header.style.zIndex = '2147483000';
+      header.style.transform = 'translate3d(0,0,0)';
+      header.style.opacity = '1';
+      header.style.visibility = 'visible';
+      header.style.pointerEvents = 'auto';
+    }
+
+    window.addEventListener('scroll', sync, {passive:true});
+    window.addEventListener('resize', sync, {passive:true});
+    window.addEventListener('orientationchange', sync, {passive:true});
+    setInterval(sync, 700);
+    sync();
+
+    if(btn && nav && !btn.dataset.ohgsFinalStickyBound){
+      btn.dataset.ohgsFinalStickyBound = 'true';
+      btn.addEventListener('click', function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        var open = !nav.classList.contains('ohgs-menu-open');
+        nav.classList.toggle('ohgs-menu-open', open);
+        nav.classList.toggle('open', open);
+        btn.classList.toggle('is-open', open);
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        sync();
+      }, true);
+    }
+  }
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', bootFinalSticky);
+  else bootFinalSticky();
+})();
