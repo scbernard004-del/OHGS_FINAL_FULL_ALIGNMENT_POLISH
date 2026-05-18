@@ -11236,3 +11236,211 @@ body.light input,body.light textarea,body.light select{background:#ffffff!import
   body.light .site-header nav,body.light #ohgsMainMenu{background:rgba(255,255,255,.99)!important;border-color:rgba(7,18,34,.10)!important;}
   body.light .site-header nav a,body.light #ohgsMainMenu a{background:rgba(7,18,34,.05)!important;color:#061224!important;}
 }
+
+
+
+/* === FINAL FIX: sticky header on mobile/desktop + oval buttons === */
+.site-header,header.site-header{
+  position:fixed!important;top:0!important;left:0!important;right:0!important;width:100vw!important;
+  z-index:2147483647!important;transform:translate3d(0,0,0)!important;opacity:1!important;visibility:visible!important;
+  pointer-events:auto!important;overflow:visible!important;
+}
+@media(min-width:761px){
+  .site-header,header.site-header{height:70px!important;min-height:70px!important;max-height:70px!important;background:rgba(5,13,25,.97)!important}
+  .site-header.scrolled,body.ohgs-scrolled .site-header,body.scrolled .site-header{height:58px!important;min-height:58px!important;max-height:58px!important}
+  .ohgs-menu-toggle,.menu-toggle{display:none!important}
+  .site-header nav,#ohgsMainMenu{display:flex!important;position:static!important;opacity:1!important;visibility:visible!important;max-height:none!important;transform:none!important;overflow:visible!important}
+  .hero .card-actions,.detail-hero .card-actions,.card-actions{display:flex!important;gap:14px!important;flex-wrap:wrap!important;background:transparent!important;border:0!important;box-shadow:none!important;padding:0!important}
+  .hero .card-actions .btn,.hero .card-actions a,.detail-hero .card-actions .btn,.detail-hero .card-actions a,.card-actions .btn,.card-actions a{
+    aspect-ratio:auto!important;width:auto!important;min-width:164px!important;max-width:240px!important;height:48px!important;min-height:48px!important;max-height:48px!important;
+    border-radius:999px!important;padding:0 24px!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;white-space:nowrap!important;
+  }
+}
+@media(max-width:760px){
+  html{scroll-padding-top:72px!important}
+  .site-header,header.site-header{
+    height:62px!important;min-height:62px!important;max-height:62px!important;
+    display:grid!important;grid-template-columns:minmax(112px,140px) minmax(0,1fr) 34px!important;grid-template-areas:"brand actions menu"!important;
+    gap:6px!important;padding:8px!important;background:rgba(5,13,25,.985)!important;border-bottom:1px solid rgba(255,255,255,.10)!important;
+    box-shadow:0 10px 28px rgba(0,0,0,.24)!important;backdrop-filter:blur(18px)!important;-webkit-backdrop-filter:blur(18px)!important;
+  }
+  .site-header.scrolled,body.ohgs-scrolled .site-header,body.scrolled .site-header{height:52px!important;min-height:52px!important;max-height:52px!important;padding-top:5px!important;padding-bottom:5px!important}
+  .site-header .brand{grid-area:brand!important;max-width:140px!important;gap:6px!important;overflow:visible!important}
+  .site-header .brand img{width:31px!important;height:31px!important;min-width:31px!important;flex:0 0 31px!important}
+  .site-header.scrolled .brand img,body.ohgs-scrolled .site-header .brand img{width:26px!important;height:26px!important;min-width:26px!important}
+  .site-header .brand-copy{max-width:88px!important;overflow:visible!important}
+  .site-header .brand-title{font-size:12.5px!important;line-height:.92!important;letter-spacing:.06em!important;color:#fff!important;white-space:nowrap!important;overflow:visible!important}
+  .site-header .brand-subtitle{font-size:6px!important;letter-spacing:.12em!important;color:#06c8ff!important;white-space:nowrap!important;overflow:visible!important}
+  .site-header .header-actions{grid-area:actions!important;display:flex!important;justify-content:flex-end!important;gap:4px!important;min-width:0!important;width:100%!important}
+  .site-header .pill{height:28px!important;min-height:28px!important;padding:0 6px!important;font-size:7.2px!important;border-radius:999px!important;white-space:nowrap!important}
+  .site-header .theme-toggle{width:40px!important;min-width:40px!important;max-width:40px!important}
+  .site-header .lang-toggle{width:52px!important;min-width:52px!important;max-width:52px!important}
+  .site-header .whatsapp{width:62px!important;min-width:62px!important;max-width:62px!important}
+  .ohgs-menu-toggle,.menu-toggle{
+    grid-area:menu!important;display:inline-flex!important;width:34px!important;height:34px!important;min-width:34px!important;max-width:34px!important;
+    border:0!important;border-radius:12px!important;align-items:center!important;justify-content:center!important;flex-direction:column!important;gap:3px!important;
+    background:linear-gradient(180deg,#13d4ff,#078fc8)!important;box-shadow:0 12px 26px rgba(0,191,255,.30)!important
+  }
+  .site-header.scrolled .ohgs-menu-toggle,body.ohgs-scrolled .site-header .ohgs-menu-toggle{width:30px!important;height:30px!important;min-width:30px!important;max-width:30px!important;border-radius:10px!important}
+  .ohgs-menu-toggle span,.menu-toggle span{display:block!important;width:14px!important;height:2px!important;border-radius:999px!important;background:#fff!important;transition:transform .22s ease,opacity .18s ease,width .22s ease!important}
+  .ohgs-menu-toggle.is-open span:nth-child(1),.menu-toggle.is-open span:nth-child(1){transform:translateY(5px) rotate(45deg)!important;width:16px!important}
+  .ohgs-menu-toggle.is-open span:nth-child(2),.menu-toggle.is-open span:nth-child(2){opacity:0!important}
+  .ohgs-menu-toggle.is-open span:nth-child(3),.menu-toggle.is-open span:nth-child(3){transform:translateY(-5px) rotate(-45deg)!important;width:16px!important}
+  .site-header nav,#ohgsMainMenu{
+    position:absolute!important;top:calc(100% + 8px)!important;left:8px!important;right:8px!important;display:grid!important;grid-template-columns:1fr!important;gap:8px!important;
+    max-height:0!important;opacity:0!important;visibility:hidden!important;overflow:hidden!important;padding:0!important;background:rgba(5,13,25,.99)!important;
+    border:1px solid rgba(255,255,255,.12)!important;border-radius:20px!important;box-shadow:0 24px 60px rgba(0,0,0,.38)!important;transform:translateY(-10px) scale(.985)!important;
+    transition:max-height .28s ease,opacity .22s ease,transform .22s ease,padding .22s ease!important;
+  }
+  .site-header nav.ohgs-menu-open,#ohgsMainMenu.ohgs-menu-open,.site-header nav.open,#ohgsMainMenu.open{
+    max-height:560px!important;opacity:1!important;visibility:visible!important;overflow:visible!important;padding:12px!important;transform:translateY(0) scale(1)!important
+  }
+  .site-header nav a,#ohgsMainMenu a{width:100%!important;min-height:40px!important;border-radius:999px!important;background:rgba(255,255,255,.065)!important;color:#fff!important}
+  .hero,.detail-hero,main>section:first-of-type{padding-top:82px!important;scroll-margin-top:72px!important}
+  .hero .card-actions,.detail-hero .card-actions,.card-actions{display:grid!important;grid-template-columns:1fr!important;gap:12px!important;background:transparent!important;border:0!important;box-shadow:none!important;padding:0!important}
+  .hero .card-actions .btn,.hero .card-actions a,.detail-hero .card-actions .btn,.detail-hero .card-actions a,.card-actions .btn,.card-actions a{
+    aspect-ratio:auto!important;width:100%!important;min-width:0!important;max-width:none!important;height:48px!important;min-height:48px!important;max-height:48px!important;border-radius:999px!important;
+  }
+}
+body.light,body.light main,body.light section,body.light .section,body.light .hero,body.light .detail-hero,body.light .page,body.light footer,body.light .footer{
+  background:#f7fbff!important;background-image:none!important;color:#061224!important
+}
+body.light .site-header{background:rgba(255,255,255,.98)!important;border-bottom:1px solid rgba(7,18,34,.12)!important}
+body.light h1,body.light h2,body.light h3,body.light h4,body.light p,body.light li,body.light nav a,body.light .pill,body.light .brand-title{color:#061224!important}
+body.light .brand-subtitle{color:#0077aa!important}
+body.light [class*="card"],body.light .product-card,body.light .service-card,body.light .project-image-card,body.light .promo-card,body.light .contact-card{background:#fff!important;color:#061224!important;border-color:rgba(7,18,34,.10)!important}
+@media(max-width:760px){body.light .site-header nav,body.light #ohgsMainMenu{background:rgba(255,255,255,.99)!important}body.light .site-header nav a,body.light #ohgsMainMenu a{background:rgba(7,18,34,.05)!important;color:#061224!important}}
+
+
+
+/* FINAL PATCH: full light mode and oval desktop icons/buttons */
+html.light, html.light body, body.light, body.light-mode,
+html[data-theme="light"], html[data-theme="light"] body, body[data-theme="light"]{
+  background:#f7fbff!important;
+  color:#061224!important;
+}
+
+html.light main, html.light section, html.light .section, html.light .page, html.light .site-main, html.light .hero, html.light .detail-hero, html.light footer,
+body.light main, body.light section, body.light .section, body.light .page, body.light .site-main, body.light .hero, body.light .detail-hero, body.light footer,
+body.light-mode main, body.light-mode section, body.light-mode .section, body.light-mode .page, body.light-mode .hero, body.light-mode .detail-hero, body.light-mode footer,
+html[data-theme="light"] main, html[data-theme="light"] section, html[data-theme="light"] .section, html[data-theme="light"] .page, html[data-theme="light"] .hero, html[data-theme="light"] .detail-hero, html[data-theme="light"] footer{
+  background:#f7fbff!important;
+  background-image:none!important;
+  color:#061224!important;
+}
+
+html.light .site-header, body.light .site-header, body.light-mode .site-header, html[data-theme="light"] .site-header,
+html.light header.site-header, body.light header.site-header{
+  background:rgba(255,255,255,.985)!important;
+  color:#061224!important;
+  border-bottom:1px solid rgba(7,18,34,.12)!important;
+  box-shadow:0 14px 38px rgba(7,18,34,.10)!important;
+}
+
+html.light [class*="card"], body.light [class*="card"], body.light-mode [class*="card"], html[data-theme="light"] [class*="card"],
+html.light .product-body, body.light .product-body, html.light .stock-body, body.light .stock-body{
+  background:#fff!important;
+  color:#061224!important;
+  border-color:rgba(7,18,34,.12)!important;
+  box-shadow:0 18px 48px rgba(7,18,34,.08)!important;
+}
+
+html.light h1, html.light h2, html.light h3, html.light h4, html.light h5, html.light p, html.light li, html.light span, html.light small, html.light label,
+body.light h1, body.light h2, body.light h3, body.light h4, body.light h5, body.light p, body.light li, body.light span, body.light small, body.light label,
+body.light-mode h1, body.light-mode h2, body.light-mode h3, body.light-mode h4, body.light-mode p, body.light-mode li, body.light-mode span,
+html[data-theme="light"] h1, html[data-theme="light"] h2, html[data-theme="light"] h3, html[data-theme="light"] p, html[data-theme="light"] li, html[data-theme="light"] span{
+  color:#061224!important;
+}
+
+html.light .lead, html.light .muted, html.light .mini-list,
+body.light .lead, body.light .muted, body.light .mini-list,
+body.light-mode .lead, body.light-mode .muted{
+  color:#334155!important;
+}
+
+html.light .site-header .brand-title, body.light .site-header .brand-title, body.light-mode .site-header .brand-title, html[data-theme="light"] .site-header .brand-title,
+html.light .site-header nav a, body.light .site-header nav a, body.light-mode .site-header nav a, html[data-theme="light"] .site-header nav a,
+html.light .site-header .pill, body.light .site-header .pill, body.light-mode .site-header .pill, html[data-theme="light"] .site-header .pill{
+  color:#061224!important;
+}
+
+html.light .site-header .brand-subtitle, body.light .site-header .brand-subtitle, body.light-mode .site-header .brand-subtitle, html[data-theme="light"] .site-header .brand-subtitle{
+  color:#0077aa!important;
+}
+
+/* PC/Web: icons and CTAs oval, not circle */
+@media (min-width:761px){
+  .site-header .pill, header.site-header .pill,
+  .site-header .theme-toggle, .site-header .lang-toggle, .site-header .whatsapp,
+  .theme-toggle, .lang-toggle, .whatsapp{
+    width:auto!important;
+    min-width:74px!important;
+    max-width:none!important;
+    height:36px!important;
+    min-height:36px!important;
+    max-height:36px!important;
+    padding:0 16px!important;
+    border-radius:999px!important;
+    aspect-ratio:auto!important;
+    display:inline-flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    line-height:1!important;
+    white-space:nowrap!important;
+  }
+
+  .site-header .theme-toggle{min-width:76px!important;}
+  .site-header .lang-toggle{min-width:82px!important;}
+  .site-header .whatsapp{min-width:104px!important;}
+
+  .btn, a.btn, button.btn,
+  .hero .btn, .hero a.btn, .hero button,
+  .card-actions .btn, .card-actions a, .card-actions button,
+  .product-card .btn, .product-card a.btn,
+  .detail-hero .btn, .detail-hero a.btn{
+    aspect-ratio:auto!important;
+    width:auto!important;
+    min-width:156px!important;
+    max-width:260px!important;
+    height:46px!important;
+    min-height:46px!important;
+    max-height:46px!important;
+    padding:0 22px!important;
+    border-radius:999px!important;
+    display:inline-flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    text-align:center!important;
+    line-height:1!important;
+    white-space:nowrap!important;
+  }
+
+  .hero .card-actions, .detail-hero .card-actions, .card-actions{
+    display:flex!important;
+    flex-direction:row!important;
+    align-items:center!important;
+    justify-content:flex-start!important;
+    gap:14px!important;
+    flex-wrap:wrap!important;
+    background:transparent!important;
+    border:0!important;
+    box-shadow:none!important;
+    padding:0!important;
+    border-radius:0!important;
+    min-height:0!important;
+  }
+}
+
+@media (max-width:760px){
+  html.light .site-header nav, body.light .site-header nav, body.light-mode .site-header nav, html[data-theme="light"] .site-header nav,
+  html.light #ohgsMainMenu, body.light #ohgsMainMenu, body.light-mode #ohgsMainMenu, html[data-theme="light"] #ohgsMainMenu{
+    background:rgba(255,255,255,.99)!important;
+    border-color:rgba(7,18,34,.12)!important;
+  }
+
+  html.light .site-header nav a, body.light .site-header nav a, body.light-mode .site-header nav a, html[data-theme="light"] .site-header nav a,
+  html.light #ohgsMainMenu a, body.light #ohgsMainMenu a, body.light-mode #ohgsMainMenu a, html[data-theme="light"] #ohgsMainMenu a{
+    background:rgba(7,18,34,.05)!important;
+    color:#061224!important;
+  }
+}

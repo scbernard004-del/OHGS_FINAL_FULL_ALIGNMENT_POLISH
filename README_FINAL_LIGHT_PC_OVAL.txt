@@ -1,0 +1,1 @@
+Fix: full light mode on mobile/web/tablet and PC header/CTA icons are oval instead of round.
