@@ -11444,3 +11444,507 @@ html.light .site-header .brand-subtitle, body.light .site-header .brand-subtitle
     color:#061224!important;
   }
 }
+
+
+
+/* =========================================================
+   FINAL VISUAL FIX: real oval buttons, responsive cards/images,
+   added OHGS pictures, and full mobile/tablet/desktop light mode
+   ========================================================= */
+
+html,body{overflow-x:hidden!important;}
+
+/* Button cards: remove circle behavior completely */
+.card-actions,
+.hero .card-actions,
+.detail-hero .card-actions,
+.product-body .card-actions,
+.info-card .card-actions,
+.service-card .card-actions,
+.quote-card .card-actions,
+.promo-card .card-actions,
+.project-image-card .card-actions{
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:12px!important;
+  align-items:center!important;
+  justify-content:stretch!important;
+  width:100%!important;
+  max-width:100%!important;
+  min-height:0!important;
+  padding:0!important;
+  margin-top:18px!important;
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+  border-radius:0!important;
+}
+
+.card-actions .btn,
+.card-actions a,
+.card-actions button,
+.hero .card-actions .btn,
+.hero .card-actions a,
+.detail-hero .card-actions .btn,
+.detail-hero .card-actions a,
+.product-body .card-actions .btn,
+.product-body .card-actions a,
+.ohgs-oval-btn,
+a.ohgs-oval-btn{
+  aspect-ratio:auto!important;
+  width:100%!important;
+  min-width:0!important;
+  max-width:100%!important;
+  height:46px!important;
+  min-height:46px!important;
+  max-height:46px!important;
+  padding:0 18px!important;
+  border-radius:24px!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  text-align:center!important;
+  line-height:1!important;
+  white-space:nowrap!important;
+  overflow:hidden!important;
+  text-overflow:ellipsis!important;
+  font-size:clamp(12px,.95vw,14px)!important;
+}
+
+/* Hero CTA should fit inside its card, not become circles */
+.hero .card-actions,
+.detail-hero .card-actions{
+  max-width:520px!important;
+}
+
+@media (min-width:761px){
+  .hero .card-actions,
+  .detail-hero .card-actions{
+    grid-template-columns:repeat(2,minmax(150px,1fr))!important;
+  }
+}
+
+@media (max-width:760px){
+  .card-actions,
+  .hero .card-actions,
+  .detail-hero .card-actions,
+  .product-body .card-actions{
+    grid-template-columns:1fr!important;
+    gap:12px!important;
+  }
+  .card-actions .btn,
+  .card-actions a,
+  .card-actions button,
+  .ohgs-oval-btn{
+    height:48px!important;
+    min-height:48px!important;
+    max-height:48px!important;
+    border-radius:24px!important;
+    font-size:14px!important;
+  }
+}
+
+/* All product/gallery/service cards align cleanly on every screen */
+.product-grid,
+.ohgs-latest-grid,
+.service-grid-enhanced,
+.project-picture-grid,
+.stock-grid,
+.promo-grid,
+.video-grid{
+  display:grid!important;
+  grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr))!important;
+  gap:clamp(18px,2.4vw,30px)!important;
+  align-items:stretch!important;
+  width:100%!important;
+}
+
+.product-card,
+.ohgs-latest-card,
+.service-card,
+.info-card,
+.quote-card,
+.promo-card,
+.video-card,
+.project-image-card,
+.stock-card{
+  height:100%!important;
+  display:flex!important;
+  flex-direction:column!important;
+  overflow:hidden!important;
+  border-radius:26px!important;
+}
+
+.product-card img,
+.ohgs-latest-card img,
+.service-photo-card img,
+.project-image-card img,
+.stock-card img,
+.promo-card img,
+.gallery img{
+  width:100%!important;
+  height:auto!important;
+  aspect-ratio:16/10!important;
+  object-fit:cover!important;
+  object-position:center!important;
+  display:block!important;
+  border-radius:22px 22px 0 0!important;
+}
+
+.gallery{
+  columns:unset!important;
+  display:grid!important;
+  grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr))!important;
+  gap:clamp(16px,2.2vw,24px)!important;
+  align-items:start!important;
+}
+.gallery img{
+  margin:0!important;
+  border-radius:22px!important;
+  break-inside:auto!important;
+}
+
+.ohgs-latest-card video{
+  width:100%!important;
+  aspect-ratio:16/10!important;
+  object-fit:cover!important;
+  border-radius:22px 22px 0 0!important;
+  background:#000!important;
+}
+
+.product-body,
+.ohgs-latest-body,
+.service-card,
+.info-card,
+.quote-card,
+.promo-card > div,
+.video-card{
+  flex:1 1 auto!important;
+  display:flex!important;
+  flex-direction:column!important;
+  padding:clamp(18px,2.2vw,26px)!important;
+}
+
+.product-body p,
+.ohgs-latest-body p,
+.service-card p,
+.info-card p{
+  flex:1 1 auto!important;
+}
+
+/* New picture section spacing */
+.ohgs-latest-visuals,
+.ohgs-service-photo-links{
+  position:relative!important;
+}
+.ohgs-latest-visuals .lead,
+.ohgs-service-photo-links .lead{
+  margin-bottom:28px!important;
+}
+.ohgs-latest-card{
+  background:var(--card)!important;
+  border:1px solid var(--line)!important;
+  box-shadow:0 18px 50px rgba(0,0,0,.22)!important;
+  transition:transform .28s ease, box-shadow .28s ease!important;
+}
+.ohgs-latest-card:hover{
+  transform:translateY(-8px)!important;
+  box-shadow:0 26px 72px rgba(0,0,0,.30)!important;
+}
+
+/* PC header icons: oval, never circles */
+@media (min-width:761px){
+  .site-header .pill,
+  .site-header .theme-toggle,
+  .site-header .lang-toggle,
+  .site-header .whatsapp,
+  .theme-toggle,
+  .lang-toggle,
+  .whatsapp{
+    aspect-ratio:auto!important;
+    width:auto!important;
+    height:36px!important;
+    min-height:36px!important;
+    max-height:36px!important;
+    min-width:76px!important;
+    max-width:none!important;
+    padding:0 16px!important;
+    border-radius:999px!important;
+  }
+  .site-header .whatsapp{min-width:104px!important;}
+}
+
+/* True light mode across the whole website on phone, tablet and desktop */
+html.light,
+html.light body,
+html[data-theme="light"],
+html[data-theme="light"] body,
+body.light,
+body.light-mode,
+body[data-theme="light"]{
+  --bg:#f7fbff!important;
+  --bg2:#ffffff!important;
+  --card:#ffffff!important;
+  --soft:#edf5fc!important;
+  --text:#061224!important;
+  --muted:#334155!important;
+  --line:rgba(7,18,34,.12)!important;
+  background:#f7fbff!important;
+  color:#061224!important;
+}
+
+html.light main,html.light section,html.light footer,
+html[data-theme="light"] main,html[data-theme="light"] section,html[data-theme="light"] footer,
+body.light main,body.light section,body.light footer,
+body.light-mode main,body.light-mode section,body.light-mode footer,
+body[data-theme="light"] main,body[data-theme="light"] section,body[data-theme="light"] footer,
+body.light .section,body.light .hero,body.light .detail-hero,body.light .site-main,body.light .page,
+html.light .section,html.light .hero,html.light .detail-hero,html.light .site-main,html.light .page{
+  background:#f7fbff!important;
+  background-image:none!important;
+  color:#061224!important;
+}
+
+body.light .hero,
+html.light .hero,
+html[data-theme="light"] .hero{
+  background:linear-gradient(135deg,#ffffff 0%,#edf7ff 100%)!important;
+}
+
+html.light .site-header,
+body.light .site-header,
+body.light-mode .site-header,
+html[data-theme="light"] .site-header{
+  background:rgba(255,255,255,.985)!important;
+  border-bottom:1px solid rgba(7,18,34,.12)!important;
+  box-shadow:0 14px 38px rgba(7,18,34,.10)!important;
+}
+
+html.light h1,html.light h2,html.light h3,html.light h4,html.light h5,html.light p,html.light li,html.light span,html.light label,
+body.light h1,body.light h2,body.light h3,body.light h4,body.light h5,body.light p,body.light li,body.light span,body.light label,
+body.light-mode h1,body.light-mode h2,body.light-mode h3,body.light-mode p,body.light-mode li,body.light-mode span,
+html[data-theme="light"] h1,html[data-theme="light"] h2,html[data-theme="light"] h3,html[data-theme="light"] p,html[data-theme="light"] li,html[data-theme="light"] span{
+  color:#061224!important;
+}
+html.light .lead,html.light .muted,html.light .mini-list,
+body.light .lead,body.light .muted,body.light .mini-list,
+body.light-mode .lead,body.light-mode .muted{
+  color:#334155!important;
+}
+
+body.light .product-card,body.light .ohgs-latest-card,body.light .service-card,body.light .info-card,body.light .quote-card,body.light .promo-card,body.light .video-card,body.light .project-image-card,body.light .stock-card,body.light [class*="card"],
+html.light .product-card,html.light .ohgs-latest-card,html.light .service-card,html.light .info-card,html.light .quote-card,html.light .promo-card,html.light .video-card,html.light .project-image-card,html.light .stock-card,html.light [class*="card"]{
+  background:#ffffff!important;
+  color:#061224!important;
+  border-color:rgba(7,18,34,.12)!important;
+  box-shadow:0 18px 48px rgba(7,18,34,.08)!important;
+}
+
+body.light .site-header nav a,
+body.light .site-header .pill,
+body.light .site-header .brand-title,
+html.light .site-header nav a,
+html.light .site-header .pill,
+html.light .site-header .brand-title{
+  color:#061224!important;
+}
+body.light .site-header .brand-subtitle,
+html.light .site-header .brand-subtitle{
+  color:#0077aa!important;
+}
+
+@media(max-width:760px){
+  body.light .site-header nav,body.light #ohgsMainMenu,
+  html.light .site-header nav,html.light #ohgsMainMenu{
+    background:rgba(255,255,255,.99)!important;
+    border-color:rgba(7,18,34,.12)!important;
+  }
+  body.light .site-header nav a,body.light #ohgsMainMenu a,
+  html.light .site-header nav a,html.light #ohgsMainMenu a{
+    background:rgba(7,18,34,.05)!important;
+    color:#061224!important;
+  }
+}
+
+
+/* =========================================================
+   FINAL BUTTON REFINEMENT: flatter, cleaner CTA buttons
+   ========================================================= */
+
+/* Make content buttons flatter and more professional everywhere */
+.hero .btn,
+.detail-hero .btn,
+.product-card .btn,
+.product-body .btn,
+.service-card .btn,
+.info-card .btn,
+.quote-card .btn,
+.promo-card .btn,
+.ohgs-latest-card .btn,
+.footer-actions .btn,
+.card-actions .btn,
+.card-actions a,
+.ohgs-oval-btn{
+  aspect-ratio:auto !important;
+  width:auto !important;
+  min-width:168px !important;
+  max-width:100% !important;
+  height:50px !important;
+  min-height:50px !important;
+  max-height:50px !important;
+  padding:0 22px !important;
+  border-radius:16px !important;
+  border:1px solid rgba(56,189,248,.22) !important;
+  box-shadow:0 10px 26px rgba(2,12,27,.16) !important;
+  font-weight:800 !important;
+  line-height:1 !important;
+  letter-spacing:.01em !important;
+  transition:transform .22s ease, box-shadow .22s ease, background .22s ease, border-color .22s ease !important;
+}
+
+.hero .btn:hover,
+.detail-hero .btn:hover,
+.product-card .btn:hover,
+.service-card .btn:hover,
+.info-card .btn:hover,
+.quote-card .btn:hover,
+.promo-card .btn:hover,
+.ohgs-latest-card .btn:hover,
+.footer-actions .btn:hover,
+.card-actions .btn:hover,
+.card-actions a:hover,
+.ohgs-oval-btn:hover{
+  transform:translateY(-2px) !important;
+  box-shadow:0 16px 34px rgba(2,12,27,.22) !important;
+}
+
+/* Flat primary style */
+.hero .btn:not(.ghost),
+.detail-hero .btn:not(.ghost),
+.product-card .btn:not(.ghost),
+.product-body .btn:not(.ghost),
+.service-card .btn:not(.ghost),
+.info-card .btn:not(.ghost),
+.quote-card .btn:not(.ghost),
+.promo-card .btn:not(.ghost),
+.ohgs-latest-card .btn:not(.ghost),
+.card-actions .btn:not(.ghost),
+.card-actions a.btn:not(.ghost),
+.ohgs-oval-btn:not(.ghost){
+  background:linear-gradient(180deg,#1cb8f0 0%, #0ea5e9 100%) !important;
+  color:#ffffff !important;
+  border-color:rgba(14,165,233,.30) !important;
+}
+
+/* Flat secondary / ghost style */
+.hero .btn.ghost,
+.detail-hero .btn.ghost,
+.product-card .btn.ghost,
+.product-body .btn.ghost,
+.service-card .btn.ghost,
+.info-card .btn.ghost,
+.quote-card .btn.ghost,
+.promo-card .btn.ghost,
+.ohgs-latest-card .btn.ghost,
+.card-actions .btn.ghost,
+.card-actions a.ghost,
+.ohgs-oval-btn.ghost{
+  background:rgba(7,20,38,.20) !important;
+  color:#ecf7ff !important;
+  border:1px solid rgba(125,211,252,.18) !important;
+  backdrop-filter:blur(10px) !important;
+}
+
+/* First page: remove the circle look completely */
+.hero .reveal > .card-actions{
+  display:flex !important;
+  flex-direction:row !important;
+  flex-wrap:wrap !important;
+  align-items:center !important;
+  justify-content:flex-start !important;
+  gap:14px !important;
+  width:100% !important;
+  max-width:470px !important;
+  min-height:auto !important;
+  height:auto !important;
+  padding:0 !important;
+  margin-top:22px !important;
+  background:transparent !important;
+  border:0 !important;
+  box-shadow:none !important;
+}
+
+.hero .reveal > .card-actions > a{
+  flex:1 1 210px !important;
+  width:auto !important;
+  min-width:190px !important;
+  max-width:220px !important;
+  height:52px !important;
+  min-height:52px !important;
+  max-height:52px !important;
+  border-radius:18px !important;
+  font-size:15px !important;
+  overflow:hidden !important;
+  text-overflow:ellipsis !important;
+  white-space:nowrap !important;
+}
+
+/* Keep header/menu pills as oval only, not these flatter content buttons */
+.site-header .btn,
+.site-header .pill,
+.site-header .theme-toggle,
+.site-header .lang-toggle,
+.site-header .whatsapp{
+  border-radius:999px !important;
+}
+
+/* Light mode button colors */
+html.light .hero .btn.ghost,
+html[data-theme="light"] .hero .btn.ghost,
+body.light .hero .btn.ghost,
+body[data-theme="light"] .hero .btn.ghost,
+html.light .card-actions .btn.ghost,
+html[data-theme="light"] .card-actions .btn.ghost,
+body.light .card-actions .btn.ghost,
+body[data-theme="light"] .card-actions .btn.ghost,
+html.light .ohgs-oval-btn.ghost,
+body.light .ohgs-oval-btn.ghost{
+  background:#ffffff !important;
+  color:#0f172a !important;
+  border-color:rgba(15,23,42,.14) !important;
+  box-shadow:0 8px 22px rgba(15,23,42,.08) !important;
+}
+
+html.light .hero .btn:not(.ghost),
+html[data-theme="light"] .hero .btn:not(.ghost),
+body.light .hero .btn:not(.ghost),
+body[data-theme="light"] .hero .btn:not(.ghost),
+html.light .card-actions .btn:not(.ghost),
+html[data-theme="light"] .card-actions .btn:not(.ghost),
+body.light .card-actions .btn:not(.ghost),
+body[data-theme="light"] .card-actions .btn:not(.ghost),
+html.light .ohgs-oval-btn:not(.ghost),
+body.light .ohgs-oval-btn:not(.ghost){
+  color:#ffffff !important;
+}
+
+@media (max-width:760px){
+  .hero .reveal > .card-actions{
+    display:grid !important;
+    grid-template-columns:1fr !important;
+    max-width:100% !important;
+  }
+
+  .hero .reveal > .card-actions > a,
+  .card-actions .btn,
+  .card-actions a,
+  .ohgs-oval-btn{
+    width:100% !important;
+    min-width:0 !important;
+    max-width:100% !important;
+    height:50px !important;
+    min-height:50px !important;
+    max-height:50px !important;
+    border-radius:18px !important;
+  }
+}

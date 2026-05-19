@@ -366,3 +366,67 @@
     syncThemeClasses();bindThemeButtons();setInterval(syncThemeClasses,700);
   }
 })();
+
+
+
+/* FINAL THEME + HEADER PATCH: exact light/dark sync and mobile support */
+(function(){
+  function setTheme(mode){
+    var light = mode === 'light';
+    var body = document.body;
+    var html = document.documentElement;
+    body.classList.toggle('light', light);
+    body.classList.toggle('light-mode', light);
+    html.classList.toggle('light', light);
+    if(light){
+      body.setAttribute('data-theme','light');
+      html.setAttribute('data-theme','light');
+    }else{
+      body.setAttribute('data-theme','dark');
+      html.setAttribute('data-theme','dark');
+    }
+    localStorage.setItem('ohgsTheme', light ? 'light' : 'dark');
+    localStorage.setItem('theme', light ? 'light' : 'dark');
+  }
+
+  window.toggleTheme = function(){
+    var current = localStorage.getItem('ohgsTheme') || localStorage.getItem('theme') || (document.body.classList.contains('light') ? 'light' : 'dark');
+    setTheme(current === 'light' ? 'dark' : 'light');
+  };
+
+  function initTheme(){
+    var saved = localStorage.getItem('ohgsTheme') || localStorage.getItem('theme') || 'dark';
+    setTheme(saved === 'light' ? 'light' : 'dark');
+  }
+
+  function keepHeaderSticky(){
+    var header = document.querySelector('.site-header, header.site-header');
+    if(!header) return;
+    var compact = window.scrollY > 8;
+    header.classList.toggle('scrolled', compact);
+    document.body.classList.toggle('ohgs-scrolled', compact);
+    header.style.setProperty('position','fixed','important');
+    header.style.setProperty('top','0','important');
+    header.style.setProperty('left','0','important');
+    header.style.setProperty('right','0','important');
+    header.style.setProperty('width','100vw','important');
+    header.style.setProperty('z-index','2147483647','important');
+    header.style.setProperty('transform','translate3d(0,0,0)','important');
+    header.style.setProperty('opacity','1','important');
+    header.style.setProperty('visibility','visible','important');
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', function(){
+      initTheme();
+      keepHeaderSticky();
+      setInterval(keepHeaderSticky, 300);
+    });
+  }else{
+    initTheme();
+    keepHeaderSticky();
+    setInterval(keepHeaderSticky, 300);
+  }
+  window.addEventListener('scroll', keepHeaderSticky, {passive:true});
+  window.addEventListener('resize', keepHeaderSticky, {passive:true});
+})();

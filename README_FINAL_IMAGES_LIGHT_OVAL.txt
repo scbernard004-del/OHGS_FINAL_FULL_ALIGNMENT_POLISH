@@ -1,0 +1,1 @@
+Added the latest OHGS shop/lawn-mower images and video, aligned cards/images responsively, fixed round buttons into oval buttons, and strengthened full light mode across mobile, tablet and desktop.

@@ -1,0 +1,1 @@
+This update refines the first-page buttons and other content buttons to be flatter, cleaner, and more professional. It removes the circular look and uses cleaner flat CTA styling on mobile, tablet, and desktop.
