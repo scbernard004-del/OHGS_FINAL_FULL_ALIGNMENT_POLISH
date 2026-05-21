@@ -1,0 +1,1 @@
+This update changes the site title, browser/Google preview metadata, favicon links, Open Graph/Twitter preview data, canonical URLs, and LocalBusiness schema to Olotu Hardware / OHGS Hardware. Google may take days or weeks to update search results after deployment and indexing.

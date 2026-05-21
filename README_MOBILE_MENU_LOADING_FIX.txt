@@ -1,0 +1,1 @@
+Fixes the mobile menu so it stays closed under a small menu icon and opens as a compact dropdown. Also makes the loading spinner smaller and neatly rotating around the OHGS logo on mobile, tablet and desktop.

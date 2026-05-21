@@ -563,3 +563,45 @@
     if(['ohgsTheme','theme','siteTheme'].indexOf(e.key) !== -1) setTheme(getTheme() === 'light' ? 'light' : 'dark');
   });
 })();
+
+
+/* =========================================================
+   FINAL PATCH: robust mobile menu close/open + compact header
+   ========================================================= */
+(function(){
+  function ready(fn){ if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',fn); else fn(); }
+  ready(function(){
+    var header=document.querySelector('.site-header, header.site-header');
+    var btn=document.querySelector('.ohgs-menu-toggle, .menu-toggle');
+    var nav=document.querySelector('#ohgsMainMenu, .site-header nav, header.site-header nav');
+    function syncHeader(){
+      if(!header) return;
+      var compact=window.scrollY>8;
+      header.classList.toggle('scrolled',compact);
+      document.body.classList.toggle('ohgs-scrolled',compact);
+      header.style.setProperty('position','fixed','important');
+      header.style.setProperty('top','0','important');
+      header.style.setProperty('left','0','important');
+      header.style.setProperty('right','0','important');
+      header.style.setProperty('z-index','99999','important');
+    }
+    function isOpen(){return nav&&(nav.classList.contains('ohgs-menu-open')||nav.classList.contains('open'));}
+    function closeMenu(){if(!btn||!nav)return;nav.classList.remove('ohgs-menu-open','open');btn.classList.remove('is-open','open');btn.setAttribute('aria-expanded','false');document.body.classList.remove('ohgs-menu-open');}
+    function openMenu(){if(!btn||!nav)return;nav.classList.add('ohgs-menu-open','open');btn.classList.add('is-open','open');btn.setAttribute('aria-expanded','true');document.body.classList.add('ohgs-menu-open');}
+    function toggleMenu(e){if(e){e.preventDefault();e.stopPropagation();if(e.stopImmediatePropagation)e.stopImmediatePropagation();} if(isOpen())closeMenu();else openMenu();}
+    if(btn&&nav){
+      btn.setAttribute('aria-controls',nav.id||'ohgsMainMenu');
+      btn.setAttribute('aria-expanded','false');
+      btn.onclick=null;
+      btn.addEventListener('click',toggleMenu,true);
+      nav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',closeMenu);});
+      document.addEventListener('click',function(e){if(window.innerWidth<=900&&header&&!header.contains(e.target))closeMenu();},true);
+      document.addEventListener('keydown',function(e){if(e.key==='Escape')closeMenu();});
+      window.addEventListener('resize',function(){if(window.innerWidth>900)closeMenu();syncHeader();},{passive:true});
+    }
+    window.addEventListener('scroll',syncHeader,{passive:true});
+    window.addEventListener('pageshow',syncHeader);
+    syncHeader();
+    setInterval(syncHeader,600);
+  });
+})();
