@@ -12577,3 +12577,572 @@ body.light .loader-text,html.light .loader-text,html[data-theme="light"] .loader
   #ohgsMainMenu,.site-header nav,header.site-header nav{grid-template-columns:1fr 1fr!important;left:9px!important;right:9px!important;padding:10px!important;gap:7px!important}
   #ohgsMainMenu a,.site-header nav a,header.site-header nav a{min-height:40px!important;font-size:12.5px!important;padding:9px 8px!important}
 }
+
+
+/* =========================================================
+   FINAL PRO FIX: mobile menu compact + real light mode
+   This patch must stay at the END of style.css
+   ========================================================= */
+
+/* Give every theme switch one strong source of truth */
+html.ohgs-light,
+html.ohgs-light body,
+body.ohgs-light,
+html[data-theme="light"],
+html[data-theme="light"] body,
+body[data-theme="light"],
+body.light,
+body.light-mode{
+  --bg:#f6fbff !important;
+  --bg2:#ffffff !important;
+  --card:#ffffff !important;
+  --soft:#edf6fc !important;
+  --text:#071222 !important;
+  --muted:#475569 !important;
+  --line:rgba(7,18,34,.12) !important;
+  background:#f6fbff !important;
+  color:#071222 !important;
+}
+
+html.ohgs-light body::before,
+html.ohgs-light body::after,
+html.ohgs-light main::before,
+html.ohgs-light main::after,
+html.ohgs-light section::before,
+html.ohgs-light section::after,
+html.ohgs-light .hero::before,
+html.ohgs-light .hero::after,
+html.ohgs-light .section::before,
+html.ohgs-light .section::after,
+body.ohgs-light::before,
+body.ohgs-light::after,
+body.light::before,
+body.light::after,
+body.light-mode::before,
+body.light-mode::after{
+  background:transparent !important;
+  opacity:0 !important;
+  box-shadow:none !important;
+  filter:none !important;
+}
+
+html.ohgs-light main,
+html.ohgs-light section,
+html.ohgs-light .section,
+html.ohgs-light .hero,
+html.ohgs-light .detail-hero,
+html.ohgs-light .site-main,
+html.ohgs-light .page,
+html.ohgs-light .project-picture-section,
+html.ohgs-light .stock-showcase,
+html.ohgs-light .ohgs-extra-photos,
+html.ohgs-light .ohgs-latest-visuals,
+body.ohgs-light main,
+body.ohgs-light section,
+body.ohgs-light .section,
+body.ohgs-light .hero,
+body.ohgs-light .detail-hero,
+body.ohgs-light .site-main,
+body.ohgs-light .page,
+body.light main,
+body.light section,
+body.light .section,
+body.light .hero,
+body.light .detail-hero,
+body.light-mode main,
+body.light-mode section,
+body.light-mode .section,
+body.light-mode .hero,
+body.light-mode .detail-hero{
+  background:#f6fbff !important;
+  background-image:none !important;
+  color:#071222 !important;
+}
+
+html.ohgs-light .section.alt,
+html.ohgs-light footer,
+html.ohgs-light .footer,
+body.ohgs-light .section.alt,
+body.ohgs-light footer,
+body.ohgs-light .footer,
+body.light .section.alt,
+body.light footer,
+body.light .footer,
+body.light-mode .section.alt,
+body.light-mode footer,
+body.light-mode .footer{
+  background:#edf6fc !important;
+  background-image:none !important;
+}
+
+html.ohgs-light h1, html.ohgs-light h2, html.ohgs-light h3, html.ohgs-light h4, html.ohgs-light h5,
+html.ohgs-light p, html.ohgs-light li, html.ohgs-light span, html.ohgs-light label, html.ohgs-light a,
+body.ohgs-light h1, body.ohgs-light h2, body.ohgs-light h3, body.ohgs-light h4, body.ohgs-light h5,
+body.ohgs-light p, body.ohgs-light li, body.ohgs-light span, body.ohgs-light label, body.ohgs-light a,
+body.light h1, body.light h2, body.light h3, body.light h4, body.light h5,
+body.light p, body.light li, body.light span, body.light label, body.light a,
+body.light-mode h1, body.light-mode h2, body.light-mode h3, body.light-mode p, body.light-mode li, body.light-mode span{
+  color:#071222 !important;
+}
+
+html.ohgs-light .lead,
+html.ohgs-light .muted,
+html.ohgs-light .mini-list,
+html.ohgs-light .section p,
+body.ohgs-light .lead,
+body.ohgs-light .muted,
+body.ohgs-light .mini-list,
+body.ohgs-light .section p,
+body.light .lead,
+body.light .muted,
+body.light .mini-list,
+body.light .section p,
+body.light-mode .lead,
+body.light-mode .muted,
+body.light-mode .mini-list,
+body.light-mode .section p{
+  color:#475569 !important;
+}
+
+html.ohgs-light [class*="card"],
+html.ohgs-light .product-card,
+html.ohgs-light .info-card,
+html.ohgs-light .service-card,
+html.ohgs-light .quote-card,
+html.ohgs-light .promo-card,
+html.ohgs-light .video-card,
+html.ohgs-light .stock-card,
+html.ohgs-light .project-image-card,
+html.ohgs-light .ohgs-latest-card,
+html.ohgs-light .logo-showcase,
+html.ohgs-light .stat,
+body.ohgs-light [class*="card"],
+body.ohgs-light .product-card,
+body.ohgs-light .info-card,
+body.ohgs-light .service-card,
+body.ohgs-light .quote-card,
+body.ohgs-light .promo-card,
+body.ohgs-light .video-card,
+body.ohgs-light .stock-card,
+body.ohgs-light .project-image-card,
+body.ohgs-light .ohgs-latest-card,
+body.light [class*="card"],
+body.light-mode [class*="card"]{
+  background:#ffffff !important;
+  background-image:none !important;
+  color:#071222 !important;
+  border-color:rgba(7,18,34,.12) !important;
+  box-shadow:0 16px 44px rgba(15,23,42,.08) !important;
+}
+
+html.ohgs-light input,
+html.ohgs-light textarea,
+html.ohgs-light select,
+body.ohgs-light input,
+body.ohgs-light textarea,
+body.ohgs-light select,
+body.light input,
+body.light textarea,
+body.light select,
+body.light-mode input,
+body.light-mode textarea,
+body.light-mode select{
+  background:#ffffff !important;
+  color:#071222 !important;
+  border-color:rgba(7,18,34,.15) !important;
+}
+
+html.ohgs-light .site-header,
+body.ohgs-light .site-header,
+body.light .site-header,
+body.light-mode .site-header{
+  background:rgba(255,255,255,.96) !important;
+  color:#071222 !important;
+  border-bottom:1px solid rgba(7,18,34,.10) !important;
+  box-shadow:0 12px 36px rgba(15,23,42,.08) !important;
+}
+
+html.ohgs-light .site-header .brand-title,
+html.ohgs-light .site-header nav a,
+html.ohgs-light .site-header .pill,
+body.ohgs-light .site-header .brand-title,
+body.ohgs-light .site-header nav a,
+body.ohgs-light .site-header .pill,
+body.light .site-header .brand-title,
+body.light .site-header nav a,
+body.light .site-header .pill,
+body.light-mode .site-header .brand-title,
+body.light-mode .site-header nav a,
+body.light-mode .site-header .pill{
+  color:#071222 !important;
+}
+
+html.ohgs-light .site-header .brand-subtitle,
+body.ohgs-light .site-header .brand-subtitle,
+body.light .site-header .brand-subtitle,
+body.light-mode .site-header .brand-subtitle{
+  color:#008ec5 !important;
+}
+
+/* Mobile header: small, sticky, and clean */
+@media (max-width: 760px){
+  .site-header,
+  header.site-header{
+    position:fixed !important;
+    top:0 !important;
+    left:0 !important;
+    right:0 !important;
+    width:100vw !important;
+    height:62px !important;
+    min-height:62px !important;
+    max-height:62px !important;
+    display:grid !important;
+    grid-template-columns: minmax(96px, 1fr) 36px minmax(158px, auto) !important;
+    grid-template-areas:"brand menubtn actions" !important;
+    align-items:center !important;
+    gap:6px !important;
+    padding:7px 8px !important;
+    overflow:visible !important;
+    z-index:2147483000 !important;
+    transform:translate3d(0,0,0) !important;
+    visibility:visible !important;
+    opacity:1 !important;
+  }
+
+  body{
+    padding-top:62px !important;
+  }
+
+  .site-header .brand,
+  header.site-header .brand{
+    grid-area:brand !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:flex-start !important;
+    gap:6px !important;
+    width:auto !important;
+    min-width:0 !important;
+    max-width:100% !important;
+    overflow:hidden !important;
+  }
+
+  .site-header .brand img,
+  header.site-header .brand img{
+    width:34px !important;
+    height:34px !important;
+    min-width:34px !important;
+    max-width:34px !important;
+    flex:0 0 34px !important;
+    object-fit:contain !important;
+  }
+
+  .site-header .brand-copy,
+  header.site-header .brand-copy{
+    display:flex !important;
+    flex-direction:column !important;
+    justify-content:center !important;
+    width:auto !important;
+    min-width:0 !important;
+    max-width:76px !important;
+    overflow:hidden !important;
+  }
+
+  .site-header .brand-title,
+  header.site-header .brand-title{
+    font-size:13px !important;
+    line-height:.95 !important;
+    letter-spacing:.06em !important;
+    white-space:nowrap !important;
+    overflow:hidden !important;
+    text-overflow:clip !important;
+  }
+
+  .site-header .brand-subtitle,
+  header.site-header .brand-subtitle{
+    font-size:6.8px !important;
+    line-height:1 !important;
+    letter-spacing:.11em !important;
+    white-space:nowrap !important;
+    overflow:hidden !important;
+    text-overflow:clip !important;
+  }
+
+  .ohgs-menu-toggle,
+  button.ohgs-menu-toggle{
+    grid-area:menubtn !important;
+    justify-self:center !important;
+    align-self:center !important;
+    width:36px !important;
+    height:36px !important;
+    min-width:36px !important;
+    max-width:36px !important;
+    min-height:36px !important;
+    max-height:36px !important;
+    padding:0 !important;
+    border-radius:12px !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    flex-direction:column !important;
+    gap:4px !important;
+    background:linear-gradient(135deg,#0bbdf1,#0079b8) !important;
+    box-shadow:0 10px 24px rgba(0,189,242,.22) !important;
+    border:1px solid rgba(255,255,255,.12) !important;
+    z-index:2147483002 !important;
+  }
+
+  .ohgs-menu-toggle span,
+  button.ohgs-menu-toggle span{
+    width:15px !important;
+    height:2px !important;
+    margin:0 !important;
+    border-radius:999px !important;
+    background:#00111c !important;
+  }
+
+  .ohgs-menu-toggle.is-open span:nth-child(1),
+  button.ohgs-menu-toggle.is-open span:nth-child(1){
+    transform:translateY(6px) rotate(45deg) !important;
+  }
+  .ohgs-menu-toggle.is-open span:nth-child(2),
+  button.ohgs-menu-toggle.is-open span:nth-child(2){
+    opacity:0 !important;
+  }
+  .ohgs-menu-toggle.is-open span:nth-child(3),
+  button.ohgs-menu-toggle.is-open span:nth-child(3){
+    transform:translateY(-6px) rotate(-45deg) !important;
+  }
+
+  .site-header .header-actions,
+  header.site-header .header-actions{
+    grid-area:actions !important;
+    display:flex !important;
+    flex-wrap:nowrap !important;
+    align-items:center !important;
+    justify-content:flex-end !important;
+    gap:4px !important;
+    min-width:0 !important;
+    width:100% !important;
+    overflow:visible !important;
+  }
+
+  .site-header .header-actions .pill,
+  .site-header .header-actions button,
+  .site-header .header-actions a,
+  header.site-header .header-actions .pill,
+  header.site-header .header-actions button,
+  header.site-header .header-actions a{
+    height:30px !important;
+    min-height:30px !important;
+    max-height:30px !important;
+    padding:0 6px !important;
+    border-radius:999px !important;
+    font-size:8.5px !important;
+    line-height:1 !important;
+    white-space:nowrap !important;
+    display:inline-flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    flex:0 0 auto !important;
+  }
+
+  .site-header .theme-toggle,
+  header.site-header .theme-toggle{
+    width:42px !important;
+    min-width:42px !important;
+    max-width:42px !important;
+  }
+  .site-header .lang-toggle,
+  header.site-header .lang-toggle{
+    width:52px !important;
+    min-width:52px !important;
+    max-width:52px !important;
+  }
+  .site-header .whatsapp,
+  header.site-header .whatsapp{
+    width:68px !important;
+    min-width:68px !important;
+    max-width:68px !important;
+    font-size:8px !important;
+  }
+
+  /* Compact dropdown menu, not a full-screen wall */
+  #ohgsMainMenu,
+  #navMenu,
+  .site-header nav,
+  header.site-header nav{
+    position:fixed !important;
+    top:66px !important;
+    left:12px !important;
+    right:12px !important;
+    width:auto !important;
+    height:auto !important;
+    max-height:0 !important;
+    min-height:0 !important;
+    opacity:0 !important;
+    visibility:hidden !important;
+    overflow:hidden !important;
+    display:grid !important;
+    grid-template-columns:repeat(2, minmax(0, 1fr)) !important;
+    gap:8px !important;
+    padding:0 !important;
+    margin:0 !important;
+    border-radius:18px !important;
+    background:rgba(6,15,30,.98) !important;
+    border:1px solid rgba(255,255,255,.10) !important;
+    box-shadow:0 24px 52px rgba(0,0,0,.36) !important;
+    backdrop-filter:blur(18px) saturate(1.2) !important;
+    transform:translateY(-10px) scale(.96) !important;
+    transform-origin:top center !important;
+    transition:max-height .28s ease, opacity .22s ease, transform .24s ease, padding .24s ease, visibility .24s ease !important;
+    z-index:2147482999 !important;
+  }
+
+  #ohgsMainMenu.ohgs-menu-open,
+  #navMenu.ohgs-menu-open,
+  .site-header nav.ohgs-menu-open,
+  header.site-header nav.ohgs-menu-open,
+  body.ohgs-menu-is-open #ohgsMainMenu,
+  body.ohgs-menu-is-open #navMenu,
+  body.ohgs-menu-is-open .site-header nav,
+  body.ohgs-menu-is-open header.site-header nav{
+    max-height:250px !important;
+    opacity:1 !important;
+    visibility:visible !important;
+    overflow-y:auto !important;
+    padding:10px !important;
+    transform:translateY(0) scale(1) !important;
+  }
+
+  #ohgsMainMenu a,
+  #navMenu a,
+  .site-header nav a,
+  header.site-header nav a{
+    width:100% !important;
+    min-height:36px !important;
+    height:36px !important;
+    padding:0 8px !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    border-radius:12px !important;
+    font-size:11.5px !important;
+    font-weight:900 !important;
+    line-height:1 !important;
+    text-align:center !important;
+    white-space:nowrap !important;
+    background:rgba(255,255,255,.055) !important;
+    color:#f8fbff !important;
+  }
+
+  html.ohgs-light #ohgsMainMenu,
+  html.ohgs-light #navMenu,
+  html.ohgs-light .site-header nav,
+  body.ohgs-light #ohgsMainMenu,
+  body.ohgs-light #navMenu,
+  body.ohgs-light .site-header nav,
+  body.light #ohgsMainMenu,
+  body.light #navMenu,
+  body.light .site-header nav,
+  body.light-mode #ohgsMainMenu,
+  body.light-mode #navMenu,
+  body.light-mode .site-header nav{
+    background:rgba(255,255,255,.98) !important;
+    border-color:rgba(7,18,34,.12) !important;
+    box-shadow:0 24px 52px rgba(15,23,42,.12) !important;
+  }
+
+  html.ohgs-light #ohgsMainMenu a,
+  html.ohgs-light #navMenu a,
+  html.ohgs-light .site-header nav a,
+  body.ohgs-light #ohgsMainMenu a,
+  body.ohgs-light #navMenu a,
+  body.ohgs-light .site-header nav a,
+  body.light #ohgsMainMenu a,
+  body.light #navMenu a,
+  body.light .site-header nav a,
+  body.light-mode #ohgsMainMenu a,
+  body.light-mode #navMenu a,
+  body.light-mode .site-header nav a{
+    color:#071222 !important;
+    background:rgba(7,18,34,.055) !important;
+  }
+}
+
+@media (max-width: 360px){
+  .site-header,
+  header.site-header{
+    grid-template-columns:minmax(88px,1fr) 34px minmax(148px,auto) !important;
+    gap:4px !important;
+    padding-left:6px !important;
+    padding-right:6px !important;
+  }
+  .site-header .brand img,
+  header.site-header .brand img{
+    width:30px !important;
+    height:30px !important;
+    min-width:30px !important;
+    flex-basis:30px !important;
+  }
+  .site-header .brand-title,
+  header.site-header .brand-title{font-size:11px !important;}
+  .site-header .brand-subtitle,
+  header.site-header .brand-subtitle{font-size:5.8px !important;}
+  .ohgs-menu-toggle,
+  button.ohgs-menu-toggle{
+    width:34px !important;
+    height:34px !important;
+    min-width:34px !important;
+  }
+  .site-header .theme-toggle,
+  header.site-header .theme-toggle{width:38px !important; min-width:38px !important; max-width:38px !important;}
+  .site-header .lang-toggle,
+  header.site-header .lang-toggle{width:48px !important; min-width:48px !important; max-width:48px !important;}
+  .site-header .whatsapp,
+  header.site-header .whatsapp{width:62px !important; min-width:62px !important; max-width:62px !important;}
+}
+
+/* Smaller cleaner loading ring around logo */
+.loader-card{gap:12px !important;}
+.loader-logo-wrap{
+  width:86px !important;
+  height:86px !important;
+  display:grid !important;
+  place-items:center !important;
+  position:relative !important;
+}
+.loader-logo-wrap img,
+.loader-card img{
+  width:58px !important;
+  height:58px !important;
+  padding:3px !important;
+  border-radius:50% !important;
+  object-fit:contain !important;
+  background:#ffffff !important;
+  z-index:2 !important;
+}
+.loader-ring,
+.ring{
+  position:absolute !important;
+  inset:0 !important;
+  width:86px !important;
+  height:86px !important;
+  border-radius:50% !important;
+  border:6px solid rgba(255,255,255,.10) !important;
+  border-top-color:#14c8ff !important;
+  border-right-color:#86e7ff !important;
+  animation:spin .85s linear infinite !important;
+  box-shadow:0 0 22px rgba(20,200,255,.24) !important;
+}
+html.ohgs-light .loader,
+body.ohgs-light .loader,
+body.light .loader,
+body.light-mode .loader{
+  background:radial-gradient(circle at center,#ffffff,#eaf6ff 72%) !important;
+}
+html.ohgs-light .loader-card p,
+body.ohgs-light .loader-card p,
+body.light .loader-card p,
+body.light-mode .loader-card p{
+  color:#071222 !important;
+}

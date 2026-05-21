@@ -1,0 +1,1 @@
+Final pro fix: compact mobile dropdown menu, smaller menu icon, fixed real light mode on mobile/tablet/desktop, smaller cleaner loader ring. Upload all files to the same GitHub repository and commit to main; Vercel will redeploy the same domain.

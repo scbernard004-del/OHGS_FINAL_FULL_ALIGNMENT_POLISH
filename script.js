@@ -605,3 +605,129 @@
     setInterval(syncHeader,600);
   });
 })();
+
+
+/* =========================================================
+   FINAL PRO FIX: dependable theme + compact mobile menu
+   This patch must stay at the END of script.js
+   ========================================================= */
+(function(){
+  function setTheme(mode){
+    var light = mode === 'light';
+    var html = document.documentElement;
+    var body = document.body;
+    if(!body) return;
+
+    html.classList.toggle('ohgs-light', light);
+    body.classList.toggle('ohgs-light', light);
+    html.classList.toggle('light', light);
+    body.classList.toggle('light', light);
+    body.classList.toggle('light-mode', light);
+
+    html.setAttribute('data-theme', light ? 'light' : 'dark');
+    body.setAttribute('data-theme', light ? 'light' : 'dark');
+
+    localStorage.setItem('ohgsTheme', light ? 'light' : 'dark');
+    localStorage.setItem('theme', light ? 'light' : 'dark');
+    localStorage.setItem('siteTheme', light ? 'light' : 'dark');
+  }
+
+  function currentTheme(){
+    return localStorage.getItem('ohgsTheme') || localStorage.getItem('theme') || localStorage.getItem('siteTheme') || 'dark';
+  }
+
+  window.setOHGSTheme = setTheme;
+  window.toggleTheme = function(){
+    var now = document.documentElement.getAttribute('data-theme') || currentTheme();
+    setTheme(now === 'light' ? 'dark' : 'light');
+  };
+
+  function getMenu(){
+    return document.getElementById('ohgsMainMenu') || document.getElementById('navMenu') || document.querySelector('.site-header nav');
+  }
+
+  function getMenuBtn(){
+    return document.querySelector('.ohgs-menu-toggle, .menu-toggle, [data-menu-toggle]');
+  }
+
+  function closeMenu(){
+    var menu = getMenu();
+    var btn = getMenuBtn();
+    document.body.classList.remove('ohgs-menu-is-open');
+    if(menu) menu.classList.remove('ohgs-menu-open');
+    if(btn){
+      btn.classList.remove('is-open');
+      btn.setAttribute('aria-expanded','false');
+      btn.setAttribute('aria-label','Open menu');
+    }
+  }
+
+  function toggleMenu(e){
+    if(e){
+      e.preventDefault();
+      e.stopPropagation();
+      if(e.stopImmediatePropagation) e.stopImmediatePropagation();
+    }
+    var menu = getMenu();
+    var btn = getMenuBtn();
+    if(!menu || !btn) return;
+    var open = !menu.classList.contains('ohgs-menu-open');
+    menu.classList.toggle('ohgs-menu-open', open);
+    document.body.classList.toggle('ohgs-menu-is-open', open);
+    btn.classList.toggle('is-open', open);
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  }
+
+  function bindFinalControls(){
+    setTheme(currentTheme() === 'light' ? 'light' : 'dark');
+
+    document.querySelectorAll('.theme-toggle,[data-theme-toggle],#themeToggle,.theme-btn').forEach(function(btn){
+      if(btn.dataset.ohgsThemeFinalBound) return;
+      btn.dataset.ohgsThemeFinalBound = 'true';
+      btn.removeAttribute('onclick');
+      btn.addEventListener('click', function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        if(e.stopImmediatePropagation) e.stopImmediatePropagation();
+        window.toggleTheme();
+      }, true);
+    });
+
+    var menu = getMenu();
+    var menuBtn = getMenuBtn();
+    if(menuBtn && !menuBtn.dataset.ohgsMenuFinalBound){
+      menuBtn.dataset.ohgsMenuFinalBound = 'true';
+      menuBtn.removeAttribute('onclick');
+      menuBtn.addEventListener('click', toggleMenu, true);
+    }
+
+    if(menu && !menu.dataset.ohgsMenuLinkBound){
+      menu.dataset.ohgsMenuLinkBound = 'true';
+      menu.querySelectorAll('a').forEach(function(a){
+        a.addEventListener('click', closeMenu);
+      });
+    }
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', bindFinalControls);
+  }else{
+    bindFinalControls();
+  }
+
+  window.addEventListener('pageshow', bindFinalControls);
+  window.addEventListener('resize', function(){
+    if(window.innerWidth > 760) closeMenu();
+    setTheme(currentTheme() === 'light' ? 'light' : 'dark');
+  }, {passive:true});
+
+  document.addEventListener('click', function(e){
+    var menu = getMenu();
+    var btn = getMenuBtn();
+    if(!menu || !btn) return;
+    if(menu.classList.contains('ohgs-menu-open') && !menu.contains(e.target) && !btn.contains(e.target)){
+      closeMenu();
+    }
+  }, true);
+})();
