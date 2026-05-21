@@ -430,3 +430,60 @@
   window.addEventListener('scroll', keepHeaderSticky, {passive:true});
   window.addEventListener('resize', keepHeaderSticky, {passive:true});
 })();
+
+
+/* =========================================================
+   FINAL 2026 PATCH: force true light mode on all devices
+   ========================================================= */
+(function(){
+  function setTheme(mode){
+    var light = mode === 'light';
+    var html = document.documentElement;
+    var body = document.body;
+    if(!body) return;
+    html.classList.toggle('light', light);
+    body.classList.toggle('light', light);
+    body.classList.toggle('light-mode', light);
+    html.setAttribute('data-theme', light ? 'light' : 'dark');
+    body.setAttribute('data-theme', light ? 'light' : 'dark');
+    localStorage.setItem('ohgsTheme', light ? 'light' : 'dark');
+    localStorage.setItem('theme', light ? 'light' : 'dark');
+    localStorage.setItem('siteTheme', light ? 'light' : 'dark');
+  }
+
+  function getSavedTheme(){
+    return localStorage.getItem('ohgsTheme') || localStorage.getItem('theme') || localStorage.getItem('siteTheme') || 'dark';
+  }
+
+  window.toggleTheme = function(){
+    var current = document.documentElement.getAttribute('data-theme') || getSavedTheme();
+    setTheme(current === 'light' ? 'dark' : 'light');
+  };
+
+  function bindThemeButtons(){
+    document.querySelectorAll('.theme-toggle,[data-theme-toggle],#themeToggle,.theme-btn').forEach(function(btn){
+      if(btn.dataset.ohgsFinalThemeBound) return;
+      btn.dataset.ohgsFinalThemeBound = 'true';
+      btn.addEventListener('click', function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        if(e.stopImmediatePropagation) e.stopImmediatePropagation();
+        window.toggleTheme();
+      }, true);
+    });
+  }
+
+  function bootForceTheme(){
+    setTheme(getSavedTheme() === 'light' ? 'light' : 'dark');
+    bindThemeButtons();
+    setTimeout(function(){ setTheme(getSavedTheme() === 'light' ? 'light' : 'dark'); }, 50);
+    setTimeout(function(){ setTheme(getSavedTheme() === 'light' ? 'light' : 'dark'); }, 220);
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', bootForceTheme);
+  }else{
+    bootForceTheme();
+  }
+  window.addEventListener('pageshow', bootForceTheme);
+})();

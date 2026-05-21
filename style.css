@@ -11948,3 +11948,327 @@ body.light .ohgs-oval-btn:not(.ghost){
     border-radius:18px !important;
   }
 }
+
+
+/* =========================================================
+   FINAL 2026 PATCH: flatter oval hero buttons + true full light mode
+   + construction poster/video responsive support
+   ========================================================= */
+
+/* First page hero buttons: flat, oval, professional */
+.hero .card-actions{
+  display:flex !important;
+  flex-wrap:wrap !important;
+  align-items:center !important;
+  justify-content:flex-start !important;
+  gap:14px !important;
+  margin-top:24px !important;
+  padding:0 !important;
+  background:transparent !important;
+  border:0 !important;
+  box-shadow:none !important;
+  max-width:560px !important;
+}
+
+.hero .card-actions .btn,
+.hero .card-actions a{
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  width:clamp(190px, 20vw, 240px) !important;
+  min-width:190px !important;
+  max-width:240px !important;
+  height:54px !important;
+  min-height:54px !important;
+  max-height:54px !important;
+  aspect-ratio:auto !important;
+  padding:0 28px !important;
+  border-radius:999px !important;
+  font-size:15px !important;
+  font-weight:800 !important;
+  line-height:1 !important;
+  text-align:center !important;
+  white-space:nowrap !important;
+  box-shadow:0 12px 28px rgba(2, 12, 27, .18) !important;
+  border:1px solid rgba(56,189,248,.22) !important;
+  transform:none !important;
+}
+
+.hero .card-actions .btn:not(.ghost),
+.hero .card-actions a.btn:not(.ghost){
+  background:linear-gradient(180deg,#1cb8f0 0%,#0ea5e9 100%) !important;
+  color:#ffffff !important;
+}
+
+.hero .card-actions .btn.ghost,
+.hero .card-actions a.ghost{
+  background:rgba(8,20,38,.30) !important;
+  color:#f4fbff !important;
+  border:1px solid rgba(125,211,252,.18) !important;
+  backdrop-filter:blur(10px) !important;
+}
+
+/* General content buttons: cleaner pill shape, but keep header pills untouched */
+.section .card-actions .btn,
+.section .card-actions a,
+.detail-hero .card-actions .btn,
+.detail-hero .card-actions a,
+.promo-card .btn,
+.stock-card .btn,
+.ohgs-latest-card .btn,
+.project-image-card .btn,
+.service-card .btn,
+.info-card .btn,
+.quote-card .btn,
+.ohgs-oval-btn{
+  aspect-ratio:auto !important;
+  min-height:48px !important;
+  height:auto !important;
+  padding:12px 22px !important;
+  border-radius:999px !important;
+}
+
+/* Mobile hero buttons full-width and flatter */
+@media (max-width: 760px){
+  .hero .card-actions{
+    display:grid !important;
+    grid-template-columns:1fr !important;
+    gap:12px !important;
+    max-width:100% !important;
+  }
+  .hero .card-actions .btn,
+  .hero .card-actions a{
+    width:100% !important;
+    min-width:0 !important;
+    max-width:100% !important;
+    height:52px !important;
+    min-height:52px !important;
+    max-height:52px !important;
+  }
+}
+
+/* True full light mode on mobile, tablet and desktop */
+html.light,
+html.light body,
+html[data-theme="light"],
+html[data-theme="light"] body,
+body.light,
+body.light-mode,
+body[data-theme="light"]{
+  background:#f7fbff !important;
+  color:#08111f !important;
+}
+
+html.light body::before,
+html.light body::after,
+html[data-theme="light"] body::before,
+html[data-theme="light"] body::after,
+body.light::before,
+body.light::after,
+body.light-mode::before,
+body.light-mode::after,
+body[data-theme="light"]::before,
+body[data-theme="light"]::after{
+  background:transparent !important;
+  opacity:0 !important;
+  box-shadow:none !important;
+}
+
+html.light main,
+html.light section,
+html.light .section,
+html.light .hero,
+html.light .detail-hero,
+html.light .section.alt,
+html.light .ohgs-extra-photos,
+html.light .stock-showcase,
+html.light .footer,
+html.light footer,
+html.light .project-picture-section,
+html.light .ohgs-latest-visuals,
+html.light .ohgs-micro-strip,
+html.light .site-main,
+html[data-theme="light"] main,
+html[data-theme="light"] section,
+html[data-theme="light"] .section,
+html[data-theme="light"] .hero,
+html[data-theme="light"] .detail-hero,
+html[data-theme="light"] .section.alt,
+html[data-theme="light"] .ohgs-extra-photos,
+html[data-theme="light"] .stock-showcase,
+html[data-theme="light"] .footer,
+html[data-theme="light"] footer,
+body.light main,
+body.light section,
+body.light .section,
+body.light .hero,
+body.light .detail-hero,
+body.light .section.alt,
+body.light .ohgs-extra-photos,
+body.light .stock-showcase,
+body.light .footer,
+body.light footer,
+body.light-mode main,
+body.light-mode section,
+body.light-mode .section,
+body.light-mode .hero,
+body.light-mode .detail-hero,
+body.light-mode .section.alt,
+body.light-mode .ohgs-extra-photos,
+body.light-mode .stock-showcase,
+body.light-mode .footer,
+body.light-mode footer{
+  background:#f7fbff !important;
+  background-image:none !important;
+  color:#08111f !important;
+}
+
+html.light .section.alt,
+html.light .ohgs-micro-strip,
+html.light .footer,
+html.light footer,
+html[data-theme="light"] .section.alt,
+html[data-theme="light"] .ohgs-micro-strip,
+html[data-theme="light"] .footer,
+html[data-theme="light"] footer,
+body.light .section.alt,
+body.light .ohgs-micro-strip,
+body.light .footer,
+body.light footer,
+body.light-mode .section.alt,
+body.light-mode .ohgs-micro-strip,
+body.light-mode .footer,
+body.light-mode footer{
+  background:#eef5fb !important;
+}
+
+html.light [class*="card"],
+html.light .project-image-card,
+html.light .promo-card,
+html.light .stock-card,
+html.light .ohgs-latest-card,
+html.light .video-card,
+html.light .stat,
+html.light .logo-showcase,
+html.light .ohgs-extra-photo-card,
+html[data-theme="light"] [class*="card"],
+html[data-theme="light"] .project-image-card,
+html[data-theme="light"] .promo-card,
+html[data-theme="light"] .stock-card,
+html[data-theme="light"] .ohgs-latest-card,
+html[data-theme="light"] .video-card,
+html[data-theme="light"] .stat,
+html[data-theme="light"] .logo-showcase,
+html[data-theme="light"] .ohgs-extra-photo-card,
+body.light [class*="card"],
+body.light .project-image-card,
+body.light .promo-card,
+body.light .stock-card,
+body.light .ohgs-latest-card,
+body.light .video-card,
+body.light .stat,
+body.light .logo-showcase,
+body.light .ohgs-extra-photo-card,
+body.light-mode [class*="card"],
+body.light-mode .project-image-card,
+body.light-mode .promo-card,
+body.light-mode .stock-card,
+body.light-mode .ohgs-latest-card,
+body.light-mode .video-card,
+body.light-mode .stat,
+body.light-mode .logo-showcase,
+body.light-mode .ohgs-extra-photo-card{
+  background:#ffffff !important;
+  color:#08111f !important;
+  border-color:rgba(8,17,31,.10) !important;
+  box-shadow:0 16px 42px rgba(15,23,42,.08) !important;
+}
+
+html.light h1, html.light h2, html.light h3, html.light h4, html.light h5, html.light p, html.light li, html.light span, html.light a,
+html[data-theme="light"] h1, html[data-theme="light"] h2, html[data-theme="light"] h3, html[data-theme="light"] h4, html[data-theme="light"] h5, html[data-theme="light"] p, html[data-theme="light"] li, html[data-theme="light"] span, html[data-theme="light"] a,
+body.light h1, body.light h2, body.light h3, body.light h4, body.light h5, body.light p, body.light li, body.light span, body.light a,
+body.light-mode h1, body.light-mode h2, body.light-mode h3, body.light-mode h4, body.light-mode h5, body.light-mode p, body.light-mode li, body.light-mode span, body.light-mode a{
+  color:#08111f !important;
+}
+
+html.light .muted,
+html.light .lead,
+html.light .mini-list,
+html.light .brand-subtitle,
+html.light .section p,
+html[data-theme="light"] .muted,
+html[data-theme="light"] .lead,
+html[data-theme="light"] .mini-list,
+html[data-theme="light"] .brand-subtitle,
+html[data-theme="light"] .section p,
+body.light .muted,
+body.light .lead,
+body.light .mini-list,
+body.light .brand-subtitle,
+body.light .section p,
+body.light-mode .muted,
+body.light-mode .lead,
+body.light-mode .mini-list,
+body.light-mode .brand-subtitle,
+body.light-mode .section p{
+  color:#475569 !important;
+}
+
+html.light input,
+html.light textarea,
+html.light select,
+html[data-theme="light"] input,
+html[data-theme="light"] textarea,
+html[data-theme="light"] select,
+body.light input,
+body.light textarea,
+body.light select,
+body.light-mode input,
+body.light-mode textarea,
+body.light-mode select{
+  background:#ffffff !important;
+  color:#08111f !important;
+  border-color:rgba(8,17,31,.14) !important;
+}
+
+html.light .site-header,
+html[data-theme="light"] .site-header,
+body.light .site-header,
+body.light-mode .site-header{
+  background:rgba(255,255,255,.96) !important;
+  color:#08111f !important;
+  border-bottom:1px solid rgba(8,17,31,.08) !important;
+  box-shadow:0 14px 38px rgba(15,23,42,.08) !important;
+}
+
+html.light nav,
+html.light #ohgsMainMenu,
+html[data-theme="light"] nav,
+html[data-theme="light"] #ohgsMainMenu,
+body.light nav,
+body.light #ohgsMainMenu,
+body.light-mode nav,
+body.light-mode #ohgsMainMenu{
+  background:transparent !important;
+}
+
+@media (max-width: 1024px){
+  html.light #ohgsMainMenu,
+  html[data-theme="light"] #ohgsMainMenu,
+  body.light #ohgsMainMenu,
+  body.light-mode #ohgsMainMenu{
+    background:#ffffff !important;
+    border:1px solid rgba(8,17,31,.10) !important;
+    box-shadow:0 18px 44px rgba(15,23,42,.10) !important;
+  }
+}
+
+/* Responsive handling for newly added promo poster and video */
+img[src*="ohgs-construction-supply-poster"],
+video[src*="ohgs-construction-materials-video"]{
+  width:100% !important;
+  max-width:100% !important;
+  height:auto !important;
+  object-fit:cover !important;
+  border-radius:24px !important;
+}

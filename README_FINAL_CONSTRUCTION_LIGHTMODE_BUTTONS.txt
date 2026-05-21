@@ -1,0 +1,1 @@
+This update adds the uploaded construction-supply poster and latest video, refines first-page buttons to flatter oval pills, and strengthens full light-mode behavior across mobile, tablet, and desktop.
