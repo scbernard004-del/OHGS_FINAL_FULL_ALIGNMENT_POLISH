@@ -12272,3 +12272,240 @@ video[src*="ohgs-construction-materials-video"]{
   object-fit:cover !important;
   border-radius:24px !important;
 }
+
+
+
+/* =========================================================
+   EMERGENCY FINAL THEME FIX: real dark/light mode on PC, tablet and mobile
+   This sits last so it wins over older dark styles.
+   ========================================================= */
+html[data-theme="dark"], html[data-theme="dark"] body,
+body[data-theme="dark"]{
+  --bg:#07111f !important;
+  --bg2:#0b1730 !important;
+  --card:#111f36 !important;
+  --soft:#172844 !important;
+  --text:#f7fbff !important;
+  --muted:#b8c7da !important;
+  --line:rgba(255,255,255,.12) !important;
+  background:#07111f !important;
+  color:#f7fbff !important;
+}
+
+html[data-theme="light"], html[data-theme="light"] body,
+body[data-theme="light"],
+html.light, html.light body,
+body.light, body.light-mode{
+  --bg:#f4f8fc !important;
+  --bg2:#ffffff !important;
+  --card:#ffffff !important;
+  --soft:#eef5fb !important;
+  --text:#071222 !important;
+  --muted:#475569 !important;
+  --line:rgba(7,18,34,.13) !important;
+  background:#f4f8fc !important;
+  color:#071222 !important;
+}
+
+/* remove dark overlays in light mode */
+html[data-theme="light"] body::before,
+html[data-theme="light"] body::after,
+body[data-theme="light"]::before,
+body[data-theme="light"]::after,
+html.light body::before,
+html.light body::after,
+body.light::before,
+body.light::after,
+body.light-mode::before,
+body.light-mode::after{
+  opacity:0 !important;
+  background:transparent !important;
+  display:none !important;
+}
+
+/* Force page layers to light */
+html[data-theme="light"] body,
+html[data-theme="light"] main,
+html[data-theme="light"] section,
+html[data-theme="light"] article,
+html[data-theme="light"] aside,
+html[data-theme="light"] .section,
+html[data-theme="light"] .section.alt,
+html[data-theme="light"] .hero,
+html[data-theme="light"] .detail-hero,
+html[data-theme="light"] .page,
+html[data-theme="light"] .site-main,
+html[data-theme="light"] .wrapper,
+html[data-theme="light"] .container,
+html[data-theme="light"] .content,
+html[data-theme="light"] .stock-showcase,
+html[data-theme="light"] .ohgs-extra-photos,
+html[data-theme="light"] .ohgs-latest-visuals,
+html[data-theme="light"] .ohgs-micro-strip,
+body[data-theme="light"] main,
+body[data-theme="light"] section,
+body[data-theme="light"] article,
+body[data-theme="light"] aside,
+body[data-theme="light"] .section,
+body[data-theme="light"] .section.alt,
+body[data-theme="light"] .hero,
+body[data-theme="light"] .detail-hero,
+body[data-theme="light"] .page,
+body[data-theme="light"] .site-main,
+body[data-theme="light"] .wrapper,
+body[data-theme="light"] .container,
+body[data-theme="light"] .content,
+body[data-theme="light"] .stock-showcase,
+body[data-theme="light"] .ohgs-extra-photos,
+body[data-theme="light"] .ohgs-latest-visuals,
+body[data-theme="light"] .ohgs-micro-strip{
+  background:#f4f8fc !important;
+  background-image:none !important;
+  color:#071222 !important;
+}
+
+/* Cards in light mode */
+html[data-theme="light"] [class*="card"],
+html[data-theme="light"] .product-card,
+html[data-theme="light"] .stock-card,
+html[data-theme="light"] .promo-card,
+html[data-theme="light"] .info-card,
+html[data-theme="light"] .service-card,
+html[data-theme="light"] .quote-card,
+html[data-theme="light"] .video-card,
+html[data-theme="light"] .project-image-card,
+html[data-theme="light"] .ohgs-latest-card,
+html[data-theme="light"] .logo-showcase,
+html[data-theme="light"] .stat,
+body[data-theme="light"] [class*="card"],
+body[data-theme="light"] .product-card,
+body[data-theme="light"] .stock-card,
+body[data-theme="light"] .promo-card,
+body[data-theme="light"] .info-card,
+body[data-theme="light"] .service-card,
+body[data-theme="light"] .quote-card,
+body[data-theme="light"] .video-card,
+body[data-theme="light"] .project-image-card,
+body[data-theme="light"] .ohgs-latest-card,
+body[data-theme="light"] .logo-showcase,
+body[data-theme="light"] .stat{
+  background:#ffffff !important;
+  background-image:none !important;
+  color:#071222 !important;
+  border-color:rgba(7,18,34,.12) !important;
+  box-shadow:0 18px 48px rgba(15,23,42,.08) !important;
+}
+
+/* Typography in light mode */
+html[data-theme="light"] h1,
+html[data-theme="light"] h2,
+html[data-theme="light"] h3,
+html[data-theme="light"] h4,
+html[data-theme="light"] h5,
+html[data-theme="light"] p,
+html[data-theme="light"] li,
+html[data-theme="light"] span,
+html[data-theme="light"] label,
+html[data-theme="light"] a:not(.btn):not(.pill):not(.whatsapp):not(.whatsapp-action),
+body[data-theme="light"] h1,
+body[data-theme="light"] h2,
+body[data-theme="light"] h3,
+body[data-theme="light"] h4,
+body[data-theme="light"] h5,
+body[data-theme="light"] p,
+body[data-theme="light"] li,
+body[data-theme="light"] span,
+body[data-theme="light"] label,
+body[data-theme="light"] a:not(.btn):not(.pill):not(.whatsapp):not(.whatsapp-action){
+  color:#071222 !important;
+}
+
+html[data-theme="light"] .lead,
+html[data-theme="light"] .muted,
+html[data-theme="light"] .mini-list,
+html[data-theme="light"] .section p,
+body[data-theme="light"] .lead,
+body[data-theme="light"] .muted,
+body[data-theme="light"] .mini-list,
+body[data-theme="light"] .section p{
+  color:#475569 !important;
+}
+
+/* Header in both modes */
+html[data-theme="dark"] .site-header,
+body[data-theme="dark"] .site-header{
+  background:rgba(4,10,20,.94) !important;
+  color:#f7fbff !important;
+  border-bottom:1px solid rgba(255,255,255,.10) !important;
+}
+html[data-theme="light"] .site-header,
+body[data-theme="light"] .site-header{
+  background:rgba(255,255,255,.96) !important;
+  color:#071222 !important;
+  border-bottom:1px solid rgba(7,18,34,.10) !important;
+  box-shadow:0 12px 32px rgba(15,23,42,.08) !important;
+}
+html[data-theme="light"] .site-header .brand-title,
+html[data-theme="light"] .site-header nav a,
+html[data-theme="light"] .site-header .pill,
+body[data-theme="light"] .site-header .brand-title,
+body[data-theme="light"] .site-header nav a,
+body[data-theme="light"] .site-header .pill{
+  color:#071222 !important;
+}
+html[data-theme="light"] .site-header .brand-subtitle,
+body[data-theme="light"] .site-header .brand-subtitle{
+  color:#0099cc !important;
+}
+
+/* Mobile menu light mode */
+@media (max-width:1024px){
+  html[data-theme="light"] #ohgsMainMenu,
+  html[data-theme="light"] .site-header nav,
+  body[data-theme="light"] #ohgsMainMenu,
+  body[data-theme="light"] .site-header nav{
+    background:#ffffff !important;
+    border:1px solid rgba(7,18,34,.12) !important;
+    box-shadow:0 18px 45px rgba(15,23,42,.12) !important;
+  }
+  html[data-theme="light"] #ohgsMainMenu a,
+  html[data-theme="light"] .site-header nav a,
+  body[data-theme="light"] #ohgsMainMenu a,
+  body[data-theme="light"] .site-header nav a{
+    background:rgba(7,18,34,.04) !important;
+    color:#071222 !important;
+  }
+}
+
+/* Form and map light mode */
+html[data-theme="light"] input,
+html[data-theme="light"] textarea,
+html[data-theme="light"] select,
+body[data-theme="light"] input,
+body[data-theme="light"] textarea,
+body[data-theme="light"] select{
+  background:#ffffff !important;
+  color:#071222 !important;
+  border-color:rgba(7,18,34,.14) !important;
+}
+html[data-theme="light"] iframe,
+body[data-theme="light"] iframe{
+  filter:none !important;
+}
+
+/* Buttons remain visible in both themes */
+html[data-theme="light"] .btn:not(.ghost),
+body[data-theme="light"] .btn:not(.ghost){
+  background:linear-gradient(180deg,#17b9f4,#069fe0) !important;
+  color:#ffffff !important;
+  border-color:rgba(6,159,224,.25) !important;
+}
+html[data-theme="light"] .btn.ghost,
+body[data-theme="light"] .btn.ghost{
+  background:#ffffff !important;
+  color:#071222 !important;
+  border:1px solid rgba(7,18,34,.15) !important;
+}
+
+/* Make the theme button itself clearly show it is clickable */
+.theme-toggle{cursor:pointer !important; user-select:none !important;}

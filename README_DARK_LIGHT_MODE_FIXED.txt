@@ -1,0 +1,1 @@
+Fixed the theme toggle by replacing old conflicting theme button listeners and adding final CSS rules that force all page sections, cards, header, menu, forms and backgrounds to switch between dark and light on PC, mobile and tablet.

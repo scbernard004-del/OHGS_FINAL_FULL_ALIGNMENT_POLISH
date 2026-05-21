@@ -487,3 +487,79 @@
   }
   window.addEventListener('pageshow', bootForceTheme);
 })();
+
+
+
+/* =========================================================
+   EMERGENCY FINAL THEME FIX: replaces old theme button listeners
+   so light/dark works once, correctly, on PC and mobile.
+   ========================================================= */
+(function(){
+  function setTheme(mode){
+    var light = mode === 'light';
+    var html = document.documentElement;
+    var body = document.body;
+    if(!body) return;
+
+    html.classList.toggle('light', light);
+    body.classList.toggle('light', light);
+    body.classList.toggle('light-mode', light);
+    html.classList.toggle('dark', !light);
+    body.classList.toggle('dark', !light);
+
+    html.setAttribute('data-theme', light ? 'light' : 'dark');
+    body.setAttribute('data-theme', light ? 'light' : 'dark');
+
+    localStorage.setItem('ohgsTheme', light ? 'light' : 'dark');
+    localStorage.setItem('theme', light ? 'light' : 'dark');
+    localStorage.setItem('siteTheme', light ? 'light' : 'dark');
+
+    document.querySelectorAll('.theme-toggle,[data-theme-toggle],#themeToggle,.theme-btn').forEach(function(btn){
+      btn.setAttribute('aria-label', light ? 'Switch to dark mode' : 'Switch to light mode');
+      if(!btn.dataset.keepText){ btn.textContent = light ? '☀️ / 🌙' : '🌙 / ☀️'; }
+    });
+  }
+
+  function getTheme(){
+    return localStorage.getItem('ohgsTheme') || localStorage.getItem('theme') || localStorage.getItem('siteTheme') || 'dark';
+  }
+
+  window.OHGSSetTheme = setTheme;
+  window.toggleTheme = function(){
+    var current = document.documentElement.getAttribute('data-theme') || getTheme();
+    setTheme(current === 'light' ? 'dark' : 'light');
+  };
+
+  function replaceThemeButtons(){
+    document.querySelectorAll('.theme-toggle,[data-theme-toggle],#themeToggle,.theme-btn').forEach(function(oldBtn){
+      if(oldBtn.dataset.ohgsThemeFinalReady === 'yes') return;
+      var btn = oldBtn.cloneNode(true);
+      btn.removeAttribute('onclick');
+      btn.dataset.ohgsThemeFinalReady = 'yes';
+      btn.addEventListener('click', function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        if(e.stopImmediatePropagation) e.stopImmediatePropagation();
+        window.toggleTheme();
+        return false;
+      }, true);
+      oldBtn.parentNode.replaceChild(btn, oldBtn);
+    });
+  }
+
+  function boot(){
+    var saved = getTheme();
+    setTheme(saved === 'light' ? 'light' : 'dark');
+    replaceThemeButtons();
+    setTimeout(replaceThemeButtons, 200);
+    setTimeout(function(){ setTheme(getTheme() === 'light' ? 'light' : 'dark'); }, 250);
+    setTimeout(function(){ setTheme(getTheme() === 'light' ? 'light' : 'dark'); }, 900);
+  }
+
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+  else boot();
+  window.addEventListener('pageshow', boot);
+  window.addEventListener('storage', function(e){
+    if(['ohgsTheme','theme','siteTheme'].indexOf(e.key) !== -1) setTheme(getTheme() === 'light' ? 'light' : 'dark');
+  });
+})();
