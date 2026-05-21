@@ -1,0 +1,1 @@
+Updated: compact professional mobile menu, full light mode across all pages/devices, responsive aligned cards/grids, reduced card empty space, sticky header behavior, and a smaller clean loading ring around the logo.
