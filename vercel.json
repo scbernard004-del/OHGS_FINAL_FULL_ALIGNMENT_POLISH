@@ -1,0 +1,26 @@
+{
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "ohgs-final-full-alignment-polish.vercel.app"
+        }
+      ],
+      "destination": "https://www.ohgshardware.co.tz/$1",
+      "permanent": true
+    },
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "ohgs-final-aligned-ready-launch-1.vercel.app"
+        }
+      ],
+      "destination": "https://www.ohgshardware.co.tz/$1",
+      "permanent": true
+    }
+  ]
+}
