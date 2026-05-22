@@ -1,0 +1,1 @@
+Final patch: mobile/tablet menu now collapses into a hamburger icon, opens as a compact dropdown, and true light mode is forced across the whole website on mobile, tablet, and desktop. Product grids and CTA buttons are cleaned for customer-friendly hardware-store UX.

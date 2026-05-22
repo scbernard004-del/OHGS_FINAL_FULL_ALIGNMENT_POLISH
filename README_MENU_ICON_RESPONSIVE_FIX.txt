@@ -1,0 +1,1 @@
+Fixes mobile/tablet menu so it stays collapsed into the small hamburger icon. The nav opens as a compact dropdown only when the icon is pressed. Desktop keeps a clean horizontal menu.

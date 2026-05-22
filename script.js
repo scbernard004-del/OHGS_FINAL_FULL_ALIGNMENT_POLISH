@@ -882,3 +882,78 @@
   window.addEventListener("scroll", stickyHeader, {passive:true});
   window.addEventListener("pageshow", bindTheme);
 })();
+
+
+/* FINAL MENU ICON JS FIX: binds the actual .ohgs-menu-toggle button */
+(function(){
+  function menu(){ return document.querySelector('#ohgsMainMenu') || document.querySelector('.site-header nav'); }
+  function btn(){ return document.querySelector('.ohgs-menu-toggle') || document.querySelector('#menuToggle') || document.querySelector('.menu-toggle') || document.querySelector('.mobile-menu-button'); }
+  function closeMenu(){
+    var m=menu(), b=btn();
+    document.body.classList.remove('ohgs-menu-open');
+    document.body.classList.remove('menu-open');
+    if(m){ m.classList.remove('open','is-open','active'); m.setAttribute('aria-hidden','true'); }
+    if(b){ b.setAttribute('aria-expanded','false'); }
+  }
+  function openMenu(){
+    var m=menu(), b=btn();
+    document.body.classList.add('ohgs-menu-open');
+    document.body.classList.add('menu-open');
+    if(m){ m.classList.add('open','is-open'); m.setAttribute('aria-hidden','false'); }
+    if(b){ b.setAttribute('aria-expanded','true'); }
+  }
+  function toggle(e){
+    if(e){ e.preventDefault(); e.stopPropagation(); if(e.stopImmediatePropagation) e.stopImmediatePropagation(); }
+    if(document.body.classList.contains('ohgs-menu-open') || document.body.classList.contains('menu-open')) closeMenu(); else openMenu();
+  }
+  function bind(){
+    var b=btn(), m=menu();
+    if(m && !m.id) m.id='ohgsMainMenu';
+    if(b){
+      b.setAttribute('aria-controls','ohgsMainMenu');
+      b.setAttribute('aria-expanded','false');
+      if(b.dataset.ohgsRealMenuBound!=='yes'){
+        b.dataset.ohgsRealMenuBound='yes';
+        b.addEventListener('click', toggle, true);
+      }
+    }
+    document.querySelectorAll('#ohgsMainMenu a,.site-header nav a').forEach(function(a){
+      if(a.dataset.ohgsCloseBound==='yes') return;
+      a.dataset.ohgsCloseBound='yes';
+      a.addEventListener('click', closeMenu);
+    });
+    closeMenu();
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', bind); else bind();
+  window.addEventListener('resize', function(){ if(window.innerWidth>1100) closeMenu(); }, {passive:true});
+  document.addEventListener('click', function(e){ var h=document.querySelector('.site-header'); if(h && !h.contains(e.target)) closeMenu(); }, true);
+})();
+
+
+/* OHGS FINAL CUSTOMER PRO JS: reliable mobile menu + light mode */
+(function(){
+  function q(s){return document.querySelector(s)}
+  function qa(s){return Array.prototype.slice.call(document.querySelectorAll(s))}
+  function menu(){return q('#ohgsMainMenu') || q('.site-header nav') || q('.site-header .nav-links')}
+  function btn(){return q('#ohgsMenuButton') || q('.ohgs-menu-toggle') || q('#menuToggle') || q('.menu-toggle') || q('.mobile-menu-button')}
+  function closeMenu(){var m=menu(),b=btn();document.body.classList.remove('ohgs-menu-open','menu-open');if(m){m.classList.remove('open','is-open','active');m.setAttribute('aria-hidden','true')}if(b)b.setAttribute('aria-expanded','false')}
+  function toggleMenu(e){if(e){e.preventDefault();e.stopPropagation();if(e.stopImmediatePropagation)e.stopImmediatePropagation()}var m=menu(),b=btn();var open=!document.body.classList.contains('ohgs-menu-open');document.body.classList.toggle('ohgs-menu-open',open);document.body.classList.toggle('menu-open',open);if(m){m.classList.toggle('open',open);m.classList.toggle('is-open',open);m.setAttribute('aria-hidden',open?'false':'true')}if(b)b.setAttribute('aria-expanded',open?'true':'false')}
+  function setTheme(mode){var light=mode==='light';var html=document.documentElement,body=document.body;if(!body)return;html.classList.toggle('light',light);body.classList.toggle('light',light);body.classList.toggle('light-mode',light);html.setAttribute('data-theme',light?'light':'dark');body.setAttribute('data-theme',light?'light':'dark');localStorage.setItem('ohgsTheme',light?'light':'dark');localStorage.setItem('theme',light?'light':'dark')}
+  function getTheme(){return localStorage.getItem('ohgsTheme')||localStorage.getItem('theme')||'dark'}
+  window.toggleTheme=function(){var cur=document.documentElement.getAttribute('data-theme')||getTheme();setTheme(cur==='light'?'dark':'light')}
+  function bind(){
+    setTheme(getTheme()==='light'?'light':'dark');
+    var b=btn();var m=menu();
+    if(m){m.id='ohgsMainMenu';m.setAttribute('aria-hidden','true')}
+    if(b){b.id='ohgsMenuButton';b.setAttribute('aria-controls','ohgsMainMenu');b.setAttribute('aria-expanded','false');if(!b.dataset.ohgsFinalMenu){b.dataset.ohgsFinalMenu='1';b.addEventListener('click',toggleMenu,true)}}
+    qa('#ohgsMainMenu a,.site-header nav a,.site-header .nav-links a').forEach(function(a){if(!a.dataset.ohgsCloseMenu){a.dataset.ohgsCloseMenu='1';a.addEventListener('click',closeMenu)}});
+    qa('.theme-toggle,[data-theme-toggle],#themeToggle,.theme-btn').forEach(function(t){if(!t.dataset.ohgsFinalTheme){t.dataset.ohgsFinalTheme='1';t.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();if(e.stopImmediatePropagation)e.stopImmediatePropagation();window.toggleTheme()},true)}});
+  }
+  function scrollHead(){document.body.classList.toggle('ohgs-scrolled',window.scrollY>8);var h=q('.site-header');if(h)h.classList.toggle('scrolled',window.scrollY>8)}
+  function boot(){bind();closeMenu();scrollHead();setTimeout(bind,80);setTimeout(function(){var l=q('#ohgsLoader');if(l){l.classList.add('is-hidden');setTimeout(function(){if(l.parentNode)l.remove()},420)}},1200)}
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
+  window.addEventListener('scroll',scrollHead,{passive:true});
+  window.addEventListener('resize',function(){if(window.innerWidth>1100)closeMenu()},{passive:true});
+  document.addEventListener('click',function(e){var h=q('.site-header');if(h&&!h.contains(e.target))closeMenu()},{passive:true});
+  window.addEventListener('pageshow',function(){setTheme(getTheme()==='light'?'light':'dark')});
+})();

@@ -13983,3 +13983,438 @@ html[data-theme="light"] .ohgs-loader-screen {
     border-width: 4px !important;
   }
 }
+
+
+/* =========================================================
+   FINAL MENU ICON RESPONSIVE FIX
+   Fixes mobile/tablet menu staying open as a full page.
+   ========================================================= */
+
+.site-header{
+  position:sticky !important;
+  top:0 !important;
+  z-index:999999 !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:space-between !important;
+  gap:clamp(8px,1.4vw,18px) !important;
+  width:100% !important;
+  max-width:100vw !important;
+  min-height:68px !important;
+  padding:10px clamp(14px,4vw,56px) !important;
+  box-sizing:border-box !important;
+}
+
+.site-header .brand{
+  flex:0 0 auto !important;
+  min-width:128px !important;
+  max-width:190px !important;
+  display:flex !important;
+  align-items:center !important;
+  gap:9px !important;
+  overflow:visible !important;
+}
+
+.site-header .brand img{width:42px !important;height:42px !important;object-fit:contain !important;flex:0 0 42px !important;}
+.site-header .brand-copy{display:flex !important;flex-direction:column !important;line-height:1 !important;min-width:0 !important;}
+.site-header .brand-title{font-size:clamp(18px,2.2vw,30px) !important;letter-spacing:.10em !important;line-height:.9 !important;white-space:nowrap !important;}
+.site-header .brand-subtitle{font-size:clamp(7px,.9vw,12px) !important;letter-spacing:.26em !important;line-height:1 !important;white-space:nowrap !important;color:#08c8f5 !important;}
+
+/* Desktop: normal horizontal menu */
+.site-header #ohgsMainMenu,
+.site-header nav#ohgsMainMenu{
+  position:static !important;
+  display:flex !important;
+  flex:1 1 auto !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:7px !important;
+  width:auto !important;
+  max-width:none !important;
+  height:auto !important;
+  padding:0 !important;
+  margin:0 !important;
+  background:transparent !important;
+  border:0 !important;
+  box-shadow:none !important;
+  opacity:1 !important;
+  visibility:visible !important;
+  pointer-events:auto !important;
+  transform:none !important;
+  overflow:visible !important;
+}
+
+.site-header #ohgsMainMenu a{
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  height:34px !important;
+  padding:0 12px !important;
+  border-radius:999px !important;
+  font-size:13px !important;
+  font-weight:750 !important;
+  line-height:1 !important;
+  white-space:nowrap !important;
+}
+
+.site-header .ohgs-menu-toggle,
+.site-header .menu-toggle,
+.site-header #menuToggle,
+.site-header .mobile-menu-button{
+  display:none !important;
+}
+
+.site-header .header-actions{
+  flex:0 0 auto !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:flex-end !important;
+  gap:8px !important;
+  min-width:max-content !important;
+}
+
+.site-header .header-actions .pill,
+.site-header .theme-toggle,
+.site-header .lang-toggle,
+.site-header .whatsapp{
+  width:auto !important;
+  min-width:66px !important;
+  height:36px !important;
+  min-height:36px !important;
+  padding:0 13px !important;
+  border-radius:999px !important;
+  aspect-ratio:auto !important;
+  white-space:nowrap !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  font-size:12px !important;
+}
+
+.site-header .whatsapp{min-width:92px !important;}
+
+/* Mobile and tablet: hide menu inside a compact hamburger icon */
+@media (max-width:1100px){
+  .site-header{
+    min-height:64px !important;
+    padding:9px clamp(10px,2.6vw,26px) !important;
+    gap:8px !important;
+  }
+
+  .site-header.scrolled,
+  body.ohgs-scrolled .site-header{min-height:56px !important;padding-top:6px !important;padding-bottom:6px !important;}
+
+  .site-header .brand{
+    min-width:104px !important;
+    max-width:132px !important;
+    gap:7px !important;
+  }
+  .site-header .brand img{width:34px !important;height:34px !important;flex-basis:34px !important;}
+  .site-header .brand-title{font-size:17px !important;letter-spacing:.08em !important;}
+  .site-header .brand-subtitle{font-size:6.6px !important;letter-spacing:.16em !important;}
+
+  .site-header .ohgs-menu-toggle,
+  .site-header .menu-toggle,
+  .site-header #menuToggle,
+  .site-header .mobile-menu-button{
+    display:grid !important;
+    place-items:center !important;
+    position:relative !important;
+    width:42px !important;
+    height:42px !important;
+    min-width:42px !important;
+    min-height:42px !important;
+    max-width:42px !important;
+    max-height:42px !important;
+    padding:0 !important;
+    border-radius:14px !important;
+    border:1px solid rgba(56,189,248,.28) !important;
+    background:linear-gradient(180deg,#12b9ee,#0788c7) !important;
+    box-shadow:0 10px 26px rgba(14,165,233,.25) !important;
+    z-index:1000001 !important;
+    cursor:pointer !important;
+    flex:0 0 42px !important;
+  }
+
+  .site-header .ohgs-menu-toggle span,
+  .site-header .menu-toggle span,
+  .site-header #menuToggle span,
+  .site-header .mobile-menu-button span{
+    display:block !important;
+    width:18px !important;
+    height:2px !important;
+    border-radius:999px !important;
+    background:#062235 !important;
+    margin:2px 0 !important;
+    transition:transform .22s ease, opacity .22s ease !important;
+  }
+
+  body.ohgs-menu-open .site-header .ohgs-menu-toggle,
+  body.menu-open .site-header .ohgs-menu-toggle{
+    transform:rotate(90deg) scale(.96) !important;
+    border-radius:16px !important;
+  }
+
+  body.ohgs-menu-open .site-header .ohgs-menu-toggle span:nth-child(1),
+  body.menu-open .site-header .ohgs-menu-toggle span:nth-child(1){transform:translateY(6px) rotate(45deg) !important;}
+  body.ohgs-menu-open .site-header .ohgs-menu-toggle span:nth-child(2),
+  body.menu-open .site-header .ohgs-menu-toggle span:nth-child(2){opacity:0 !important;}
+  body.ohgs-menu-open .site-header .ohgs-menu-toggle span:nth-child(3),
+  body.menu-open .site-header .ohgs-menu-toggle span:nth-child(3){transform:translateY(-6px) rotate(-45deg) !important;}
+
+  /* Critical: menu is closed by default, not visible, not occupying height */
+  .site-header #ohgsMainMenu,
+  .site-header nav#ohgsMainMenu{
+    display:none !important;
+    position:absolute !important;
+    top:calc(100% + 8px) !important;
+    left:10px !important;
+    right:10px !important;
+    width:auto !important;
+    max-width:calc(100vw - 20px) !important;
+    height:auto !important;
+    max-height:min(62vh,420px) !important;
+    overflow:auto !important;
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+    gap:8px !important;
+    padding:12px !important;
+    border-radius:20px !important;
+    background:rgba(7,18,32,.97) !important;
+    border:1px solid rgba(125,211,252,.18) !important;
+    box-shadow:0 22px 70px rgba(0,0,0,.36) !important;
+    backdrop-filter:blur(16px) !important;
+    opacity:0 !important;
+    visibility:hidden !important;
+    pointer-events:none !important;
+    transform:translateY(-10px) scale(.98) !important;
+    z-index:1000000 !important;
+  }
+
+  body.ohgs-menu-open .site-header #ohgsMainMenu,
+  body.menu-open .site-header #ohgsMainMenu,
+  .site-header #ohgsMainMenu.open,
+  .site-header #ohgsMainMenu.is-open{
+    display:grid !important;
+    opacity:1 !important;
+    visibility:visible !important;
+    pointer-events:auto !important;
+    transform:translateY(0) scale(1) !important;
+  }
+
+  .site-header #ohgsMainMenu a{
+    width:100% !important;
+    height:42px !important;
+    min-height:42px !important;
+    padding:0 10px !important;
+    border-radius:14px !important;
+    background:rgba(255,255,255,.045) !important;
+    color:#eaf7ff !important;
+    font-size:13px !important;
+    text-align:center !important;
+  }
+
+  .site-header .header-actions{gap:6px !important;}
+  .site-header .header-actions .pill,
+  .site-header .theme-toggle,
+  .site-header .lang-toggle,
+  .site-header .whatsapp{
+    height:34px !important;
+    min-height:34px !important;
+    min-width:54px !important;
+    padding:0 9px !important;
+    font-size:11px !important;
+  }
+  .site-header .whatsapp{min-width:76px !important;}
+}
+
+@media (max-width:520px){
+  .site-header{padding-left:8px !important;padding-right:8px !important;gap:5px !important;}
+  .site-header .brand{min-width:86px !important;max-width:96px !important;gap:5px !important;}
+  .site-header .brand img{width:30px !important;height:30px !important;flex-basis:30px !important;}
+  .site-header .brand-title{font-size:13px !important;letter-spacing:.05em !important;}
+  .site-header .brand-subtitle{font-size:5.6px !important;letter-spacing:.10em !important;}
+  .site-header .ohgs-menu-toggle{width:38px !important;height:38px !important;min-width:38px !important;min-height:38px !important;max-width:38px !important;max-height:38px !important;border-radius:12px !important;}
+  .site-header .ohgs-menu-toggle span{width:16px !important;height:2px !important;}
+  .site-header .header-actions .pill,.site-header .theme-toggle,.site-header .lang-toggle,.site-header .whatsapp{height:32px !important;min-height:32px !important;min-width:48px !important;padding:0 7px !important;font-size:10px !important;}
+  .site-header .whatsapp{min-width:66px !important;}
+  .site-header #ohgsMainMenu{left:8px !important;right:8px !important;grid-template-columns:1fr 1fr !important;}
+}
+
+/* Light mode dropdown should be white and readable */
+html.light body.ohgs-menu-open .site-header #ohgsMainMenu,
+body.light.ohgs-menu-open .site-header #ohgsMainMenu,
+body.light-mode.ohgs-menu-open .site-header #ohgsMainMenu,
+html[data-theme="light"] body.ohgs-menu-open .site-header #ohgsMainMenu,
+html.light body.menu-open .site-header #ohgsMainMenu,
+body.light.menu-open .site-header #ohgsMainMenu,
+body.light-mode.menu-open .site-header #ohgsMainMenu{
+  background:rgba(255,255,255,.98) !important;
+  border-color:rgba(7,17,31,.10) !important;
+  box-shadow:0 22px 60px rgba(15,23,42,.14) !important;
+}
+html.light .site-header #ohgsMainMenu a,
+body.light .site-header #ohgsMainMenu a,
+body.light-mode .site-header #ohgsMainMenu a,
+html[data-theme="light"] .site-header #ohgsMainMenu a{
+  color:#07111f !important;
+  background:rgba(7,17,31,.04) !important;
+}
+
+
+/* =========================================================
+   OHGS FINAL CUSTOMER PRO PATCH
+   Mobile/tablet menu collapses to icon + real light mode
+   Inspired by modern hardware/ecommerce nav: compact sticky header,
+   clear categories, touch-friendly controls, clean product cards.
+   ========================================================= */
+
+html,body{max-width:100%!important;overflow-x:hidden!important;}
+body{min-width:0!important;}
+
+/* Sticky professional header */
+.site-header, header.site-header{
+  position:sticky!important;top:0!important;left:0!important;right:0!important;
+  z-index:2147483000!important;width:100%!important;max-width:100vw!important;
+  min-height:68px!important;padding:0 clamp(10px,2vw,28px)!important;
+  display:flex!important;align-items:center!important;gap:clamp(8px,1.2vw,18px)!important;
+  background:rgba(7,18,32,.92)!important;border-bottom:1px solid rgba(148,163,184,.14)!important;
+  backdrop-filter:blur(18px)!important;-webkit-backdrop-filter:blur(18px)!important;
+  transition:min-height .25s ease,padding .25s ease,background .25s ease,box-shadow .25s ease!important;
+}
+.site-header.scrolled, body.ohgs-scrolled .site-header{min-height:56px!important;box-shadow:0 14px 44px rgba(0,0,0,.22)!important;}
+
+.site-header .brand,.site-header .brand-link,.site-header .logo{
+  flex:0 0 auto!important;display:flex!important;align-items:center!important;gap:9px!important;
+  min-width:126px!important;max-width:190px!important;overflow:visible!important;text-decoration:none!important;z-index:2!important;
+}
+.site-header .brand img,.site-header .brand-link img,.site-header .logo img{
+  width:42px!important;height:42px!important;min-width:42px!important;object-fit:contain!important;border-radius:50%!important;
+}
+.site-header .brand-copy{display:flex!important;flex-direction:column!important;line-height:1!important;min-width:0!important;}
+.site-header .brand-title,.site-header .brand-name{font-size:clamp(18px,1.9vw,26px)!important;font-weight:900!important;letter-spacing:.08em!important;line-height:.95!important;white-space:nowrap!important;color:#fff!important;}
+.site-header .brand-subtitle{font-size:clamp(7px,.75vw,11px)!important;font-weight:800!important;letter-spacing:.22em!important;line-height:1!important;white-space:nowrap!important;color:#0ea5e9!important;}
+
+/* Desktop menu: clean links, no huge box */
+.site-header nav,#ohgsMainMenu,.site-header .nav-links{
+  flex:1 1 auto!important;display:flex!important;align-items:center!important;justify-content:center!important;gap:4px!important;
+  width:auto!important;max-width:none!important;margin:0!important;padding:0!important;background:transparent!important;border:0!important;box-shadow:none!important;position:static!important;visibility:visible!important;opacity:1!important;transform:none!important;pointer-events:auto!important;
+}
+.site-header nav a,#ohgsMainMenu a,.site-header .nav-links a{
+  height:34px!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;
+  padding:0 11px!important;border-radius:999px!important;border:1px solid transparent!important;
+  font-size:clamp(11px,.82vw,14px)!important;line-height:1!important;font-weight:750!important;white-space:nowrap!important;text-decoration:none!important;
+  transition:background .18s ease,border-color .18s ease,transform .18s ease,color .18s ease!important;
+}
+.site-header nav a.active,#ohgsMainMenu a.active,.site-header .nav-links a.active,
+.site-header nav a:hover,#ohgsMainMenu a:hover,.site-header .nav-links a:hover{
+  background:rgba(14,165,233,.12)!important;border-color:rgba(14,165,233,.38)!important;color:#0ea5e9!important;
+}
+
+.site-header .header-actions,.site-header .controls{margin-left:auto!important;flex:0 0 auto!important;display:flex!important;align-items:center!important;gap:8px!important;z-index:2!important;}
+.site-header .pill,.site-header .theme-toggle,.site-header .lang-toggle,.site-header .whatsapp{
+  height:36px!important;min-height:36px!important;min-width:64px!important;width:auto!important;max-width:none!important;
+  padding:0 12px!important;border-radius:999px!important;aspect-ratio:auto!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;
+  white-space:nowrap!important;font-size:12px!important;line-height:1!important;font-weight:850!important;
+}
+.site-header .whatsapp{min-width:86px!important;background:#16c757!important;color:#fff!important;border-color:transparent!important;}
+
+/* Hamburger hidden on desktop, visible on mobile/tablet */
+.ohgs-menu-toggle,#ohgsMenuButton,.menu-toggle,#menuToggle,.mobile-menu-button{
+  display:none!important;width:42px!important;height:42px!important;min-width:42px!important;min-height:42px!important;max-width:42px!important;max-height:42px!important;
+  border-radius:14px!important;border:1px solid rgba(14,165,233,.26)!important;background:linear-gradient(180deg,#0ea5e9,#0476ad)!important;
+  box-shadow:0 10px 28px rgba(14,165,233,.22)!important;place-items:center!important;position:relative!important;z-index:3!important;padding:0!important;cursor:pointer!important;
+  transition:transform .24s ease,border-radius .24s ease,box-shadow .24s ease!important;
+}
+.ohgs-menu-toggle span,#ohgsMenuButton span,.menu-toggle span,#menuToggle span,.mobile-menu-button span{
+  display:block!important;width:18px!important;height:2px!important;background:#06101d!important;border-radius:999px!important;margin:2.5px 0!important;transition:transform .24s ease,opacity .18s ease!important;
+}
+body.ohgs-menu-open .ohgs-menu-toggle,body.ohgs-menu-open #ohgsMenuButton,body.menu-open .ohgs-menu-toggle,body.menu-open #ohgsMenuButton{border-radius:17px!important;transform:rotate(90deg) scale(.96)!important;}
+body.ohgs-menu-open .ohgs-menu-toggle span:nth-child(1),body.ohgs-menu-open #ohgsMenuButton span:nth-child(1),body.menu-open .ohgs-menu-toggle span:nth-child(1),body.menu-open #ohgsMenuButton span:nth-child(1){transform:translateY(7px) rotate(45deg)!important;}
+body.ohgs-menu-open .ohgs-menu-toggle span:nth-child(2),body.ohgs-menu-open #ohgsMenuButton span:nth-child(2),body.menu-open .ohgs-menu-toggle span:nth-child(2),body.menu-open #ohgsMenuButton span:nth-child(2){opacity:0!important;}
+body.ohgs-menu-open .ohgs-menu-toggle span:nth-child(3),body.ohgs-menu-open #ohgsMenuButton span:nth-child(3),body.menu-open .ohgs-menu-toggle span:nth-child(3),body.menu-open #ohgsMenuButton span:nth-child(3){transform:translateY(-7px) rotate(-45deg)!important;}
+
+/* Tablet and mobile: menu is hidden until icon is clicked */
+@media (max-width:1100px){
+  .site-header,header.site-header{min-height:64px!important;padding:0 12px!important;gap:8px!important;}
+  .site-header .brand,.site-header .brand-link,.site-header .logo{min-width:104px!important;max-width:142px!important;gap:7px!important;}
+  .site-header .brand img,.site-header .brand-link img,.site-header .logo img{width:34px!important;height:34px!important;min-width:34px!important;}
+  .site-header .brand-title,.site-header .brand-name{font-size:17px!important;letter-spacing:.07em!important;}
+  .site-header .brand-subtitle{font-size:6.6px!important;letter-spacing:.16em!important;}
+  .ohgs-menu-toggle,#ohgsMenuButton,.menu-toggle,#menuToggle,.mobile-menu-button{display:grid!important;}
+
+  .site-header nav,#ohgsMainMenu,.site-header .nav-links{
+    position:fixed!important;top:72px!important;left:12px!important;right:12px!important;width:auto!important;max-width:none!important;
+    display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important;
+    padding:14px!important;margin:0!important;border-radius:24px!important;border:1px solid rgba(148,163,184,.18)!important;
+    background:rgba(7,18,32,.97)!important;box-shadow:0 24px 80px rgba(0,0,0,.36)!important;
+    backdrop-filter:blur(20px)!important;-webkit-backdrop-filter:blur(20px)!important;
+    transform:translateY(-12px) scale(.975)!important;opacity:0!important;visibility:hidden!important;pointer-events:none!important;
+    max-height:min(58vh,430px)!important;overflow:auto!important;z-index:2147483001!important;
+    transition:opacity .22s ease,transform .22s ease,visibility .22s ease!important;
+  }
+  body.ohgs-menu-open .site-header nav,body.ohgs-menu-open #ohgsMainMenu,body.ohgs-menu-open .site-header .nav-links,
+  body.menu-open .site-header nav,body.menu-open #ohgsMainMenu,body.menu-open .site-header .nav-links,
+  .site-header nav.open,#ohgsMainMenu.open,.site-header .nav-links.open,.site-header nav.is-open,#ohgsMainMenu.is-open,.site-header .nav-links.is-open{
+    transform:translateY(0) scale(1)!important;opacity:1!important;visibility:visible!important;pointer-events:auto!important;
+  }
+  .site-header nav a,#ohgsMainMenu a,.site-header .nav-links a{
+    height:46px!important;width:100%!important;justify-content:center!important;border-radius:16px!important;padding:0 10px!important;
+    font-size:13px!important;background:rgba(255,255,255,.055)!important;border:1px solid rgba(255,255,255,.06)!important;color:#eef7ff!important;
+  }
+  .site-header .header-actions,.site-header .controls{gap:6px!important;margin-left:0!important;}
+  .site-header .pill,.site-header .theme-toggle,.site-header .lang-toggle,.site-header .whatsapp{height:34px!important;min-height:34px!important;min-width:54px!important;padding:0 9px!important;font-size:10.5px!important;}
+  .site-header .whatsapp{min-width:74px!important;}
+}
+@media (max-width:520px){
+  .site-header,header.site-header{min-height:62px!important;padding:0 8px!important;gap:6px!important;}
+  .site-header .brand,.site-header .brand-link,.site-header .logo{min-width:88px!important;max-width:98px!important;gap:5px!important;}
+  .site-header .brand img,.site-header .brand-link img,.site-header .logo img{width:30px!important;height:30px!important;min-width:30px!important;}
+  .site-header .brand-title,.site-header .brand-name{font-size:13px!important;letter-spacing:.04em!important;}
+  .site-header .brand-subtitle{font-size:5px!important;letter-spacing:.10em!important;}
+  .ohgs-menu-toggle,#ohgsMenuButton,.menu-toggle,#menuToggle,.mobile-menu-button{width:38px!important;height:38px!important;min-width:38px!important;min-height:38px!important;max-width:38px!important;max-height:38px!important;border-radius:13px!important;}
+  .site-header .pill,.site-header .theme-toggle,.site-header .lang-toggle,.site-header .whatsapp{height:32px!important;min-height:32px!important;min-width:46px!important;padding:0 7px!important;font-size:9.5px!important;}
+  .site-header .whatsapp{min-width:68px!important;}
+  .site-header nav,#ohgsMainMenu,.site-header .nav-links{top:68px!important;left:8px!important;right:8px!important;grid-template-columns:1fr 1fr!important;padding:12px!important;gap:8px!important;border-radius:20px!important;max-height:54vh!important;}
+  .site-header nav a,#ohgsMainMenu a,.site-header .nav-links a{height:42px!important;font-size:12px!important;}
+}
+
+/* Customer-friendly card alignment */
+.product-grid,.products-grid,.stock-grid,.promo-grid,.video-grid,.project-picture-grid,.service-grid,.service-grid-enhanced,.ohgs-latest-grid,.gallery,.cards-grid{
+  width:100%!important;max-width:min(1200px,calc(100vw - 32px))!important;margin-left:auto!important;margin-right:auto!important;
+  display:grid!important;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))!important;gap:clamp(16px,2vw,26px)!important;align-items:stretch!important;
+}
+@media (min-width:1050px){.product-grid,.products-grid,.stock-grid,.promo-grid,.ohgs-latest-grid,.gallery,.project-picture-grid,.video-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important;}}
+@media (max-width:680px){.product-grid,.products-grid,.stock-grid,.promo-grid,.video-grid,.project-picture-grid,.service-grid,.service-grid-enhanced,.ohgs-latest-grid,.gallery,.cards-grid{grid-template-columns:1fr!important;max-width:calc(100vw - 24px)!important;}}
+.product-card,.stock-card,.promo-card,.video-card,.service-card,.info-card,.quote-card,.project-image-card,.ohgs-latest-card{min-width:0!important;display:flex!important;flex-direction:column!important;border-radius:22px!important;overflow:hidden!important;}
+.product-card img,.stock-card img,.promo-card img,.video-card img,.project-image-card img,.ohgs-latest-card img,.gallery img{width:100%!important;aspect-ratio:16/10!important;height:auto!important;object-fit:cover!important;object-position:center!important;display:block!important;}
+.product-body,.stock-card>div,.promo-card>div,.video-card>div,.project-image-card>div,.ohgs-latest-body{padding:clamp(16px,1.6vw,22px)!important;gap:10px!important;display:flex!important;flex-direction:column!important;flex:1!important;}
+.card-actions{display:flex!important;flex-wrap:wrap!important;gap:10px!important;align-items:center!important;margin-top:auto!important;padding:0!important;background:transparent!important;border:0!important;box-shadow:none!important;}
+.card-actions .btn,.card-actions a,.product-card .btn,.promo-card .btn,.stock-card .btn,.ohgs-oval-btn{width:auto!important;min-width:132px!important;height:42px!important;min-height:42px!important;max-height:42px!important;border-radius:999px!important;aspect-ratio:auto!important;padding:0 18px!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;white-space:nowrap!important;}
+@media(max-width:560px){.card-actions .btn,.card-actions a,.product-card .btn,.promo-card .btn,.stock-card .btn,.ohgs-oval-btn{width:100%!important;min-width:0!important;}}
+
+/* TRUE light mode: remove dark overlays and turn the whole website light */
+html.light,html.light body,html[data-theme="light"],html[data-theme="light"] body,body.light,body.light-mode,body[data-theme="light"]{background:#f6fbff!important;color:#07111f!important;}
+html.light body::before,html.light body::after,body.light::before,body.light::after,body.light-mode::before,body.light-mode::after,html[data-theme="light"] body::before,html[data-theme="light"] body::after{display:none!important;opacity:0!important;background:transparent!important;}
+html.light main,html.light section,html.light .section,html.light .hero,html.light .detail-hero,html.light .page,html.light .site-main,html.light footer,html.light .footer,
+body.light main,body.light section,body.light .section,body.light .hero,body.light .detail-hero,body.light .page,body.light .site-main,body.light footer,body.light .footer,
+body.light-mode main,body.light-mode section,body.light-mode .section,body.light-mode .hero,body.light-mode .detail-hero,body.light-mode .page,body.light-mode .site-main,body.light-mode footer,body.light-mode .footer,
+html[data-theme="light"] main,html[data-theme="light"] section,html[data-theme="light"] .section,html[data-theme="light"] .hero,html[data-theme="light"] .detail-hero,html[data-theme="light"] .page,html[data-theme="light"] .site-main,html[data-theme="light"] footer,html[data-theme="light"] .footer{background:#f6fbff!important;background-image:none!important;color:#07111f!important;}
+html.light .site-header,body.light .site-header,body.light-mode .site-header,html[data-theme="light"] .site-header{background:rgba(255,255,255,.96)!important;border-bottom:1px solid rgba(7,17,31,.09)!important;box-shadow:0 12px 34px rgba(15,23,42,.08)!important;color:#07111f!important;}
+html.light .brand-title,html.light .brand-name,body.light .brand-title,body.light .brand-name,body.light-mode .brand-title,body.light-mode .brand-name{color:#07111f!important;}
+html.light h1,html.light h2,html.light h3,html.light h4,html.light p,html.light li,html.light span,html.light a,
+body.light h1,body.light h2,body.light h3,body.light h4,body.light p,body.light li,body.light span,body.light a,
+body.light-mode h1,body.light-mode h2,body.light-mode h3,body.light-mode h4,body.light-mode p,body.light-mode li,body.light-mode span,body.light-mode a{color:#07111f!important;}
+html.light .lead,html.light .muted,body.light .lead,body.light .muted,body.light-mode .lead,body.light-mode .muted{color:#475569!important;}
+html.light .product-card,html.light .stock-card,html.light .promo-card,html.light .video-card,html.light .service-card,html.light .info-card,html.light .quote-card,html.light .project-image-card,html.light .ohgs-latest-card,html.light [class*="card"],
+body.light .product-card,body.light .stock-card,body.light .promo-card,body.light .video-card,body.light .service-card,body.light .info-card,body.light .quote-card,body.light .project-image-card,body.light .ohgs-latest-card,body.light [class*="card"],
+body.light-mode .product-card,body.light-mode .stock-card,body.light-mode .promo-card,body.light-mode .video-card,body.light-mode .service-card,body.light-mode .info-card,body.light-mode .quote-card,body.light-mode .project-image-card,body.light-mode .ohgs-latest-card,body.light-mode [class*="card"]{background:#fff!important;color:#07111f!important;border-color:rgba(7,17,31,.10)!important;box-shadow:0 14px 36px rgba(15,23,42,.08)!important;}
+@media(max-width:1100px){html.light .site-header nav,html.light #ohgsMainMenu,body.light .site-header nav,body.light #ohgsMainMenu,body.light-mode .site-header nav,body.light-mode #ohgsMainMenu{background:rgba(255,255,255,.98)!important;border-color:rgba(7,17,31,.10)!important;box-shadow:0 22px 64px rgba(15,23,42,.14)!important;}html.light .site-header nav a,html.light #ohgsMainMenu a,body.light .site-header nav a,body.light #ohgsMainMenu a,body.light-mode .site-header nav a,body.light-mode #ohgsMainMenu a{background:rgba(7,17,31,.04)!important;color:#07111f!important;border-color:rgba(7,17,31,.07)!important;}}
+
+/* Smaller loading logo ring */
+.ohgs-loader-screen{position:fixed!important;inset:0!important;z-index:2147483647!important;display:grid!important;place-items:center!important;align-content:center!important;gap:16px!important;background:#071426!important;color:#eef7ff!important;transition:opacity .35s ease,visibility .35s ease!important;}
+html.light .ohgs-loader-screen,body.light .ohgs-loader-screen,html[data-theme="light"] .ohgs-loader-screen{background:#f6fbff!important;color:#07111f!important;}
+.ohgs-loader-screen.is-hidden{opacity:0!important;visibility:hidden!important;pointer-events:none!important;}
+.ohgs-loader-mark{width:82px!important;height:82px!important;position:relative!important;display:grid!important;place-items:center!important;}
+.ohgs-loader-mark img{width:54px!important;height:54px!important;object-fit:contain!important;border-radius:50%!important;background:#fff!important;padding:4px!important;box-shadow:0 12px 34px rgba(0,0,0,.18)!important;}
+.ohgs-loader-ring{position:absolute!important;inset:0!important;border-radius:999px!important;border:4px solid rgba(14,165,233,.18)!important;border-top-color:#0ea5e9!important;border-right-color:#67e8f9!important;animation:ohgsLoaderSpin .85s linear infinite!important;}
+@keyframes ohgsLoaderSpin{to{transform:rotate(360deg);}}
