@@ -14501,3 +14501,418 @@ html.light .site-header,body.light .site-header,body.light-mode .site-header,htm
 html.light h1,html.light h2,html.light h3,html.light h4,html.light p,html.light li,html.light a,html.light span,body.light h1,body.light h2,body.light h3,body.light h4,body.light p,body.light li,body.light a,body.light span,body.light-mode h1,body.light-mode h2,body.light-mode h3,body.light-mode h4,body.light-mode p,body.light-mode li,body.light-mode a,body.light-mode span{color:#07111f!important;}
 html.light .product-card,html.light .stock-card,html.light .promo-card,html.light .video-card,html.light .service-card,html.light .info-card,html.light .quote-card,html.light .project-image-card,html.light .ohgs-latest-card,html.light [class*="card"],body.light .product-card,body.light .stock-card,body.light .promo-card,body.light .video-card,body.light .service-card,body.light .info-card,body.light .quote-card,body.light .project-image-card,body.light .ohgs-latest-card,body.light [class*="card"],body.light-mode .product-card,body.light-mode .stock-card,body.light-mode .promo-card,body.light-mode .video-card,body.light-mode .service-card,body.light-mode .info-card,body.light-mode .quote-card,body.light-mode .project-image-card,body.light-mode .ohgs-latest-card,body.light-mode [class*="card"]{background:#fff!important;color:#07111f!important;border-color:rgba(7,17,31,.10)!important;box-shadow:0 14px 36px rgba(15,23,42,.08)!important;}
 @media (max-width:980px){html.light #ohgsMainMenu,html.light .ohgs-main-menu,html.light .site-header nav,html.light .site-header .nav-links,body.light #ohgsMainMenu,body.light .ohgs-main-menu,body.light .site-header nav,body.light .site-header .nav-links,body.light-mode #ohgsMainMenu,body.light-mode .ohgs-main-menu,body.light-mode .site-header nav,body.light-mode .site-header .nav-links{background:rgba(255,255,255,.98)!important;border:1px solid rgba(7,17,31,.10)!important;box-shadow:0 22px 64px rgba(15,23,42,.13)!important;}}
+
+
+/* ============================================================
+   FINAL SHAKE FIX + NEW BRANDED VISUALS PATCH
+   ============================================================ */
+html {
+  scroll-behavior: smooth;
+  scrollbar-gutter: stable both-edges;
+}
+body {
+  overflow-x: hidden !important;
+  overflow-anchor: none;
+  min-height: 100vh;
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Reduce layout shift from mobile browser address bar */
+.hero {
+  min-height: calc(100svh - 72px) !important;
+}
+@media (max-width: 980px) {
+  .hero {
+    min-height: auto !important;
+    padding-top: 108px !important;
+  }
+}
+
+/* Stable header and non-shaking page */
+.site-header {
+  position: sticky !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  z-index: 9999 !important;
+  transform: translate3d(0,0,0) !important;
+  will-change: auto !important;
+  transition: background-color .25s ease, box-shadow .25s ease, border-color .25s ease !important;
+}
+body,
+main,
+section,
+.hero,
+.section,
+.site-header,
+.header-actions,
+.ohgs-main-menu,
+nav {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.site-header.scrolled {
+  box-shadow: 0 16px 36px rgba(0,0,0,.16) !important;
+}
+
+/* Header structure */
+.site-header {
+  display: grid !important;
+  grid-template-columns: auto 1fr auto !important;
+  align-items: center !important;
+  gap: 16px !important;
+  padding: 12px 24px !important;
+}
+.brand {
+  min-width: 0;
+}
+.brand-copy {
+  display: inline-flex;
+  flex-direction: column;
+  line-height: 1;
+}
+.brand-title {
+  font-size: 1.7rem;
+  font-weight: 900;
+  letter-spacing: .06em;
+}
+.brand-subtitle {
+  font-size: .45rem;
+  letter-spacing: .26em;
+}
+
+#ohgsMainMenu,
+.ohgs-main-menu,
+.site-header nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 0 auto;
+}
+#ohgsMainMenu a,
+.ohgs-main-menu a,
+.site-header nav a {
+  border-radius: 999px;
+  padding: 10px 14px;
+  line-height: 1;
+  white-space: nowrap;
+}
+.header-actions {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  flex-wrap: nowrap !important;
+}
+.pill {
+  height: 38px !important;
+  padding-inline: 14px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Mobile menu */
+#ohgsMenuButton,
+#menuToggle,
+.ohgs-menu-toggle,
+.menu-toggle {
+  display: none;
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+  min-height: 42px;
+  padding: 0 !important;
+  border: 1px solid var(--line) !important;
+  background: rgba(255,255,255,.08) !important;
+  color: var(--text) !important;
+  border-radius: 14px !important;
+  align-items: center;
+  justify-content: center;
+}
+#ohgsMenuButton span,
+#menuToggle span,
+.ohgs-menu-toggle span,
+.menu-toggle span {
+  display: block;
+  width: 18px;
+  height: 2px;
+  margin: 3px auto;
+  background: currentColor;
+  border-radius: 999px;
+  transition: transform .2s ease, opacity .2s ease;
+}
+#ohgsMenuButton.is-open span:nth-child(1),
+#menuToggle.is-open span:nth-child(1),
+.ohgs-menu-toggle.is-open span:nth-child(1),
+.menu-toggle.is-open span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+#ohgsMenuButton.is-open span:nth-child(2),
+#menuToggle.is-open span:nth-child(2),
+.ohgs-menu-toggle.is-open span:nth-child(2),
+.menu-toggle.is-open span:nth-child(2) {
+  opacity: 0;
+}
+#ohgsMenuButton.is-open span:nth-child(3),
+#menuToggle.is-open span:nth-child(3),
+.ohgs-menu-toggle.is-open span:nth-child(3),
+.menu-toggle.is-open span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+@media (max-width: 980px) {
+  .site-header {
+    grid-template-columns: auto auto 1fr !important;
+    padding: 10px 12px !important;
+    gap: 8px !important;
+  }
+  #ohgsMenuButton,
+  #menuToggle,
+  .ohgs-menu-toggle,
+  .menu-toggle {
+    display: inline-flex !important;
+    order: 2;
+  }
+  .brand {
+    order: 1;
+    gap: 8px !important;
+  }
+  .brand img {
+    width: 36px !important;
+    height: 36px !important;
+  }
+  .brand-title {
+    font-size: 1.15rem !important;
+  }
+  .brand-subtitle {
+    font-size: .38rem !important;
+    letter-spacing: .18em !important;
+  }
+  .header-actions {
+    order: 3;
+    justify-self: end;
+    gap: 5px !important;
+  }
+  .pill {
+    height: 34px !important;
+    padding-inline: 10px !important;
+    font-size: 11px !important;
+  }
+  #ohgsMainMenu,
+  .ohgs-main-menu,
+  .site-header nav {
+    position: absolute !important;
+    top: calc(100% + 8px) !important;
+    left: 10px !important;
+    right: 10px !important;
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0,1fr)) !important;
+    gap: 8px !important;
+    padding: 12px !important;
+    background: rgba(7,17,31,.98) !important;
+    border: 1px solid var(--line) !important;
+    border-radius: 20px !important;
+    box-shadow: 0 24px 60px rgba(0,0,0,.28) !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transform: translateY(-10px) !important;
+    pointer-events: none !important;
+    transition: opacity .2s ease, transform .2s ease, visibility .2s ease !important;
+    max-height: min(60vh, 430px);
+    overflow-y: auto;
+  }
+  body.light #ohgsMainMenu,
+  body.light .ohgs-main-menu,
+  body.light .site-header nav,
+  html.light #ohgsMainMenu,
+  html.light .ohgs-main-menu,
+  html.light .site-header nav {
+    background: rgba(255,255,255,.98) !important;
+  }
+  #ohgsMainMenu.open,
+  .ohgs-main-menu.open,
+  .site-header nav.open,
+  #ohgsMainMenu.ohgs-menu-open,
+  .ohgs-main-menu.ohgs-menu-open,
+  .site-header nav.ohgs-menu-open,
+  body.menu-open #ohgsMainMenu,
+  body.menu-open .ohgs-main-menu,
+  body.menu-open .site-header nav {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) !important;
+    pointer-events: auto !important;
+  }
+  #ohgsMainMenu a,
+  .ohgs-main-menu a,
+  .site-header nav a {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    min-height: 42px !important;
+    padding: 10px !important;
+    border-radius: 14px !important;
+    background: rgba(255,255,255,.06) !important;
+  }
+}
+@media (max-width: 520px) {
+  .site-header {
+    grid-template-columns: auto auto 1fr !important;
+  }
+  .brand-copy {
+    max-width: 60px;
+  }
+  .brand-title {
+    font-size: 1rem !important;
+  }
+  .brand-subtitle {
+    font-size: .34rem !important;
+  }
+  .header-actions .whatsapp {
+    min-width: 72px !important;
+  }
+}
+
+/* Light mode hard fix */
+html.light,
+html.light body,
+body.light,
+body.light-mode,
+html[data-theme="light"],
+html[data-theme="light"] body,
+body[data-theme="light"] {
+  background: #f6fbff !important;
+  color: #08111f !important;
+}
+html.light .site-header,
+body.light .site-header,
+body.light-mode .site-header,
+html[data-theme="light"] .site-header {
+  background: rgba(255,255,255,.96) !important;
+  border-bottom: 1px solid rgba(8,17,31,.08) !important;
+}
+html.light .section,
+html.light .hero,
+html.light .footer,
+body.light .section,
+body.light .hero,
+body.light .footer,
+body.light-mode .section,
+body.light-mode .hero,
+body.light-mode .footer {
+  background-image: none !important;
+}
+html.light .product-card,
+html.light .promo-card,
+html.light .service-card,
+html.light .quote-card,
+html.light .info-card,
+body.light .product-card,
+body.light .promo-card,
+body.light .service-card,
+body.light .quote-card,
+body.light .info-card,
+body.light-mode .product-card,
+body.light-mode .promo-card,
+body.light-mode .service-card,
+body.light-mode .quote-card,
+body.light-mode .info-card {
+  background: #fff !important;
+  color: #08111f !important;
+  box-shadow: 0 18px 36px rgba(2,6,23,.08) !important;
+}
+
+/* Cards alignment + no excessive empty space */
+.product-grid,
+.promo-grid,
+.video-grid,
+.ohgs-brand-visual-grid {
+  align-items: stretch !important;
+}
+.product-card,
+.promo-card,
+.service-card,
+.info-card,
+.quote-card,
+.ohgs-brand-visual-card {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+}
+.product-body {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+  flex: 1 1 auto !important;
+}
+.product-body p {
+  margin: 0 !important;
+}
+.mini-list {
+  margin: 0 !important;
+}
+.card-actions {
+  margin-top: auto !important;
+  padding-top: 6px !important;
+}
+.product-card img,
+.ohgs-brand-visual-card img {
+  width: 100% !important;
+  aspect-ratio: 1 / 1 !important;
+  height: auto !important;
+  object-fit: cover !important;
+  display: block !important;
+}
+.promo-card img {
+  aspect-ratio: 4 / 5 !important;
+  height: auto !important;
+}
+
+/* New OHGS visuals section */
+.ohgs-brand-visual-section .lead {
+  max-width: 880px;
+}
+.ohgs-brand-visual-section .product-grid {
+  margin-top: 28px !important;
+}
+.ohgs-brand-visual-card {
+  overflow: hidden;
+}
+.ohgs-brand-visual-card .tag {
+  width: fit-content;
+}
+
+/* Footer buttons and sticky shortcuts */
+.quick-contact a,
+.top-btn {
+  transition: transform .2s ease, box-shadow .2s ease !important;
+}
+.quick-contact a:hover,
+.top-btn:hover {
+  transform: translateY(-3px);
+}
+
+/* Keep loaders smaller and clean */
+.ohgs-loader-mark,
+.loader-logo-wrap {
+  width: 78px !important;
+  height: 78px !important;
+}
+.ohgs-loader-mark img,
+.loader-logo-wrap img,
+.loader-card img {
+  width: 54px !important;
+  height: 54px !important;
+  object-fit: contain !important;
+}
+.loader-ring,
+.ohgs-loader-ring,
+.loader-card .ring {
+  border-width: 4px !important;
+}
