@@ -1,0 +1,1 @@
+Fixes sticky header jumping, mobile/tablet collapsed menu icon, full dark/light mode, and responsive card/image alignment. Upload extracted files to GitHub, commit to main, then Vercel updates the same domain.
