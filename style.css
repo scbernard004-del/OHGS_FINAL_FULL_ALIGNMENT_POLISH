@@ -14916,3 +14916,138 @@ body.light-mode .info-card {
 .loader-card .ring {
   border-width: 4px !important;
 }
+
+
+/* ============================================================
+   FINAL LOADING SCREEN CIRCLE FIX
+   Smaller ring, tightly wrapped around logo, responsive everywhere.
+   ============================================================ */
+.ohgs-loader-screen,
+#ohgsLoader,
+.loader {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 9999999 !important;
+  display: grid !important;
+  place-items: center !important;
+  background: #07111f !important;
+  transition: opacity .55s ease, visibility .55s ease !important;
+}
+
+.ohgs-loader-screen.hide,
+#ohgsLoader.hide,
+.loader.hide {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+.ohgs-loader-screen {
+  grid-template-rows: auto auto !important;
+  align-content: center !important;
+  row-gap: 12px !important;
+}
+
+.ohgs-loader-mark,
+.loader-logo-wrap,
+.loader-card {
+  position: relative !important;
+  width: clamp(66px, 13vw, 78px) !important;
+  height: clamp(66px, 13vw, 78px) !important;
+  min-width: clamp(66px, 13vw, 78px) !important;
+  min-height: clamp(66px, 13vw, 78px) !important;
+  max-width: 78px !important;
+  max-height: 78px !important;
+  display: grid !important;
+  place-items: center !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  border-radius: 999px !important;
+  overflow: visible !important;
+}
+
+.ohgs-loader-mark img,
+.loader-logo-wrap img,
+.loader-card img {
+  position: relative !important;
+  z-index: 2 !important;
+  width: clamp(44px, 8.8vw, 52px) !important;
+  height: clamp(44px, 8.8vw, 52px) !important;
+  min-width: clamp(44px, 8.8vw, 52px) !important;
+  min-height: clamp(44px, 8.8vw, 52px) !important;
+  max-width: 52px !important;
+  max-height: 52px !important;
+  object-fit: contain !important;
+  border-radius: 999px !important;
+  background: #ffffff !important;
+  padding: 2px !important;
+  box-shadow: 0 6px 16px rgba(0,0,0,.18) !important;
+}
+
+.ohgs-loader-ring,
+.loader-ring,
+.loader-card .ring {
+  position: absolute !important;
+  inset: 3px !important;
+  width: auto !important;
+  height: auto !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  border-radius: 999px !important;
+  border: 4px solid rgba(0,191,255,.16) !important;
+  border-top-color: #00bfff !important;
+  border-right-color: #67e8f9 !important;
+  border-bottom-color: rgba(103,232,249,.24) !important;
+  border-left-color: rgba(0,191,255,.06) !important;
+  background: transparent !important;
+  box-shadow: 0 0 18px rgba(0,191,255,.25) !important;
+  animation: ohgsLoaderSpin .85s linear infinite !important;
+  transform-origin: 50% 50% !important;
+  z-index: 1 !important;
+}
+
+.ohgs-loader-screen p,
+.loader-text,
+.loader p {
+  margin: 0 !important;
+  padding: 0 18px !important;
+  width: 100% !important;
+  max-width: min(360px, 92vw) !important;
+  text-align: center !important;
+  font-size: clamp(12px, 3vw, 14px) !important;
+  line-height: 1.35 !important;
+  letter-spacing: .02em !important;
+  color: #dbeafe !important;
+  white-space: normal !important;
+}
+
+@keyframes ohgsLoaderSpin {
+  to { transform: rotate(360deg); }
+}
+
+@media (max-width: 480px) {
+  .ohgs-loader-mark,
+  .loader-logo-wrap,
+  .loader-card {
+    width: 68px !important;
+    height: 68px !important;
+    min-width: 68px !important;
+    min-height: 68px !important;
+  }
+
+  .ohgs-loader-mark img,
+  .loader-logo-wrap img,
+  .loader-card img {
+    width: 46px !important;
+    height: 46px !important;
+    min-width: 46px !important;
+    min-height: 46px !important;
+  }
+
+  .ohgs-loader-ring,
+  .loader-ring,
+  .loader-card .ring {
+    inset: 3px !important;
+    border-width: 3px !important;
+  }
+}

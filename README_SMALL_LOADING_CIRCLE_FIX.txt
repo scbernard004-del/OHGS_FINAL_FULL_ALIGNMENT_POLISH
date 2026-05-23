@@ -1,0 +1,1 @@
+Updated loading screen: smaller responsive circle, tighter around OHGS logo, cleaner on mobile/tablet/desktop.
